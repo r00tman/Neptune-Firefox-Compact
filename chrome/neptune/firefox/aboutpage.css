@@ -39,18 +39,8 @@
 	}
 
 	menupopup, panel:not(.tooltip-xul-wrapper) {
-		--panel-separator-color: var(--nept-separator-color) !important;
-
 		@media (-moz-platform: macos) or (-moz-platform: windows) {
 			appearance: menupopup !important;
-			--panel-background: Menu !important;
-			--panel-shadow-margin: 0px !important;
-		}
-
-		@media (-moz-platform: windows) and (not (-moz-windows-mica-popups)) {
-			--panel-border-color: var(--nept-toolbar-border-color) !important;
-			--panel-border-radius: var(--border-radius-small) !important;
-			--panel-shadow-margin: 22px !important;
 		}
 
 		> menu,
@@ -64,6 +54,15 @@
 
 		> menuseparator {
 			border: none !important;
+		}
+	}
+
+	#search-container {
+		display: flex;
+		justify-content: flex-end;
+
+		> #searchInput {
+			width: var(--size-layout-small) !important;
 		}
 	}
 

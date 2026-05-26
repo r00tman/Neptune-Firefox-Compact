@@ -75,7 +75,7 @@
 	#unpip,
 	#close {
 		background-color: #ffffffa5 !important;
-		backdrop-filter: saturate(1.5) blur(8px);
+		backdrop-filter: blur(6px);
 		height: 16px !important;
 		width: 16px !important;
 		left: 10px !important;
@@ -247,16 +247,17 @@
 }
 
 .pointerlockfswarning {
-	background-color: #ffffff26 !important;
-	backdrop-filter: saturate(1.2) blur(6px);
+	background-color: #32323280 !important;
+	backdrop-filter: blur(6px);
 	padding: var(--space-medium) !important;
+	font: message-box !important;
 	border: none !important;
 	border-radius: var(--border-radius-circle) !important;
-	box-shadow: var(--nept-glass-shadow) !important;
+	box-shadow: none !important;
 
 	> #fullscreen-exit-button {
 		appearance: none !important;
-		background-color: #64646480;
+		background-color: #20202080;
 		padding-inline: var(--space-small);
 		border: none;
 		border-radius: var(--border-radius-medium);

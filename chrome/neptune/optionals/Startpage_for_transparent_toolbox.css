@@ -1,10 +1,14 @@
 @-moz-document url("about:home"), url("about:newtab"), url("about:welcome"), url("about:privatebrowsing") {
 	:root {
-		 scrollbar-width: none;
+		scrollbar-width: none;
 	}
 
 	.outer-wrapper.ds-outer-wrapper-breakpoint-override {
 		padding-top: calc(var(--space-xxlarge) + 81px) !important;
+	}
+
+	.nova-outer-wrapper {
+		padding-block-start: calc(var(--space-xlarge) + 81px) !important;
 	}
 
 	.weather {

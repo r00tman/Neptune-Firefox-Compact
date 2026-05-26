@@ -101,7 +101,7 @@
 		--button-background-color-ghost-active: var(--button-background-color-primary-active) !important;
 		--button-text-color-ghost-hover: var(--button-text-color-primary) !important;
 		--button-text-color-ghost-active: var(--button-text-color-primary) !important;
-		--button-border-radius: var(--arrowpanel-menuitem-border-radius) !important;
+		--button-border-radius: var(--panel-menuitem-border-radius) !important;
 	}
 
 	#sidebar-tools-and-extensions-splitter {
@@ -124,41 +124,6 @@
 				&:has(~ .buttons-wrapper > .tools-and-extensions[orientation="horizontal"]) {
 					min-width: var(--size-item-medium) !important;
 				}
-			}
-		}
-	}
-
-	.button-background {
-		--button-font-size: var(--font-size-small, initial) !important;
-		--button-min-height-small: var(--button-min-height) !important;
-
-		&.labelled {
-			justify-content: var(--button-label-directiony, initial) !important;
-		}
-
-		&[type~="icon"] {
-			button:is([title="Close"], [title="Close sidebar"]) > &:not(.labelled) {
-				--button-border-radius: var(--border-radius-xlarge) !important;
-			}
-
-			button:is([title^="Open bookmarks"], [title^="Close bookmarks"]) > & > img {
-				content: url("../assets/icons/bookmark-hollow.svg");
-			}
-
-			button:is([title^="Open history"], [title^="Close history"]) > & > img {
-				content: url("../assets/icons/history.svg");
-			}
-
-			button[title^="Passwords"] > & > img {
-				content: url("../assets/icons/login.svg");
-			}
-
-			button[title^="Tabs from other devices"] > & > img {
-				content: url("../assets/icons/synced-tabs.svg");
-			}
-
-			button[title="More tools"] > & > img {
-				content: url("../assets/icons/chevron.svg");
 			}
 		}
 	}
@@ -278,18 +243,8 @@
 
 	sidebar-tab-row {
 		--icon-size: var(--size-item-xsmall) !important;
-		--button-background-color-ghost-hover: var(--button-background-color-primary-hover) !important;
-		--button-background-color-ghost-active: var(--button-background-color-primary-active) !important;
-		--button-text-color-ghost-hover: var(--button-text-color-primary) !important;
-		--button-text-color-ghost-active: var(--button-text-color-primary) !important;
-		--fxview-text-primary-color: var(--button-text-color-primary) !important;
 		height: var(--button-min-height) !important;
-		border-radius: var(--arrowpanel-menuitem-border-radius) !important;
-	}
-
-	.fxview-tab-row-main {
-		background: none !important;
-		cursor: default !important;
+		border-radius: var(--panel-menuitem-border-radius) !important;
 	}
 
 	.fxview-tab-row-button {
@@ -464,7 +419,7 @@
 }
 
 treechildren::-moz-tree-row {
-	margin-inline: var(--arrowpanel-menuitem-margin-inline);
+	margin-inline: var(--panel-menuitem-margin-inline);
 	border-radius: var(--border-radius-small);
 }
 

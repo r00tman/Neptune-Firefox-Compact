@@ -1,7 +1,6 @@
 /*---------- Buttons ----------*/
 toolbar .toolbarbutton-1 {
 	padding: 0 !important;
-	margin: 0 calc(var(--toolbar-start-end-padding) / 2) !important;
 	transition: opacity var(--inactive-window-transition);
 
 	> .toolbarbutton-icon,
@@ -19,12 +18,32 @@ toolbar .toolbarbutton-1 {
 		border-radius: var(--border-radius-circle) !important;
 	}
 
-	#nav-bar &:not(:where([disabled])):-moz-window-inactive {
-		opacity: var(--inactive-titlebar-opacity) !important;
+	#nav-bar & {
+		margin: 0 calc(var(--toolbar-start-end-padding) / 2) !important;
+
+		&:not(:where([disabled])):-moz-window-inactive {
+			opacity: var(--inactive-titlebar-opacity) !important;
+		}
 	}
 
-	:root:not([customizing]) #TabsToolbar & {
-		display: none;
+	#TabsToolbar & {
+		margin: auto calc(var(--toolbar-start-end-padding) / 2) calc(var(--nept-browser-toolbox-padding) / 2) !important;
+
+		&[removable="false"] {
+			border-radius: var(--border-radius-xlarge) !important;
+
+			&:not(.toolbarbutton-1:is(:hover, :hover:active, [open], [checked]) > &) {
+				background-color: var(--button-background-color);
+			}
+
+			&:last-of-type {
+				margin-inline: 0 var(--space-small) !important;
+			}
+		}
+
+		:root:not([customizing]) #TabsToolbar-customization-target > & {
+			display: none;
+		}
 	}
 }
 
@@ -72,7 +91,7 @@ screenshots-buttons {
 	top: 0 !important;
 	background-color: var(--toolbox-bgcolor, var(--background-color-canvas)) !important;
 	padding: var(--space-medium) !important;
-	border-radius: 0 0 var(--arrowpanel-border-radius) var(--arrowpanel-border-radius) !important;
+	border-radius: 0 0 var(--panel-border-radius) var(--panel-border-radius) !important;
 }
 
 #full-page,

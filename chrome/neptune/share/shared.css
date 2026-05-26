@@ -58,6 +58,9 @@
 	--button-text-color-primary: white !important;
 	--toolbarbutton-hover-background: var(--nept-item-hover-background) !important;
 	--toolbarbutton-active-background: var(--nept-item-active-background) !important;
+	--panel-background: Menu !important;
+	--panel-separator-color: var(--nept-separator-color) !important;
+	--panel-shadow-margin: 0px !important;
 	--box-shadow-color-lighter-layer-1: light-dark(#0000000c, #00000019) !important;
 	--box-shadow-color-lighter-layer-2: light-dark(#00000019, #00000026) !important;
 }
@@ -93,6 +96,52 @@
 
 		[slot="nested"]:first-child {
 			margin-block-start: var(--space-small) !important;
+		}
+	}
+}
+
+.button-background {
+	--button-font-size: var(--font-size-small, initial) !important;
+	--button-min-height-small: var(--button-min-height) !important;
+
+	&.labelled {
+		justify-content: var(--button-label-directiony, initial) !important;
+		gap: var(--button-row-gap, var(--space-small)) !important;
+		padding: var(--button-padding, unset) !important;
+
+		> label {
+			max-width: var(--button-min-width, unset) !important;
+			opacity: var(--button-opacity, inherit) !important;
+		}
+
+		> img {
+			display: var(--button-display, inherit);
+		}
+	}
+
+	&[type~="icon"] {
+		button:is([title="Close"], [title="Close sidebar"]) > &:not(.labelled) {
+			--button-border-radius: var(--border-radius-xlarge) !important;
+		}
+
+		button:is([title^="Open bookmarks"], [title^="Close bookmarks"]) > & > img {
+			content: url("../assets/icons/bookmark-hollow.svg");
+		}
+
+		button:is([title^="Open history"], [title^="Close history"]) > & > img {
+			content: url("../assets/icons/history.svg");
+		}
+
+		button[title^="Passwords"] > & > img {
+			content: url("../assets/icons/login.svg");
+		}
+
+		button[title^="Tabs from other devices"] > & > img {
+			content: url("../assets/icons/synced-tabs.svg");
+		}
+
+		button[title="More tools"] > & > img {
+			content: url("../assets/icons/chevron.svg");
 		}
 	}
 }
@@ -137,6 +186,16 @@
 
 	90% {
 		transform: translateY(calc(var(--space-xsmall) / -1));
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
 	}
 }
 

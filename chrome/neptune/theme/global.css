@@ -31,7 +31,7 @@
 	--nept-tab-multiselected-shadow-color: light-dark(color-mix(in oklab, currentColor 25%, var(--lwt-accent-color, transparent)), color-mix(in oklab, currentColor 35%, var(--lwt-accent-color, transparent)));
 	--nept-tab-soundplaying-background: light-dark(color-mix(in srgb, accentcolor 35%, var(--lwt-accent-color, transparent)), color-mix(in srgb, accentcolor 40%, transparent));
 	/* toolbar */
-	--nept-toolbar-item-inner-shadow: var(--shadow-inner-glow) oklch(from var(--lwt-accent-color) calc(l + (1 - l) * 0.28) calc(c * 1.04) calc(h - 5)), var(--shadow-inner-depth) oklch(from var(--lwt-accent-color) calc(l + (1 - l) * 0.28) c calc(h - 5));
+	--nept-toolbar-item-inner-shadow: var(--shadow-inner-glow) oklch(from var(--lwt-accent-color) calc(l + (1 - l) * (1 - l * l / 2) * 0.3) calc(c * 1.04) calc(h - 5)), var(--shadow-inner-depth) oklch(from var(--lwt-accent-color) calc(l + (1 - l) * (1 - l * l / 2) * 0.3) c calc(h - 5));
 	--nept-button-field-color: light-dark(color-mix(in srgb, currentColor 60%, transparent), color-mix(in srgb, currentColor 70%, transparent));
 	--nept-button-field-hover-color: light-dark(color-mix(in srgb, currentColor 80%, transparent), color-mix(in srgb, currentColor 85%, transparent));
 
@@ -50,7 +50,7 @@
 	--tab-group-label-highlight-thickness: var(--tab-group-line-thickness) !important;
 	--tab-height-with-margin-padding: calc(var(--tab-min-height) + 3 * var(--tab-block-margin)) !important;
 	--tab-label-line-height: 1.6 !important;
-	--tab-selected-shadow: var(--shadow-inner-glow) oklch(from var(--lwt-accent-color) calc(l + (1 - l) * 0.38) calc(c * 1.05) calc(h - 10)), var(--shadow-inner-depth) oklch(from var(--lwt-accent-color) calc(l + (1 - l) * 0.38) c calc(h - 5)), 0 0 0 2px var(--nept-tab-shadow-color) !important;
+	--tab-selected-shadow: var(--shadow-inner-glow) oklch(from var(--lwt-accent-color) calc(l + (1 - l) * (1 - l * l * l) * 0.4) calc(c * 1.05) calc(h - 10)), var(--shadow-inner-depth) oklch(from var(--lwt-accent-color) calc(l  +  (1 - l) * (1 - l * l * l) * 0.4) c calc(h - 5)), 0 0 0 2px var(--nept-tab-shadow-color) !important;
 	--button-min-height: calc(var(--size-item-small) + var(--toolbarbutton-inner-padding)) !important;
 	--button-padding: 0 var(--space-large) !important;
 	--menu-panel-width-wide: 28em !important;
@@ -61,10 +61,12 @@
 	--panel-separator-padding-vertical: 5px !important;
 	--panel-separator-padding-horizontal: 9px !important;
 	--panel-separator-padding: var(--panel-separator-padding-vertical) var(--panel-separator-padding-horizontal) !important;
-	--arrowpanel-menuitem-margin-inline: 5px !important;
-	--arrowpanel-menuitem-padding-inline: 9px !important;
-	--arrowpanel-menuitem-padding-block: 0 !important;
-	--arrowpanel-padding: calc(var(--arrowpanel-menuitem-margin-inline) + var(--arrowpanel-menuitem-padding-inline)) !important;
+	--panel-menuitem-margin-inline: 5px !important;
+	--panel-menuitem-padding-inline: 9px !important;
+	--panel-menuitem-padding-block: 0 !important;
+	--panel-padding: calc(var(--panel-menuitem-margin-inline) + var(--panel-menuitem-padding-inline)) !important;
+	--panel-color: FieldText !important;
+	--panel-border-color: transparent !important;
 	--tabpanel-background-color: transparent !important;
 	--browser-clip-region: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 	--toolbarbutton-inner-padding: calc((var(--size-item-large) - var(--size-item-small)) / 2) !important;
@@ -86,18 +88,15 @@
 	--sidebar-background-color: transparent !important;
 	--sidebar-border-color: var(--card-border-color) !important;
 	--sidebar-box-border-color: var(--card-border-color) !important;
-	--urlbar-box-bgcolor: transparent !important;
-	--urlbar-box-focus-bgcolor: transparent !important;
+	--urlbar-box-background-color: transparent !important;
+	--urlbar-box-background-color-focus: transparent !important;
 	--urlbarView-action-button-background-color: var(--button-background-color) !important;
-	--urlbarView-hover-background: var(--nept-urlbarView-hover-background) !important;
-	--urlbarView-highlight-background: var(--nept-focused-urlbar-highlight-color) !important;
+	--urlbarview-background-color-hover: var(--nept-urlbarView-hover-background) !important;
+	--urlbarview-background-color-selected: var(--nept-focused-urlbar-highlight-color) !important;
 	--urlbarView-highlight-color: #fff !important;
 	--input-bgcolor: var(--nept-input-bgcolor) !important;
 	--background-color-box: var(--input-bgcolor) !important;
 	--focus-outline-color: var(--color-accent-primary) !important;
-	--arrowpanel-shadow-margin: 22px !important;
-	--arrowpanel-color: FieldText !important;
-	--arrowpanel-menuitem-border-radius: var(--border-radius-small) !important;
 	--organizer-toolbar-background: var(--nept-content-background) !important;
 	--organizer-hover-background: var(--nept-item-hover-background) !important;
 	--organizer-selected-background: var(--nept-item-active-background) !important;

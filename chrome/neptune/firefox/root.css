@@ -44,6 +44,7 @@
 	--theme-focus-textinput-outline-color: var(--nept-input-outline-color) !important;
 	--button-min-height: 24px !important;
 	--button-padding: 0 var(--space-large) !important;
+	--button-border: none !important;
 	--theme-toolbar-height: var(--button-min-height) !important;
 	--theme-arrowpanel-border-radius: 8px !important;
 	--tab-line-selected-color: transparent !important;
