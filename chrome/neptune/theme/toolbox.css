@@ -245,7 +245,7 @@
 				min-width: calc(2 * var(--default-focusring-width)) !important;
 				border: none !important;
 				border-radius: var(--border-radius-xsmall) !important;
-				height: var(--size-item-large);
+				height: var(--size-item-xlarge);
 				margin-block: auto;
 				transition: background-color 500ms ease-in-out;
 

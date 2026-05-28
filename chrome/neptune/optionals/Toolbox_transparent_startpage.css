@@ -13,8 +13,8 @@
 }
 
 @media not -moz-pref("sidebar.verticalTabs") {
-	:root[hide-ai-sidebar] #navigator-toolbox:not(:has(tab-split-view-wrapper[hasactivetab])),
-	:root[privatebrowsingmode] #navigator-toolbox:has(tab:not(tab-split-view-wrapper > tab)[image^="chrome://browser/skin/privatebrowsing"][selected]) {
+	:root[hide-ai-sidebar] #navigator-toolbox:not(:has(> #TabsToolbar tab-split-view-wrapper[hasactivetab])),
+	:root[privatebrowsingmode] #navigator-toolbox:has(> #TabsToolbar tab:not(tab-split-view-wrapper > tab)[image^="chrome://browser/skin/privatebrowsing"][selected]) {
 		--browser-area-z-index-toolbox: 3;
 		position: fixed !important;
 		background-color: transparent !important;
@@ -209,8 +209,8 @@
 			height: calc(100% - (var(--opt-theme-toolbox-height) + var(--opt-theme-tabsToolbar-height) + var(--opt-theme-bookmarksbar-height)));
 		}
 
-		&:not(:has(#tabbrowser-tabs[orient="horizontal"] :is(tab-group, #tabbrowser-arrowscrollbox tab:not([hidden])))):has(#tabbrowser-tabs[orient="horizontal"] > #pinned-tabs-container > tab:only-of-type),
-		&:not(:has(#tabbrowser-tabs[orient="horizontal"] :is(tab-group, #pinned-tabs-container:not(:empty), tab:nth-child(2 of :not([hidden]))))):has(#tabbrowser-tabs[orient="horizontal"] #tabbrowser-arrowscrollbox :is(tab:only-of-type, tab[hidden])) {
+		&:not(:has(> #TabsToolbar #tabbrowser-tabs[orient="horizontal"] :is(tab-group, #tabbrowser-arrowscrollbox tab:not([hidden])))):has(#tabbrowser-tabs[orient="horizontal"] > #pinned-tabs-container > tab:only-of-type),
+		&:not(:has(> #TabsToolbar #tabbrowser-tabs[orient="horizontal"] :is(tab-group, #pinned-tabs-container:not(:empty), tab:nth-child(2 of :not([hidden]))))):has(#tabbrowser-tabs[orient="horizontal"] #tabbrowser-arrowscrollbox :is(tab:only-of-type, tab[hidden])) {
 			+ #browser > #tabbrowser-tabbox :is(findbar, #screenshotsPagePanel) {
 				inset-block-start: var(--opt-theme-toolbox-height);
 			}
@@ -308,6 +308,7 @@
 
 				toolbaritem > :is(#copy-button, #zoom-reset-button):not(:-moz-window-inactive),
 				#urlbar-container ~ toolbaritem  ~ toolbaritem:has(+ toolbaritem) > .unified-extensions-item-row-wrapper .toolbarbutton-1:not(:-moz-window-inactive),
+				#ai-window-toggle:not(:-moz-window-inactive),
 				#nav-bar-overflow-button:not(:-moz-window-inactive) {
 					box-shadow: var(--shadow-inner-top) var(--opt-tahoe-theme-toolbar-item-shadow-color-B), var(--shadow-inner-bottom) var(--opt-tahoe-theme-toolbar-item-shadow-color-B), var(--opt-tahoe-theme-toolbar-item-shadow);
 				}

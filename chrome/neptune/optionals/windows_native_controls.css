@@ -59,11 +59,11 @@
 				content: "\ef2c" !important;
 				
 				&:hover {
-					background-color: #C42B1C !important;
-					color: PeachPuff !important;
+					background-color: var(--color-pink-40) !important;
+					color: var(--color-pink-80) !important;
 
 					&:active {
-						background-color: #C83F31 !important;
+						background-color: var(--color-pink-50) !important;
 					}
 				}
 			}
@@ -71,9 +71,9 @@
 	}
 
 	@media not -moz-pref("sidebar.verticalTabs") {
-		#PanelUI-menu-button {
+		#PanelUI-button {
 			:root:not([inFullscreen]) & {
-				margin-inline-end: calc(var(--window-controls-size) + var(--toolbar-start-end-padding) + var(--toolbarbutton-outer-padding)) !important;
+				margin-inline-end: calc(var(--window-controls-size) + var(--toolbar-start-end-padding) + var(--toolbarbutton-outer-padding));
 			}
 		}
 

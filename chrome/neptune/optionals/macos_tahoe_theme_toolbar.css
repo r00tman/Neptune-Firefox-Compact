@@ -85,6 +85,7 @@
 
 		toolbaritem > :is(#copy-button, #zoom-reset-button),
 		#urlbar-container ~ toolbaritem  ~ toolbaritem:has(+ toolbaritem) > .unified-extensions-item-row-wrapper .toolbarbutton-1,
+		#ai-window-toggle,
 		#nav-bar-overflow-button {
 			margin-inline: 0 !important;
 			border-radius: 0 !important;

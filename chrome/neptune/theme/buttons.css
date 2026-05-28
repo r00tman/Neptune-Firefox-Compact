@@ -27,7 +27,13 @@ toolbar .toolbarbutton-1 {
 	}
 
 	#TabsToolbar & {
-		margin: auto calc(var(--toolbar-start-end-padding) / 2) calc(var(--nept-browser-toolbox-padding) / 2) !important;
+		:root:not([customizing]) & {
+			margin: auto calc(var(--toolbar-start-end-padding) / 2) calc(var(--nept-browser-toolbox-padding) / 2) !important;
+
+			#TabsToolbar-customization-target > & {
+				display: none;
+			}
+		}
 
 		&[removable="false"] {
 			border-radius: var(--border-radius-xlarge) !important;
@@ -37,12 +43,13 @@ toolbar .toolbarbutton-1 {
 			}
 
 			&:last-of-type {
-				margin-inline: 0 var(--space-small) !important;
+				margin-inline: 0 var(--dimension-8) !important;
 			}
-		}
 
-		:root:not([customizing]) #TabsToolbar-customization-target > & {
-			display: none;
+			#TabsToolbar:not(:has(> .toolbar-items > #TabsToolbar-customization-target > #tabbrowser-tabs[orient="horizontal"] > #tabbrowser-arrowscrollbox :is(tab-group, tab:not([hidden])))):has(> .toolbar-items > #TabsToolbar-customization-target > #tabbrowser-tabs[orient="horizontal"] > #pinned-tabs-container > tab:only-of-type) > &,
+			#TabsToolbar:not(:has(> .toolbar-items > #TabsToolbar-customization-target > #tabbrowser-tabs[orient="horizontal"] :is(#pinned-tabs-container:not(:empty), #tabbrowser-arrowscrollbox > tab-group), #tabbrowser-arrowscrollbox > tab:nth-child(2 of :not([hidden])))):has(> .toolbar-items > #TabsToolbar-customization-target > #tabbrowser-tabs[orient="horizontal"] > #tabbrowser-arrowscrollbox > :is(tab:only-of-type, tab[hidden])) > & {
+				display: none;
+			}
 		}
 	}
 }

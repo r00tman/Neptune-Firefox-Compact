@@ -5,12 +5,12 @@ panel:not(.autoscroller, #feature-callout, #confirmation-hint) {
 	--panel-separator-color: var(--nept-separator-color) !important;
 	--menuitem-border-radius: var(--panel-menuitem-border-radius) !important;
 	--menu-arrow-size: var(--size-item-xsmall) !important;
+	appearance: menupopup !important;
 }
 
 panel {
 	--panel-header-back-icon-full-width: calc(var(--size-item-xsmall) + 2 * var(--panel-header-back-icon-padding)) !important;
 	--panel-header-min-height: calc(var(--panel-header-back-icon-full-width) + 2 * var(--panel-separator-padding-vertical)) !important;
-	appearance: menupopup !important;
 
 	:root[lwtheme] & {
 		color-scheme: light dark !important;

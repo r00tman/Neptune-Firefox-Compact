@@ -14,8 +14,8 @@
 			margin: 0 !important;
 		}
 
-		&:not(:has(tab-group, #tabbrowser-arrowscrollbox tab:not([hidden]))):has(#pinned-tabs-container > tab:only-of-type),
-		&:not(:has(tab-group, #pinned-tabs-container:not(:empty), tab:nth-child(2 of :not([hidden])))):has(tab:only-of-type, tab[hidden]) {
+		&:not(:has(> #tabbrowser-arrowscrollbox > :is(tab-group, tab:not([hidden])))):has(> #pinned-tabs-container > tab:only-of-type),
+		&:not(:has(> #pinned-tabs-container:not(:empty), > #tabbrowser-arrowscrollbox > tab-group, #tabbrowser-arrowscrollbox > tab:nth-child(2 of :not([hidden])))):has(> #tabbrowser-arrowscrollbox > tab:is(:only-of-type, [hidden])) {
 			display: contents;
 		}
 
@@ -81,8 +81,8 @@
 				--tab-loading-fill: transparent !important;
 			}
 
-			#tabbrowser-tabs:not(:has(tab-group, #tabbrowser-arrowscrollbox &:not([hidden]))) > #pinned-tabs-container > &:only-of-type,
-			#tabbrowser-tabs:not(:has(tab-group, #pinned-tabs-container:not(:empty), &:nth-child(2 of :not([hidden])))) :is(&:only-of-type, :has(&[hidden]) &:nth-of-type(-n+2)) {
+			#tabbrowser-tabs:not(:has(> #tabbrowser-arrowscrollbox > :is(tab-group, &:not([hidden])))) > #pinned-tabs-container > &:only-of-type,
+			#tabbrowser-tabs:not(:has(> #pinned-tabs-container:not(:empty), > #tabbrowser-arrowscrollbox > :is(tab-group, &:nth-child(2 of :not([hidden]))))) :is(:has(> #tabbrowser-arrowscrollbox > &[hidden]) &:nth-of-type(-n+2), &:only-of-type) {
 				display: none;
 			}
 		}
@@ -494,7 +494,8 @@
 		}
 
 		#tabbrowser-tabs[orient="vertical"]:not([expanded]) tab-split-view-wrapper > .tabbrowser-tab > .tab-stack > & {
-			margin-inline: auto !important;
+			width: var(--tab-collapsed-background-width) !important;
+			margin-inline: var(--tab-inner-inline-margin) !important;
 		}
 
 		#tabbrowser-tabs[orient="horizontal"] tab-split-view-wrapper > .tabbrowser-tab:first-of-type > .tab-stack > & {
@@ -1155,38 +1156,37 @@
 }
 
 .tab-group-editor-panel {
-	--panel-padding: var(--space-medium) !important;
-	--panel-separator-padding: var(--panel-menuitem-margin-inline) !important;
 	--button-border: none !important;
 	--button-min-height-small: var(--button-min-height) !important;
 	--icon-size: var(--size-item-xsmall) !important;
 	--button-label-directiony: start;
 
-	.panel-header {
-		padding: 0 !important;
-
-		> h1 {
-			margin: var(--space-xsmall) !important;
-		}
-	}
-
 	.tab-group-editor-name,
 	.tab-group-editor-swatches {
 		padding-block: var(--panel-subview-body-padding-block) !important;
-		padding-inline: var(--panel-menuitem-margin-inline);
+		margin: 0 var(--panel-menuitem-padding-inline) !important;
 	}
 
 	.tab-group-editor-swatch {
 		border-radius: var(--tab-border-radius) !important;
 	}
+
+	.panel-footer {
+		margin: var(--space-small) var(--space-large) !important;
+	}
 }
 
 .tab-note-editor-panel {
 	--panel-padding: var(--space-medium) !important;
+	--icon-size: var(--icon-size-xsmall) !important;
 
 	> .panel-subview-body {
-		padding-top: var(--space-xsmall) !important;
+		padding-top: var(--space-medium) !important;
 		padding-bottom: var(--space-xsmall) !important;
+
+		#tab-note-editor-separator:not([hidden]) + & {
+			padding-top: 0 !important;
+		}
 
 		> #tab-note-text {
 			border: none !important;

@@ -23,18 +23,6 @@
 		}
 	}
 
-	@container content-grid (inline-size >= calc(6 * 64px + 5 * var(--space-large))) {
-		.nova-enabled .search-inner-wrapper {
-			width: calc(6 * (2 * var(--size-item-large) + var(--space-xlarge)) - var(--space-xlarge)) !important;
-		}
-	}
-
-	@container content-grid (inline-size >= calc(8 * 64px + 7 * var(--space-large))) {
-		.nova-enabled .search-inner-wrapper {
-			width: calc(8 * (2 * var(--size-item-large) + var(--space-xlarge)) - var(--space-xlarge)) !important;
-		}
-	}
-
 	.search-wrapper input,
 	.search-handoff-button {
 		--newtab-search-icon: url("chrome://global/skin/icons/search-glass.svg") !important;
@@ -109,6 +97,26 @@
 	.nova-enabled .top-sites-list {
 		column-gap: unset !important;
 		row-gap: unset !important;
+	}
+
+	@container content-grid (inline-size >= calc(6 * (64px + var(--space-xlarge)))) {
+		.nova-enabled .search-inner-wrapper {
+			width: calc(6 * (2 * var(--size-item-large) + var(--space-xlarge)) - var(--space-xlarge)) !important;
+		}
+
+		.nova-enabled .top-sites-list {
+			grid-template-columns: repeat(6, auto) !important;
+		}
+	}
+
+	@container content-grid (inline-size >= calc(8 * (64px + var(--space-xlarge)))) {
+		.nova-enabled .search-inner-wrapper {
+			width: calc(8 * (2 * var(--size-item-large) + var(--space-xlarge)) - var(--space-xlarge)) !important;
+		}
+
+		.nova-enabled .top-sites-list {
+			grid-template-columns: repeat(var(--top-sites-max-per-row, 8), auto) !important;
+		}
 	}
 
 	.asrouter-newtab-message-wrapper {
@@ -335,6 +343,7 @@
 			--button-text-color: var(--button-text-color-primary) !important;
 			--button-text-color-hover: var(--button-text-color-primary) !important;
 			--button-text-color-active: var(--button-text-color-primary) !important;
+			--button-text-color-selected: var(--button-text-color-primary) !important;
 			background-color: light-dark(#00000066, #ffffff3f);
 			backdrop-filter: blur(2em);
 			border-radius: var(--border-radius-circle);
@@ -537,7 +546,7 @@
 
 	.nova-enabled .sidebar-inline-end {
 		grid-template-rows: minmax(min-content, auto) !important;
-		align-self: start;
+		align-self: center;
 
 		> .weather-widget {
 			--button-size-icon-small: var(--button-size-icon) !important;
@@ -548,28 +557,60 @@
 			--weather-rainy-background-color: transparent !important;
 			--weather-snowy-background-color: transparent !important;
 			--weather-hot-background-color: transparent !important;
+			height: auto !important;
 			padding: var(--space-small) var(--space-medium) !important;
 			backdrop-filter: saturate(1.5) blur(6px);
+			gap: var(--space-medium);
 			border-radius: var(--border-radius-xlarge) !important;
 			outline: none !important;
 			box-shadow: none !important;
 
 			> .widget-title-bar {
-				margin-block-end: var(--space-medium) !important;
+				margin-block-end: auto !important;
+
+				> .weather-context-menu-wrapper {
+					visibility: hidden;
+
+					.weather-widget:hover &,
+					&:focus-within {
+						visibility: visible;
+						animation: fadeIn 300ms ease-out;
+					}
+				}
 			}
 
 			> .weather-container .weather-conditions-view {
-				.weather-icon-column {
-					padding: 0 !important;
+				inline-size: 100%;
+
+				> .weather-info-link {
+					justify-content: space-between;
+
+					.weather-icon-column {
+						padding: 0 !important;
+					}
+
+					.weather-info-column {
+						margin-inline-end: 0 !important;
+					}
 				}
 
-				.weather-info-column {
-					margin-inline-start: var(--space-large) !important;
+				.high-low-row > :is(.high-temperature, .low-temperature) {
+					gap: var(--dimension-2);
+
+					> .arrow-icon {
+						height: var(--font-size-xsmall) !important;
+						width: var(--font-size-xsmall) !important;
+					}
 				}
 			}
 
 			> .forecast-footer {
-				display: none !important;
+				position: static !important;
+				color: var(--text-color-disabled);
+
+				> .sponsored-text {
+					visibility: visible !important;
+				}
 			}
 		}
 	}
