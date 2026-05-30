@@ -17,6 +17,10 @@
 		&:not(:has(> #tabbrowser-arrowscrollbox > :is(tab-group, tab:not([hidden])))):has(> #pinned-tabs-container > tab:only-of-type),
 		&:not(:has(> #pinned-tabs-container:not(:empty), > #tabbrowser-arrowscrollbox > tab-group, #tabbrowser-arrowscrollbox > tab:nth-child(2 of :not([hidden])))):has(> #tabbrowser-arrowscrollbox > tab:is(:only-of-type, [hidden])) {
 			display: contents;
+
+			> :is(#pinned-tabs-container, #tabbrowser-arrowscrollbox) {
+				display: none;
+			}
 		}
 
 		> #tabbrowser-arrowscrollbox {
@@ -79,11 +83,6 @@
 
 			&:nth-child(1 of :not([pinned], [selected], tab-group > &)) {
 				--tab-loading-fill: transparent !important;
-			}
-
-			#tabbrowser-tabs:not(:has(> #tabbrowser-arrowscrollbox > :is(tab-group, &:not([hidden])))) > #pinned-tabs-container > &:only-of-type,
-			#tabbrowser-tabs:not(:has(> #pinned-tabs-container:not(:empty), > #tabbrowser-arrowscrollbox > :is(tab-group, &:nth-child(2 of :not([hidden]))))) :is(:has(> #tabbrowser-arrowscrollbox > &[hidden]) &:nth-of-type(-n+2), &:only-of-type) {
-				display: none;
 			}
 		}
 	}

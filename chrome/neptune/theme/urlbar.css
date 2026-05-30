@@ -180,8 +180,8 @@
 
 .urlbarView {
 	color-scheme: light dark;
-	width: calc(100% + var(--space-xlarge)) !important;
-	margin-inline: calc(-1 * var(--space-medium)) !important;
+	width: max(calc(100% + var(--space-xlarge)), calc(var(--size-layout-large) + var(--space-xlarge))) !important;
+	margin-inline: min(calc(var(--space-xlarge) / -2), calc(((var(--size-layout-large) + var(--space-xlarge) - var(--urlbar-width)) / -2))) !important;
 	margin-block-start: var(--space-small);
 	border-inline: none !important;
 	border-radius: var(--border-radius-xlarge);

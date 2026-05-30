@@ -10,10 +10,11 @@
 
 @-moz-document url("about:home"), url("about:newtab") {
 	body {
-		background: url("neptune/assets/background_image/Chaos_Ridge_Light.png") center/cover fixed !important;
+		/* Topographic Amoeba wallpapers by @BasicAppleGuy */
+		background: url("neptune/assets/background_image/Vannella_Hills_Light.png") center/cover fixed !important;
 
 		@media (prefers-color-scheme: dark) {
-			background: url("neptune/assets/background_image/Topographic_Amoeba_Proteus_Valley_Dark.png") center/cover fixed !important;
+			background: url("neptune/assets/background_image/Vannella_Hills_Dark.png") center/cover fixed !important;
 		}
 
 		&:not(.inline-onboarding) .fixed-search .search-wrapper {
@@ -27,6 +28,6 @@
 
 @-moz-document url("about:privatebrowsing") {
 	body {
-		background: url("neptune/assets/background_image/Pelomyxa_Pass_Light.png") center/cover fixed;
+		background: url("neptune/assets/background_image/Chaos_Ridge_Dark.png") center/cover fixed;
 	}
 }

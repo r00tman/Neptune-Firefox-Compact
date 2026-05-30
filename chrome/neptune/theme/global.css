@@ -70,6 +70,7 @@
 	--tabpanel-background-color: transparent !important;
 	--browser-clip-region: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 	--toolbarbutton-inner-padding: calc((var(--size-item-large) - var(--size-item-small)) / 2) !important;
+	--toolbarbutton-outer-padding-narrow: 2px !important;
 	--toolbarbutton-icon-fill: color-mix(in srgb, currentColor 70%, transparent) !important;
 	--background-color-canvas: var(--nept-secondary-background) !important;
 	--button-background-color-primary: var(--color-accent-primary) !important;
@@ -105,9 +106,8 @@
 	--organizer-hover-background: var(--nept-item-hover-background) !important;
 	--organizer-border-color: var(--card-border-color) !important;
 	--organizer-outline-color: transparent !important;
-	@media not -moz-pref("sidebar.verticalTabs") {
-		--window-min-width: 600px !important;
-	}
+	--window-min-width: 620px !important;
+	--window-min-width-increase-for-vertical-tabs: calc(var(--window-controls-size) - 34px) !important;
 }
 
 .text-link,

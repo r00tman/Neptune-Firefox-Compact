@@ -85,8 +85,7 @@
 
 		toolbaritem > :is(#copy-button, #zoom-reset-button),
 		#urlbar-container ~ toolbaritem  ~ toolbaritem:has(+ toolbaritem) > .unified-extensions-item-row-wrapper .toolbarbutton-1,
-		#ai-window-toggle,
-		#nav-bar-overflow-button {
+		&:is([unifiedextensionsbuttonshown], [downloadsbuttonshown]:not([unifiedextensionsbuttonshown])) > :is(#ai-window-toggle, #nav-bar-overflow-button) {
 			margin-inline: 0 !important;
 			border-radius: 0 !important;
 
@@ -99,7 +98,8 @@
 		#nav-bar-customization-target :is(#back-button:has(+ #forward-button), #home-button:has(+ #stop-reload-button), #stop-reload-button:has(+ #home-button) > *),
 		#urlbar-container + toolbaritem:has(+ toolbaritem) > .unified-extensions-item-row-wrapper .toolbarbutton-1,
 		#urlbar-container ~ toolbaritem:not(toolbaritem + toolbaritem):has(+ toolbaritem) > .unified-extensions-item-row-wrapper .toolbarbutton-1:not(:is(#unified-extensions-button:not([hidden]), #unified-extensions-button[hidden] + #downloads-button:not([hidden])) ~ toolbaritem .toolbarbutton-1),
-		toolbaritem > :is(#cut-button, #zoom-out-button, #profiler-button-button):not(:is(#unified-extensions-button:not([hidden]), #unified-extensions-button[hidden] + #downloads-button:not([hidden])) ~ toolbaritem .toolbarbutton-1) {
+		toolbaritem > :is(#cut-button, #zoom-out-button, #profiler-button-button):not(:is(#unified-extensions-button:not([hidden]), #unified-extensions-button[hidden] + #downloads-button:not([hidden])) ~ toolbaritem .toolbarbutton-1),
+		&:not(:is([unifiedextensionsbuttonshown], [downloadsbuttonshown])) > #ai-window-toggle {
 			margin-inline-end: 0 !important;
 			border-radius: var(--border-radius-circle) 0 0 var(--border-radius-circle) !important;
 
@@ -112,7 +112,8 @@
 		#nav-bar-customization-target :is(#back-button + #forward-button, #stop-reload-button + #home-button, #home-button + #stop-reload-button > *),
 		#urlbar-container ~ toolbaritem ~ toolbaritem:not(:has(+ toolbaritem)) > .unified-extensions-item-row-wrapper .toolbarbutton-1:not(:is(#unified-extensions-button:not([hidden]), #unified-extensions-button[hidden] + #downloads-button:not([hidden]), #unified-extensions-button[hidden] + #downloads-button[hidden], toolbaritem + #downloads-button:not([hidden]), #downloads-button[hidden], #urlbar-container ~ toolbaritem ~ toolbarspring) ~ toolbaritem .toolbarbutton-1),
 		toolbaritem > :is(#paste-button, #zoom-in-button, #profiler-button-dropmarker):not(:is(#unified-extensions-button:not([hidden]), #unified-extensions-button[hidden] + #downloads-button:not([hidden])) ~ toolbaritem .toolbarbutton-1),
-		&:is([unifiedextensionsbuttonshown], [downloadsbuttonshown]:not([unifiedextensionsbuttonshown])) #PanelUI-menu-button {
+		&:is([unifiedextensionsbuttonshown], [downloadsbuttonshown]:not([unifiedextensionsbuttonshown])) #PanelUI-menu-button,
+		&:not(:is([unifiedextensionsbuttonshown], [downloadsbuttonshown])) #ai-window-toggle + #PanelUI-button > #PanelUI-menu-button {
 			margin-inline-start: 0 !important;
 			border-radius: 0 var(--border-radius-circle) var(--border-radius-circle) 0 !important;
 

@@ -57,7 +57,6 @@
 	}
 
 	.logo-and-wordmark-wrapper,
-	.showPrivate.showSearch.container,
 	.home-section .divider,
 	.wallpaper-attribution,
 	.weatherSponsorText,
@@ -67,17 +66,41 @@
 }
 
 @-moz-document url("about:privatebrowsing") {
+	.logo-and-wordmark,
 	.search-inner-wrapper {
-		height: 52px !important;
+		display: none !important;
+	}
+
+	.search-inner-wrapper > content-search-handoff-ui {
+		--content-search-handoff-ui-background-color: var(--newtab-background-color-secondary) !important;
+	}
+
+	.info-border {
+		background: transparent !important;
 		padding: 0 !important;
-	}
+		border-radius: var(--border-radius-xlarge) !important;
+		box-shadow: none !important;
 
-	.search-handoff-button {
-		fill: var(--icon-color) !important;
-	}
+		> :is(.promo.below-search.promo-visible, .info) {
+			background-color: var(--newtab-background-color-secondary) !important;
+			backdrop-filter: blur(var(--dimension-4));
+			border-radius: var(--border-radius-xlarge) !important;
+			box-shadow: none !important;
+		}
 
-	.fake-textbox {
-		color: CaptionText !important;
+		.promo-cta .primary {
+			background-color: var(--color-accent-primary) !important;
+			color: var(--button-text-color-primary) !important;
+			cursor: default !important;
+
+			&:hover {
+				background-color: var(--color-accent-primary-hover) !important;
+
+				&:active {
+					background-color: var(--color-accent-primary-active) !important;
+				}
+			}
+		}
 	}
 }
 
@@ -314,7 +337,6 @@
 			border-radius: var(--border-radius-circle) !important;
 			box-shadow: none !important;
 			visibility: visible !important;
-			transition: none !important;
 
 			&:is(:hover, :focus-visible) {
 				background-color: light-dark(#00000059, #ffffff4c) !important;
@@ -328,7 +350,6 @@
 				max-width: fit-content !important;
 				margin-inline: auto !important;
 				opacity: unset !important;
-				transform: none !important;
 			}
 		}
 
