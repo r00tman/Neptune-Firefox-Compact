@@ -9,7 +9,7 @@
 	--opt-theme-sidebar-box-width: 24em;
 	--opt-theme-sidebar-chat-box-width: 32em;
 	--opt-theme-toolbar-item-background: light-dark(#ffffff80, #ffffff33);
-	--opt-theme-toolbar-item-inner-shadow: var(--shadow-inner-glow) light-dark(#ffffff99, #ffffff66), var(--shadow-inner-depth) light-dark(#ffffff99, #ffffff66);
+	--opt-theme-toolbar-item-inner-shadow: var(--shadow-inner-glow) light-dark(#ffffff80, #ffffff60), var(--shadow-inner-depth) light-dark(#ffffff80, #ffffff60);
 }
 
 @media not -moz-pref("sidebar.verticalTabs") {
@@ -107,12 +107,12 @@
 		}
 
 		#tabbrowser-tabs[orient="horizontal"] {
-			--nept-tab-selected-background: light-dark(#ffffff99, #ffffff4c);
+			--nept-tab-selected-background: light-dark(#ffffffbf, #ffffff80);
 			--tab-selected-shadow: var(--shadow-inner-glow) light-dark(#ffffff4c, #ffffff26), var(--shadow-inner-depth) light-dark(#ffffff4c, #ffffff26), 0 0 0 2px var(--nept-tab-shadow-color) !important;
 
 			> #tabbrowser-arrowscrollbox {
 				background-color: light-dark(#ffffff80, #ffffff3f);
-				backdrop-filter: saturate(1.2) blur(12px);
+				backdrop-filter: saturate(1.2) blur(6px);
 			}
 
 			> #pinned-tabs-container > .tabbrowser-tab .tab-background {

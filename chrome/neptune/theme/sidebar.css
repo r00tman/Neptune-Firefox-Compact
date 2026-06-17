@@ -77,14 +77,14 @@
 				--button-outer-padding-inline: calc(((var(--tab-min-height) + 2 * var(--space-medium)) - var(--size-item-large)) / 2) !important;
 
 				&:last-of-type {
-					--button-outer-padding-block-end: calc(var(--toolbarbutton-inner-padding) / 2) !important;
+					--button-outer-padding-block-end: calc(var(--toolbarbutton-padding-inner) / 2) !important;
 				}
 			}
 		}
 
 		@media -moz-pref("sidebar.verticalTabs") {
 			> moz-button:not(.tools-overflow, .expanded-button) {
-				--button-outer-padding-block: calc(var(--toolbarbutton-inner-padding) / 2) !important;
+				--button-outer-padding-block: calc(var(--toolbarbutton-padding-inner) / 2) !important;
 			}
 		}
 
@@ -214,10 +214,15 @@
 			--input-width: var(--input-icon-size) !important;
 			--input-height: var(--input-icon-size) !important;
 		}
+
+		> #manage-settings {
+			margin-bottom: var(--space-medium);
+		}
 	}
 
 	#moz-card-details {
 		--card-padding: var(--space-small) !important;
+		--card-border-radius: var(--border-radius-small) !important;
 
 		> summary {
 			padding-block: calc((var(--button-min-height) - var(--size-item-small)) / 2) !important;

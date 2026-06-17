@@ -2,9 +2,9 @@
 	/* Nept Variable */
 	--nept-background-canvas: light-dark(#f6f6f6, #1c1b22);
 	--nept-content-background: light-dark(#fff, #15141a);
-	--nept-theme-primary-color: light-dark(color-mix(in srgb, accentcolor 80%, #181818), color-mix(in srgb, accentcolor 80%, #060606));
-	--nept-theme-primary-hover-color: light-dark(color-mix(in srgb, accentcolor 85%, #262626), color-mix(in srgb, accentcolor 85%, #121212));
-	--nept-theme-primary-active-color: light-dark(color-mix(in srgb, accentcolor 85%, #646464), color-mix(in srgb, accentcolor 85%, #565656));
+	--nept-theme-primary-color: oklch(from accentcolor calc(L - 0.04) C calc(H + 3));
+	--nept-theme-primary-hover-color: oklch(from accentcolor calc(L - 0.08) calc(C - 0.01) calc(H + 3));
+	--nept-theme-primary-active-color: oklch(from accentcolor calc(L - 0.12) calc(C - 0.01) calc(H + 3));
 	/* Toolbars */
 	--nept-toolbar-background: var(--lwt-accent-color);
 	--nept-toolbar-border-color: light-dark(color-mix(in srgb, currentColor 20%, transparent), color-mix(in srgb, currentColor 18%, transparent));
@@ -56,13 +56,19 @@
 	--button-background-color-hover: var(--nept-item-hover-background) !important;
 	--button-background-color-active: var(--nept-item-active-background) !important;
 	--button-text-color-primary: white !important;
-	--toolbarbutton-hover-background: var(--nept-item-hover-background) !important;
-	--toolbarbutton-active-background: var(--nept-item-active-background) !important;
-	--panel-background: Menu !important;
+	--toolbarbutton-background-color-hover: var(--nept-item-hover-background) !important;
+	--toolbarbutton-background-color-active: var(--nept-item-active-background) !important;
+	--panel-background-color: Menu !important;
 	--panel-separator-color: var(--nept-separator-color) !important;
-	--panel-shadow-margin: 0px !important;
+	--panel-box-shadow-margin: 0px !important;
 	--box-shadow-color-lighter-layer-1: light-dark(#0000000c, #00000019) !important;
 	--box-shadow-color-lighter-layer-2: light-dark(#00000019, #00000026) !important;
+	@media (-moz-platform: linux) {
+		--default-font-size: small;
+		--panel-box-shadow-margin: 22px !important;
+		--panel-box-shadow: var(--nept-panel-shadow), 0 3px var(--panel-box-shadow-margin) var(--nept-panel-shadow-color) !important;
+		--panel-border-color: var(--nept-toolbar-border-color) !important;
+	}
 }
 
 @layer input-common {
@@ -124,24 +130,20 @@
 			--button-border-radius: var(--border-radius-xlarge) !important;
 		}
 
-		button:is([title^="Open bookmarks"], [title^="Close bookmarks"]) > & > img {
-			content: url("../assets/icons/bookmark-hollow.svg");
+		button > & > img[src*="bookmark-hollow"] {
+			content: url("../assets/icons/bookmark-hollow.svg") !important;
 		}
 
-		button:is([title^="Open history"], [title^="Close history"]) > & > img {
-			content: url("../assets/icons/history.svg");
+		button > & > img[src*="history"] {
+			content: url("../assets/icons/history.svg") !important;
 		}
 
-		button[title^="Passwords"] > & > img {
-			content: url("../assets/icons/login.svg");
+		button > & > img[src*="login"] {
+			content: url("../assets/icons/login.svg") !important;
 		}
 
-		button[title^="Tabs from other devices"] > & > img {
-			content: url("../assets/icons/synced-tabs.svg");
-		}
-
-		button[title="More tools"] > & > img {
-			content: url("../assets/icons/chevron.svg");
+		button > & > img[src*="synced-tabs"] {
+			content: url("../assets/icons/synced-tabs.svg") !important;
 		}
 	}
 }

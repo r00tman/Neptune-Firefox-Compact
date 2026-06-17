@@ -14,7 +14,7 @@
 		--opt-tahoe-theme-urlbar-shadow: 0 3px 24px #00000010;
 		--opt-tahoe-theme-toolbar-item-shadow: 0 3px 24px #00000016;
 		--opt-tahoe-theme-toolbar-item-shadow-color-A: oklch(from var(--lwt-accent-color) calc(l + (1 - l) * (1 - l * l / 2) * 0.3) calc(c * 1.04) calc(h - 5));
-		--opt-tahoe-theme-toolbar-item-shadow-color-B: light-dark(#ffffff80, #ffffff3f);
+		--opt-tahoe-theme-toolbar-item-shadow-color-B: light-dark(#ffffff66, #ffffff60);
 		--opt-tahoe-theme-toolbar-item-clip-left: polygon(calc(100% + 30px) -12px, -30px -12px, -30px 0, 0 0, 0 100%, -30px 100%, -30px calc(100% + 30px), calc(100% + 30px) calc(100% + 30px));
 		--opt-tahoe-theme-toolbar-item-clip-right: polygon(-30px -12px, calc(100% + 30px) -12px, calc(100% + 30px) 0, 100% 0, 100% 100%, calc(100% + 30px) 100%, calc(100% + 30px) calc(100% + 30px), -30px calc(100% + 30px));
 		--opt-tahoe-theme-toolbar-item-clip-both: polygon(-30px -12px, calc(100% + 30px) -12px, calc(100% + 30px) 0, 100% 0, 100% 100%, calc(100% + 30px) 100%, calc(100% + 30px) calc(100% + 30px), -30px calc(100% + 30px), -30px 100%, 0 100%, 0 0, -30px 0);
@@ -45,7 +45,7 @@
 		transition: background-color var(--inactive-window-transition);
 
 		:root:not([customizing]) #nav-bar & {
-			padding: var(--toolbarbutton-outer-padding) !important;
+			padding: var(--toolbarbutton-padding-outer) !important;
 			margin: 0 var(--toolbar-start-end-padding) !important;
 
 			&:not(:-moz-window-inactive) {
@@ -55,7 +55,7 @@
 			}
 
 			&[disabled] {
-				fill-opacity: var(--toolbarbutton-disabled-opacity);
+				fill-opacity: var(--toolbarbutton-opacity-disabled);
 			}
 		}
 	}

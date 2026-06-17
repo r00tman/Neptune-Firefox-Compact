@@ -5,7 +5,14 @@ panel:not(.autoscroller, #feature-callout, #confirmation-hint) {
 	--panel-separator-color: var(--nept-separator-color) !important;
 	--menuitem-border-radius: var(--panel-menuitem-border-radius) !important;
 	--menu-arrow-size: var(--size-item-xsmall) !important;
-	appearance: menupopup !important;
+
+	@media (-moz-platform: macos) or (-moz-platform: windows) {
+		appearance: menupopup !important;
+	}
+
+	@media (-moz-platform: linux) {
+		--panel-border-radius: var(--border-radius-medium) !important;
+	}
 }
 
 panel {
@@ -97,7 +104,7 @@ panel {
 	}
 
 	&[type="autocomplete-richlistbox"] {
-		--panel-background: Menu !important;
+		--panel-background-color: Menu !important;
 
 		> richlistbox {
 			background-color: transparent !important;
@@ -264,7 +271,7 @@ toolbarbutton.subviewbutton:not(.all-tabs-secondary-button, .subviewbutton-back,
 }
 
 #confirmation-hint {
-	--panel-background: var(--color-accent-primary) !important;
+	--panel-background-color: var(--color-accent-primary) !important;
 
 	#confirmation-hint-checkmark-animation-container[animate] > #confirmation-hint-checkmark-image {
 		fill: var(--button-text-color-primary) !important;

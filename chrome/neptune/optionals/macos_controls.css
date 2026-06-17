@@ -1,5 +1,5 @@
-/* macos traffic light titlebar buttons for windows */
-@media (-moz-platform: windows) {
+/* macos traffic light titlebar buttons for windows & linux */
+@media not (-moz-platform: macos) {
 	:root {
 		--window-controls-size: 76px !important;
 	}
@@ -26,7 +26,7 @@
 
 	.titlebar-buttonbox-container {
 		position: absolute;
-		inset-block-start: calc(var(--nept-browser-toolbox-padding) + (var(--urlbar-min-height) - 12px) / 2);
+		inset-block-start: calc(var(--nept-browser-toolbox-padding) + (var(--urlbar-min-height) - var(--icon-size-xsmall)) / 2);
 		inset-inline-start: 16px;
 
 		:root[inFullscreen] & {
@@ -34,8 +34,14 @@
 		}
 
 		> .titlebar-buttonbox {
-			> * {
-				content: none !important;
+			@media (-moz-platform: linux) {
+				--titlebar-button-size: var(--icon-size-xsmall) !important;
+			}
+
+			@media (-moz-platform: windows) {
+				> * {
+					content: none !important;
+				}
 			}
 
 			> .titlebar-button {
@@ -43,20 +49,29 @@
 				margin-inline: 4px !important;
 				background: none !important;
 
-				&::before {
-					display: none !important;
-					content: none !important;
+				@media (-moz-platform: windows) {
+					&::before {
+						content: none !important;
+					}
 				}
 
 				> .toolbarbutton-icon {
-					display: inherit !important;
+					@media (-moz-platform: windows) {
+						display: flex !important;
+					}
+
+					@media (-moz-gtk-theme-family: adwaita) or (-moz-gtk-theme-family: yaru) or (-moz-gtk-theme-family: breeze) {
+						background: none !important;
+						stroke: none !important;
+						transition: none !important;
+					}
 				}
 			}
 		}
 	}
 
 	.titlebar-close {
-		order: -1;
+		order: -1 !important;
 		list-style-image: url("../assets/macos_controls/close.svg");
 
 		.titlebar-buttonbox:hover & {
@@ -86,6 +101,10 @@
 				}
 			}
 		}
+
+		@media not (-moz-gtk-csd-maximize-button) {
+			display: flex !important;
+		}
 	}
 
 	.titlebar-max {
@@ -102,6 +121,12 @@
 				}
 			}
 		}
+
+		:root[sizemode="normal"] & {
+			@media not (-moz-gtk-csd-maximize-button) {
+				display: flex !important;
+			}
+		}
 	}
 
 	.titlebar-restore {
@@ -116,6 +141,12 @@
 				@media (prefers-color-scheme: dark) {
 					list-style-image: url("../assets/macos_controls/restore-active-dark.svg");
 				}
+			}
+		}
+
+		:root[sizemode="maximized"] & {
+			@media not (-moz-gtk-csd-maximize-button) {
+				display: flex !important;
 			}
 		}
 	}

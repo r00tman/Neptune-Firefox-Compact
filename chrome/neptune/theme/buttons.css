@@ -14,7 +14,7 @@ toolbar .toolbarbutton-1 {
 
 	&[widget-id="ipprotection-button"] > .toolbarbutton-icon {
 		clip-path: unset;
-		padding-block: var(--toolbarbutton-inner-padding) !important;
+		padding-block: var(--toolbarbutton-padding-inner) !important;
 		border-radius: var(--border-radius-circle) !important;
 	}
 
@@ -35,7 +35,7 @@ toolbar .toolbarbutton-1 {
 			}
 		}
 
-		&[removable="false"] {
+		&[removable="false"]:not([hidden]) {
 			border-radius: var(--border-radius-xlarge) !important;
 
 			&:not(.toolbarbutton-1:is(:hover, :hover:active, [open], [checked]) > &) {
@@ -62,7 +62,7 @@ toolbar .toolbaritem-combined-buttons {
 
 		> .toolbarbutton-text {
 			min-width: unset !important;
-			padding: var(--toolbarbutton-inner-padding) var(--toolbarbutton-outer-padding) !important;
+			padding: var(--toolbarbutton-padding-inner) var(--toolbarbutton-padding-outer) !important;
 		}
 	}
 
@@ -96,7 +96,7 @@ toolbar .toolbaritem-combined-buttons {
 
 screenshots-buttons {
 	top: 0 !important;
-	background-color: var(--toolbox-bgcolor, var(--background-color-canvas)) !important;
+	background-color: var(--toolbox-background-color, var(--background-color-canvas)) !important;
 	padding: var(--space-medium) !important;
 	border-radius: 0 0 var(--panel-border-radius) var(--panel-border-radius) !important;
 }

@@ -1,5 +1,5 @@
 @-moz-document url-prefix(about:), url-prefix("chrome://") {
-	* {
+	*:not(.button) {
 		--background-color-canvas: var(--nept-background-canvas) !important;
 		--popup-background: var(--nept-menu-background) !important;
 		--popup-button-background: var(--nept-item-background) !important;
@@ -26,7 +26,7 @@
 		--input-text-border-color: var(--card-border-color) !important;
 		--visual-picker-item-border-color: var(--card-border-color) !important;
 		--box-border-color: var(--card-border-color) !important;
-		--box-icon-size: var(--icon-size-xsmall) !important;
+		--box-icon-size: var(--icon-size-small) !important;
 		--box-padding: var(--space-medium) !important;
 		--select-border: none !important;
 		text-decoration: inherit !important;
@@ -352,7 +352,7 @@
 		}
 	}
 
-	input[type="checkbox"]:not(.ruleview-enableproperty, .devtools-checkbox-toggle),
+	input[type="checkbox"]:not(.ruleview-enableproperty, .devtools-checkbox, .devtools-checkbox-toggle),
 	.checkbox-check:not([native]) {
 		appearance: none !important;
 		background-color: var(--nept-checkbox-background);

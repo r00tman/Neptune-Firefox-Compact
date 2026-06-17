@@ -171,7 +171,7 @@
 		}
 
 		&[interactive] {
-			background-color: var(--nept-pinned-tab-hover-background) !important;
+			background-color: var(--nept-pinned-tab-selected-background) !important;
 		}
 
 		#tabbrowser-tabs[orient="horizontal"] > & {
@@ -392,7 +392,7 @@
 
 			> .tab-group-overflow-count {
 				position: absolute;
-				width: fit-content;
+				width: fit-content !important;
 				padding: 0 !important;
 				margin-inline: auto !important;
 				inset: auto 0 calc(var(--tab-min-height) + var(--space-medium) + var(--tab-min-height) / 2 / 2);
@@ -431,7 +431,6 @@
 		}
 
 		#tabbrowser-tabs[orient="vertical"][expanded] & {
-			grid-template-columns: repeat(2, 1fr) !important;
 			margin-inline: var(--tab-inner-inline-margin) !important;
 
 			#tabbrowser-tabs[movingtab][movingtab-addToGroup]:not(:is([movingtab-group], [movingtab-ungroup])) &[dragtarget] {
@@ -443,6 +442,10 @@
 
 			tab-group > &:not([dragtarget]) {
 				margin-inline-start: calc(var(--size-item-small) + var(--tab-icon-end-margin) + var(--tab-inner-inline-margin)) !important;
+			}
+
+			:root[sidebar-expand-on-hover] & {
+				grid-template-columns: repeat(2, 1fr) !important;
 			}
 		}
 
@@ -474,7 +477,7 @@
 	}
 
 	.tab-background {
-		--split-view-tab-clip: calc(var(--tab-overflow-clip-margin) / -1);
+		--split-view-tab-clip: calc(var(--space-xsmall) / -1);
 		background-color: transparent !important;
 		margin-block: 0 !important;
 		outline: none !important;
@@ -805,15 +808,8 @@
 		}
 
 		#tabbrowser-tabs[orient="vertical"]:not([expanded]) tab-split-view-wrapper > .tabbrowser-tab > .tab-stack > & {
+			width: unset !important;
 			padding-inline: var(--tab-inline-padding) !important;
-		}
-
-		#tabbrowser-tabs[orient="horizontal"] .tabbrowser-tab[pictureinpicture] & {
-			font-size: 0.88em;
-
-			> .tab-label-container > .tab-label {
-				line-height: calc(var(--tab-min-height) / 2) !important;
-			}
 		}
 
 		> .tab-label-container {
@@ -838,11 +834,6 @@
 				width: 100%;
 				overflow: hidden;
 				text-overflow: ellipsis;
-			}
-
-			> .tab-secondary-label {
-				margin: 0 !important;
-				font-size: 9px !important;
 			}
 
 			#tabbrowser-tabs[orient="horizontal"][overflow] tab:not([selected], tab-split-view-wrapper > tab) & {
@@ -1064,6 +1055,7 @@
 			#tabbrowser-tabs[orient="horizontal"] & {
 				margin-inline-end: var(--tab-inline-padding) !important;
 				visibility: hidden;
+				transition: background-color 100ms ease-out;
 
 				tab:not([dragtarget]):hover & {
 					visibility: visible;
@@ -1089,7 +1081,7 @@
 				list-style-image: url("../assets/icons/minus.svg") !important;
 				background-image: none !important;
 				background-color: light-dark(var(--color-orange-30), var(--color-orange-20)) !important;
-				padding: var(--toolbarbutton-outer-padding) !important;
+				padding: var(--toolbarbutton-padding-outer) !important;
 				inset: calc(-1 * var(--space-xsmall)) var(--space-xsmall) !important;
 				box-shadow: none !important;
 				outline: none !important;

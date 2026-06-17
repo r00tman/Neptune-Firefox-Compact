@@ -148,6 +148,10 @@
 
 		> .searchmode-switcher-panel {
 			--panel-menuitem-padding: calc((var(--button-min-height) - 18px) / 2) var(--panel-menuitem-padding-inline) !important;
+
+			> .searchmode-switcher-panel-list {
+				--panel-list-border-color: var(--panel-separator-color) !important;
+			}
 		}
 
 		> #urlbar-label-box,
@@ -202,14 +206,14 @@
 	}
 
 	> .search-one-offs:not([hidden]) {
-		width: calc(100% - 2 * (var(--urlbarView-item-block-padding) + var(--urlbarView-favicon-margin-start) + var(--border-width))) !important;
+		width: calc(100% - 2 * (var(--urlbarView-row-padding-block) + var(--urlbarView-favicon-margin-start) + var(--border-width))) !important;
 		margin-inline: auto;
 		display: none !important;
 	}
 }
 
 .urlbarView-results {
-	padding: var(--urlbarView-item-block-padding) !important;
+	padding: var(--urlbarView-row-padding-block) !important;
 
 	> .urlbarView-row {
 		border: var(--button-border) !important;
@@ -243,14 +247,10 @@
 			}
 
 			> .urlbarView-action-btn {
-				padding: var(--urlbarView-row-gutter) var(--urlbarView-icon-margin-start) !important;
+				padding: var(--urlbarView-row-gutter) calc(var(--urlbarView-icon-margin-start) + 2px) !important;
 				border: none !important;
 				border-radius: var(--border-radius-small) !important;
-				outline: none !important;
-
-				&:hover {
-					color: var(--button-text-color-primary);
-				}
+				margin-inline-end: var(--space-small) !important;
 
 				&:is([data-action="addons"], [data-action="themes"], [data-action="extensions"]) > img {
 					content: url("../assets/icons/extension.svg");
@@ -280,7 +280,7 @@
 			}
 
 			&[rich-suggestion][type="search"] {
-				min-height: calc(var(--size-item-medium) - 2 * var(--urlbarView-row-gutter) + var(--toolbarbutton-inner-padding)) !important;
+				min-height: calc(var(--size-item-medium) - 2 * var(--urlbarView-row-gutter) + var(--toolbarbutton-padding-inner)) !important;
 			}
 		}
 
@@ -310,7 +310,7 @@
 		}
 
 		&[type="tip"] {
-			padding-block: var(--urlbarView-item-block-padding) !important;
+			padding-block: var(--urlbarView-row-padding-block) !important;
 
 			> .urlbarView-row-buttons {
 				padding-inline-end: 0 !important;
@@ -363,10 +363,10 @@
 		}
 
 		&[has-action]:is([type="switchtab"], [type="remotetab"], [type="clipboard"]) > .urlbarView-row-inner > .urlbarView-no-wrap > .urlbarView-action {
-			padding: var(--urlbarView-row-gutter) var(--space-small) !important;
+			padding-block: var(--urlbarView-row-gutter) !important;
+			margin-inline-end: var(--urlbarView-icon-margin-start);
 			border: none !important;
 			border-radius: var(--border-radius-small) !important;
-			background-image: none !important;
 
 			&:not(.urlbarView-tabGroup) {
 				background-color: var(--button-background-color) !important;
@@ -404,7 +404,7 @@
 			color: MenuText !important;
 			width: calc(100% - 2 * var(--urlbarView-icon-margin-start));
 			margin-inline: var(--urlbarView-icon-margin-start) !important;
-			padding-block-start: var(--urlbarView-item-block-padding);
+			padding-block-start: var(--urlbarView-row-padding-block);
 			border-top: var(--border-width) solid var(--card-border-color);
 		}
 	}
