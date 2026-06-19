@@ -11,25 +11,23 @@
 		}
 
 		.search-inner-wrapper {
-			width: calc(3 * (2 * var(--size-item-large) + var(--space-xlarge)) - var(--space-xlarge)) !important;
+			width: calc(3 * (2 * var(--size-item-xlarge) + var(--space-xlarge)) - var(--space-xlarge)) !important;
 
 			@media (min-width: 724px) {
-				width: calc(6 * (2 * var(--size-item-large) + var(--space-xlarge)) - var(--space-xlarge)) !important;
+				width: calc(6 * (2 * var(--size-item-xlarge) + var(--space-xlarge)) - var(--space-xlarge)) !important;
 			}
 
 			@media (min-width: 1122px) {
-				width: calc(8 * (2 * var(--size-item-large) + var(--space-xlarge)) - var(--space-xlarge)) !important;
+				width: calc(8 * (2 * var(--size-item-xlarge) + var(--space-xlarge)) - var(--space-xlarge)) !important;
 			}
 		}
 	}
 
 	.search-wrapper input,
 	.search-handoff-button {
-		--newtab-search-icon: url("chrome://global/skin/icons/search-glass.svg") !important;
-		backdrop-filter: saturate(1.5) blur(2em);
+		backdrop-filter: saturate(1.5) blur(6px);
 		border: none !important;
-		border-radius: var(--border-radius-circle) !important;
-		box-shadow: var(--box-shadow-level-3) !important;
+		box-shadow: none !important;
 	}
 
 	.contentSearchSuggestionTable {
@@ -115,13 +113,13 @@
 	}
 
 	.nova-enabled .top-sites-list {
-		column-gap: unset !important;
-		row-gap: unset !important;
+		column-gap: var(--space-xlarge) !important;
+		row-gap: var(--space-small) !important;
 	}
 
-	@container content-grid (inline-size >= calc(6 * (64px + var(--space-xlarge)))) {
+	@container content-grid (inline-size >= calc(6 * (72px + var(--space-xlarge)))) {
 		.nova-enabled .search-inner-wrapper {
-			width: calc(6 * (2 * var(--size-item-large) + var(--space-xlarge)) - var(--space-xlarge)) !important;
+			width: calc(6 * (2 * var(--size-item-xlarge) + var(--space-xlarge)) - var(--space-xlarge)) !important;
 		}
 
 		.nova-enabled .top-sites-list {
@@ -129,9 +127,9 @@
 		}
 	}
 
-	@container content-grid (inline-size >= calc(8 * (64px + var(--space-xlarge)))) {
+	@container content-grid (inline-size >= calc(8 * (72px + var(--space-xlarge)))) {
 		.nova-enabled .search-inner-wrapper {
-			width: calc(8 * (2 * var(--size-item-large) + var(--space-xlarge)) - var(--space-xlarge)) !important;
+			width: calc(8 * (2 * var(--size-item-xlarge) + var(--space-xlarge)) - var(--space-xlarge)) !important;
 		}
 
 		.nova-enabled .top-sites-list {
@@ -142,13 +140,16 @@
 	.asrouter-newtab-message-wrapper {
 		border: none !important;
 		border-radius: var(--border-radius-xlarge) !important;
-		max-width: calc(8 * (2 * var(--size-item-large) + var(--space-xlarge)) - var(--space-xlarge)) !important;
+		max-width: calc(8 * (2 * var(--size-item-xlarge) + var(--space-xlarge)) - var(--space-xlarge)) !important;
 	}
 
 	.top-site-outer {
 		background: none !important;
-		width: calc(2 * var(--size-item-large) + var(--space-xlarge)) !important;
-		margin-block-end: var(--space-small) !important;
+		width: calc(2 * var(--size-item-xlarge)) !important;
+
+		&:not(.nova-enabled &) {
+			margin-block-end: var(--space-small) !important;
+		}
 
 		.top-site-inner > a {
 			padding: 0 !important;
@@ -164,23 +165,24 @@
 
 			.nova-enabled & {
 				inset-block-start: 0 !important;
+				inset-inline-end: calc(var(--space-medium) / -1) !important;
 			}
 		}
 
 		.tile {
 			background-color: var(--newtab-background-color-secondary) !important;
-			height: calc(2 * var(--size-item-large)) !important;
-			width: calc(2 * var(--size-item-large)) !important;
+			height: calc(2 * var(--size-item-xlarge)) !important;
+			width: calc(2 * var(--size-item-xlarge)) !important;
 			backdrop-filter: saturate(1.5) blur(2em);
 			outline: none !important;
 			border: none !important;
-			border-radius: var(--border-radius-large) !important;
+			border-radius: var(--border-radius-xlarge) !important;
 			box-shadow: none !important;
 
 			.icon-wrapper:not(.top-site-outer.add-button .tile .icon-wrapper) {
-				height: calc(2 * var(--size-item-large)) !important;
-				width: calc(2 * var(--size-item-large)) !important;
-				border-radius: var(--border-radius-large) !important;
+				height: calc(2 * var(--size-item-xlarge)) !important;
+				width: calc(2 * var(--size-item-xlarge)) !important;
+				border-radius: var(--border-radius-xlarge) !important;
 
 				&.letter-fallback::before {
 					font-size: 1.22em !important;
@@ -197,8 +199,8 @@
 
 		.default-icon {
 			background-size: auto !important;
-			width: calc(2 * var(--size-item-large)) !important;
-			height: calc(2 * var(--size-item-large)) !important;
+			width: calc(2 * var(--size-item-xlarge)) !important;
+			height: calc(2 * var(--size-item-xlarge)) !important;
 		}
 
 		.search-topsite {
@@ -209,15 +211,10 @@
 		}
 
 		.title {
-			padding-top: var(--space-xsmall) !important;
+			padding-block-start: var(--space-xsmall) !important;
 
 			.title-label {
-				-webkit-line-clamp: 2;
-				line-height: 1.333 !important;
-				width: 72px !important;
-				padding-inline: 0 !important;
-				white-space: wrap !important;
-				word-break: break-word;
+				width: calc(2 * var(--size-item-xlarge) + var(--space-small)) !important;
 			}
 		}
 
@@ -263,6 +260,10 @@
 		.top-site-outer & {
 			margin-inline-start: 0 !important;
 			inset-block-start: var(--space-medium) !important;
+
+			.nova-enabled & {
+				margin-inline-start: var(--space-small) !important;
+			}
 		}
 	}
 
@@ -289,8 +290,9 @@
 	/* stories */
 	.nova-enabled .ds-card-grid:not(.ds-section-grid) .ds-card {
 		&:not(.placeholder) {
-	  		box-shadow: none !important;
-	  	}
+			border-radius: var(--border-radius-xlarge) !important;
+			box-shadow: none !important;
+		}
 
 		&:not(.ds-spoc, .ds-spoc-rectangle) .meta {
 			padding: 0 var(--space-large) !important;
@@ -652,7 +654,7 @@
 			}
 
 			.wordmark {
-				background-size: var(--dimension-64) !important;
+				background-size: 72px !important;
 				background-position-x: left !important;
 				margin-inline-start: var(--space-xsmall) !important;
 			}
@@ -749,16 +751,23 @@
 			}
 		}
 
-		.widgets-container .widget-wrapper {
-			> * {
-				backdrop-filter: blur(6px);
-				border-radius: var(--border-radius-xlarge) !important;
-				outline: none !important;
-				box-shadow: none !important;
+		.widgets-container {
+			.widget-wrapper {
+				> * {
+					backdrop-filter: blur(6px);
+					border-radius: var(--border-radius-xlarge) !important;
+					outline: none !important;
+					box-shadow: none !important;
+				}
+
+				.lists .lists-add-button {
+					border-radius: var(--border-radius-xlarge) !important;
+				}
 			}
 
-			.lists .lists-add-button {
-				border-radius: var(--border-radius-xlarge) !important;
+			.widgets-add-button {
+				outline: none !important;
+				box-shadow: none !important;
 			}
 		}
 	}

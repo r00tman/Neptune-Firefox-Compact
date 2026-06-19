@@ -1,4 +1,5 @@
 :root {
+	--mrec-width: 330px !important;
 	--background-color-canvas: var(--nept-background-canvas) !important;
 	--background-color-box: var(--nept-menu-background) !important;
 	--background-color-box-info: var(--nept-background-canvas) !important;
@@ -56,6 +57,7 @@
 	--font-size-xlarge: 1.44rem !important;
 	--font-size-xxlarge: 1.76rem !important;
 	--font-size-xxxlarge: 2rem !important;
+	--font-size-heading-xlarge: var(--font-size-xlarge) !important;
 	--space-xxsmall: calc(0.5 * var(--space-xsmall)) !important;
 	--space-xsmall: 0.32rem !important;
 	--space-small: calc(2 * var(--space-xsmall)) !important;

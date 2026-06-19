@@ -30,7 +30,7 @@ toolbar .toolbarbutton-1 {
 		:root:not([customizing]) & {
 			margin: auto calc(var(--toolbar-start-end-padding) / 2) calc(var(--nept-browser-toolbox-padding) / 2) !important;
 
-			#TabsToolbar-customization-target > & {
+			#TabsToolbar-customization-target & {
 				display: none;
 			}
 		}

@@ -19,6 +19,10 @@ panel {
 	--panel-header-back-icon-full-width: calc(var(--size-item-xsmall) + 2 * var(--panel-header-back-icon-padding)) !important;
 	--panel-header-min-height: calc(var(--panel-header-back-icon-full-width) + 2 * var(--panel-separator-padding-vertical)) !important;
 
+	@media (-moz-platform: macos) and (-moz-mac-tahoe-theme) {
+		--panel-border-radius: var(--border-radius-xlarge) !important;
+	}
+
 	:root[lwtheme] & {
 		color-scheme: light dark !important;
 	}
@@ -285,8 +289,14 @@ toolbarbutton.subviewbutton:not(.all-tabs-secondary-button, .subviewbutton-back,
 #feature-callout {
 	--arrow-offset: 0 !important;
 
-	.screen[pos=callout] .dismiss-button {
-		border-radius: var(--border-radius-xlarge) !important;
+	.screen[pos=callout] .section-main {
+		.main-content {
+			border-radius: var(--border-radius-medium) !important;
+		}
+
+		.dismiss-button {
+			border-radius: var(--border-radius-xlarge) !important;
+		}
 	}
 }
 
@@ -449,9 +459,15 @@ toolbarbutton.subviewbutton:not(.all-tabs-secondary-button, .subviewbutton-back,
 		width: var(--menu-panel-width-wide) !important;
 
 		> richlistitem {
-			background: none !important;
+			background-color: transparent !important;
 			color: inherit !important;
 			margin: 0 !important;
+			border-radius: var(--border-radius-medium) !important;
+
+			&:active {
+				background-color: var(--color-accent-primary-active) !important;
+				color: var(--button-text-color-primary) !important;
+			}
 
 			&:not(:first-child) {
 				border-top: var(--button-border);
@@ -483,6 +499,8 @@ toolbarbutton.subviewbutton:not(.all-tabs-secondary-button, .subviewbutton-back,
 	}
 
 	> #downloadsFooter {
+		margin-block-start: var(--space-small);
+
 		&:not([showingsummary]) {
 			align-items: flex-end;
 		}

@@ -10,22 +10,33 @@
 
 /* welcome */
 .onboardingContainer {
+	--button-border-radius: var(--border-radius-xlarge);
+
 	.screen[pos="center"] {
 		background-color: transparent !important;
 	}
 
-	.main-content:not(& .screen[pos="split"][fullscreen] .section-main .main-content) {
+	.main-content:not(& .screen[pos="split"][fullscreen] .section-main .main-content, .main-content.no-steps) {
 		border-radius: var(--border-radius-xlarge) !important;
 		box-shadow: var(--nept-small-shadow), var(--nept-menu-shadow) !important;
 	}
 
-	:is(.primary, .secondary, .additional-cta, .submenu-button) {
+	.screen[pos="split"] .section-secondary {
+		border-radius: var(--border-radius-xlarge) 0 0 var(--border-radius-xlarge) !important;
+	}
+
+	.screen[pos="split"] .section-main .main-content {
+		backdrop-filter: blur(var(--dimension-24));
+		border-radius: 0 var(--border-radius-xlarge) var(--border-radius-xlarge) 0 !important;
+	}
+
+	:is(.primary, .secondary, .additional-cta, .submenu-button, .more-button) {
 		padding: 0 var(--space-large) !important;
 		border-radius: var(--border-radius-small) !important;
 	}
 }
 
-.dialogBox {
+.dialogBox:not(.spotlightBox) {
 	border-radius: var(--border-radius-xlarge) !important;
 	box-shadow: var(--nept-menu-shadow) !important;
 	backdrop-filter: saturate(1.5) blur(1in);
