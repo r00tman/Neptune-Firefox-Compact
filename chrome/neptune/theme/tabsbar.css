@@ -910,6 +910,10 @@
 		}
 
 		> .tab-icon-stack {
+			#tabbrowser-tabs[orient="horizontal"] tab:not([dragtarget]):hover & {
+				display: none;
+			}
+
 			#tabbrowser-tabs .tab-content[multiselected] > &:not(:is(#tabbrowser-tabs[orient="vertical"][expanded], #tabbrowser-tabs[orient="horizontal"]) > #tabbrowser-arrowscrollbox &):not([dragtarget] &) {
 				animation: Bounce 2s infinite;
 			}
@@ -1037,15 +1041,22 @@
 			background-color: var(--nept-button-field-color) !important;
 			fill: Field !important;
 			border-radius: calc(var(--tab-border-radius) / 2) !important;
-			order: -1;
+
+			#tabbrowser-tabs[orient="vertical"] & {
+				order: -1;
+			}
 
 			#tabbrowser-tabs[orient="horizontal"] & {
-				margin-inline-end: var(--tab-inline-padding) !important;
-				visibility: hidden;
+				display: none;
 				transition: background-color 100ms ease-out;
 
 				tab:not([dragtarget]):hover & {
-					visibility: visible;
+					display: revert;
+					order: -1;
+					width: 16px !important;
+					height: 16px !important;
+					margin-inline-start: auto !important;
+					margin-inline-end: var(--tab-icon-end-margin) !important;
 					animation: fadeIn 300ms ease;
 				}
 
