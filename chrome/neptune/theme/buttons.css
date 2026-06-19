@@ -28,12 +28,9 @@ toolbar .toolbarbutton-1 {
 
 	#TabsToolbar & {
 		:root:not([customizing]) & {
-			margin: auto calc(var(--toolbar-start-end-padding) / 2) calc(var(--nept-browser-toolbox-padding) / 2) !important;
-
-			#TabsToolbar-customization-target & {
-				display: none;
-			}
+			margin-left: var(--toolbar-start-end-padding) !important;
 		}
+
 
 		&[removable="false"]:not([hidden]) {
 			border-radius: var(--border-radius-xlarge) !important;
@@ -54,8 +51,13 @@ toolbar .toolbarbutton-1 {
 	}
 }
 
+#TabsToolbar-customization-target .chromeclass-toolbar-additional {
+	margin-block-end: calc(var(--toolbar-start-end-padding) / 2) !important;
+}
+
 toolbar .toolbaritem-combined-buttons {
 	margin-inline: 0 !important;
+
 
 	> #zoom-reset-button {
 		margin-inline: 0 !important;

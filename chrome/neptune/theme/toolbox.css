@@ -1,18 +1,36 @@
 /*---------- Toolbox ----------*/
 #navigator-toolbox {
+	display: grid;
+	grid-template-columns: minmax(min-content, max-content) minmax(min-content, auto);
 	border: none !important;
+
+	> *:not(#nav-bar, .browser-titlebar) {
+		grid-column: 1 / span 2;
+	}
+
+	.browser-titlebar {
+		align-self: center;
+		will-change: unset !important;
+	}
 
 	&.fullscreen-with-menubar {
 		box-shadow: none !important;
 	}
 
 	#nav-bar {
+		grid-area: 1 / 1 / span 1 / span 1;
+		width: fit-content;
 		background-color: transparent !important;
 		padding: var(--nept-browser-toolbox-padding) 0 var(--nept-browser-toolbox-padding) calc(var(--window-controls-size) + var(--toolbar-start-end-padding) + var(--toolbarbutton-padding-outer)) !important;
 		border: none !important;
 
 		:root[inFullscreen] & {
 			padding-inline-start: var(--space-xsmall) !important;
+		}
+
+		@media -moz-pref("sidebar.verticalTabs") {
+			grid-column: 1 / span 2;
+			width: auto;
 		}
 
 		:root[taskbartab] & > .titlebar-spacer[type="post-tabs"] {
@@ -30,7 +48,15 @@
 				animation: emeTeachingMoment 1s linear infinite;
 			}
 
-			@media (min-width: 770px) {
+			@media not -moz-pref("sidebar.verticalTabs") {
+				toolbarpaletteitem[place=toolbar][id^=wrapper-customizableui-special-spring],
+				toolbarspring {
+					max-width: 20em !important;
+					flex-grow: 500 !important;
+				}
+			}
+
+			@media (min-width: 770px) and -moz-pref("sidebar.verticalTabs") {
 				toolbarpaletteitem[place=toolbar][id^=wrapper-customizableui-special-spring],
 				toolbarspring {
 					max-width: 100% !important;
@@ -82,6 +108,8 @@
 		min-width: unset !important;
 
 		@media not -moz-pref("sidebar.verticalTabs") {
+			grid-area: 1 / 2 / span 1 / span 1;
+			padding-block-start: calc(var(--nept-browser-toolbox-padding) / 2) !important;
 			--toolbarbutton-padding-inner: calc((var(--tab-min-height) - var(--icon-size-small)) / 2 + var(--tab-overflow-clip-margin)) !important;
 			order: 1;
 
