@@ -982,10 +982,6 @@
 			> .tab-icon-image {
 				fill: var(--toolbarbutton-icon-fill) !important;
 
-				&:not(#tabbrowser-tabs[orient="vertical"][expanded] &) {
-					border-radius: var(--tab-border-radius);
-				}
-
 				&[pending] {
 					filter: grayscale(100%) opacity(50%);
 				}
