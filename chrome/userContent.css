@@ -11,11 +11,11 @@
 @-moz-document url("about:home"), url("about:newtab") {
 	body {
 		/* Topographic Amoeba wallpapers by @BasicAppleGuy */
-		background: url("neptune/assets/background_image/Vannella_Hills_Light.png") center/cover fixed !important;
+		/* background: url("neptune/assets/background_image/Vannella_Hills_Light.png") center/cover fixed !important; */
 
-		@media (prefers-color-scheme: dark) {
-			background: url("neptune/assets/background_image/Vannella_Hills_Dark.png") center/cover fixed !important;
-		}
+		/* @media (prefers-color-scheme: dark) { */
+			/* background: url("neptune/assets/background_image/Vannella_Hills_Dark.png") center/cover fixed !important; */
+		/* } */
 
 		&:not(.inline-onboarding) .fixed-search .search-wrapper {
 			background-color: transparent !important;
@@ -28,6 +28,6 @@
 
 @-moz-document url("about:privatebrowsing") {
 	body {
-		background: url("neptune/assets/background_image/Chaos_Ridge_Dark.png") center/cover fixed;
+		background: #25003e;
 	}
 }
