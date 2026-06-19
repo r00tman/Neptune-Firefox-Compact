@@ -914,6 +914,10 @@
 				display: none;
 			}
 
+			#tabbrowser-tabs[orient="horizontal"][overflow] tab:not([selected], tab-split-view-wrapper > tab):hover & {
+				display: revert !important;
+			}
+
 			#tabbrowser-tabs .tab-content[multiselected] > &:not(:is(#tabbrowser-tabs[orient="vertical"][expanded], #tabbrowser-tabs[orient="horizontal"]) > #tabbrowser-arrowscrollbox &):not([dragtarget] &) {
 				animation: Bounce 2s infinite;
 			}
@@ -1062,6 +1066,14 @@
 
 				#tabbrowser-tabs[closebuttons="activetab"][orient="horizontal"] tab-split-view-wrapper &:not([selected]) {
 					display: revert !important;
+				}
+
+				#tabbrowser-tabs[closebuttons="activetab"][orient="horizontal"]:not([overflow]) tab:not([dragtarget]):hover &:not([selected], [pinned]) {
+					display: revert !important;
+				}
+
+				#tabbrowser-tabs[orient="horizontal"][overflow] tab:not([selected], tab-split-view-wrapper > tab) & {
+					display: none !important;
 				}
 			}
 
