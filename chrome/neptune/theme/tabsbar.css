@@ -14,15 +14,6 @@
 			margin: 0 !important;
 		}
 
-		&:not(:has(> #tabbrowser-arrowscrollbox > :is(tab-group, tab:not([hidden])))):has(> #pinned-tabs-container > tab:only-of-type),
-		&:not(:has(> #pinned-tabs-container:not(:empty), > #tabbrowser-arrowscrollbox > tab-group, #tabbrowser-arrowscrollbox > tab:nth-child(2 of :not([hidden])))):has(> #tabbrowser-arrowscrollbox > tab:is(:only-of-type, [hidden])) {
-			display: contents;
-
-			> :is(#pinned-tabs-container, #tabbrowser-arrowscrollbox) {
-				display: none;
-			}
-		}
-
 		> #tabbrowser-arrowscrollbox {
 			background-color: var(--nept-tabs-box-background);
 			border-radius: var(--tab-border-radius);
