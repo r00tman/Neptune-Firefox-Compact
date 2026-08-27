@@ -49,7 +49,7 @@
 		}
 
 		#sidebar-box:hover + &,
-		#sidebar-main:hover + & {
+		#sidebar-container:hover + & {
 			background-color: var(--sidebar-border-color) !important;
 		}
 
@@ -128,6 +128,11 @@
 		}
 	}
 
+	/* Firefox 154 added its own margin under the panel heading (inside sidebar-panel-header's shadow root); keep our spacing. */
+	.sidebar-panel-heading {
+		margin-block-end: 0 !important;
+	}
+
 	.sidebar-panel {
 		--icon-size: var(--input-icon-size) !important;
 		--panel-separator-color: var(--card-border-color) !important;
@@ -159,7 +164,7 @@
 
 			/* password */
 			> .first-row .search-container {
-				background-color: var(--input-bgcolor) !important;
+				background-color: var(--input-text-background-color) !important;
 				border: none !important;
 
 				 > input[type="search"] {
@@ -410,6 +415,13 @@
 					}
 				}
 			}
+		}
+
+		/* Firefox 154 wraps the summarize button in #footer and moved the border there. */
+		#footer {
+			display: flex;
+			justify-content: flex-end;
+			border: none !important;
 		}
 
 		#summarize-btn-container {

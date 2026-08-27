@@ -164,7 +164,7 @@
 			background-color: var(--button-background-color-primary) !important;
 			color: var(--button-text-color-primary)  !important;
 			margin-inline: var(--urlbar-icon-padding) !important;
-			padding-block: var(--urlbar-container-padding) !important;
+			padding-block: var(--urlbar-input-container-padding) !important;
 			border-radius: var(--border-radius-large) !important;
 
 			&:hover {
@@ -206,14 +206,14 @@
 	}
 
 	> .search-one-offs:not([hidden]) {
-		width: calc(100% - 2 * (var(--urlbarView-row-padding-block) + var(--urlbarView-favicon-margin-start) + var(--border-width))) !important;
+		width: calc(100% - 2 * (var(--urlbarview-row-padding-block) + var(--urlbarView-favicon-margin-start) + var(--border-width))) !important;
 		margin-inline: auto;
 		display: none !important;
 	}
 }
 
 .urlbarView-results {
-	padding: var(--urlbarView-row-padding-block) !important;
+	padding: var(--urlbarview-row-padding-block) !important;
 
 	> .urlbarView-row {
 		border: var(--button-border) !important;
@@ -310,7 +310,7 @@
 		}
 
 		&[type="tip"] {
-			padding-block: var(--urlbarView-row-padding-block) !important;
+			padding-block: var(--urlbarview-row-padding-block) !important;
 
 			> .urlbarView-row-buttons {
 				padding-inline-end: 0 !important;
@@ -373,7 +373,7 @@
 			}
 
 			&.urlbarView-tabGroup {
-				background-color: light-dark(var(--tab-group-color-pale), var(--tab-group-color-invert)) !important;
+				background-color: light-dark(var(--tab-group-color-pale), var(--tab-group-color)) !important;
 				color: light-dark(var(--tab-group-color), var(--tab-group-label-text-dark)) !important;
 			}
 
@@ -404,7 +404,7 @@
 			color: MenuText !important;
 			width: calc(100% - 2 * var(--urlbarView-icon-margin-start));
 			margin-inline: var(--urlbarView-icon-margin-start) !important;
-			padding-block-start: var(--urlbarView-row-padding-block);
+			padding-block-start: var(--urlbarview-row-padding-block);
 			border-top: var(--border-width) solid var(--card-border-color);
 		}
 	}
@@ -495,7 +495,8 @@
 
 #identity-box {
 	margin-inline: 0 !important;
-	margin-block: var(--urlbar-icon-padding);
+	margin-block: 0 !important;
+	height: calc(var(--urlbar-basic-component-size) - 2 * var(--urlbar-icon-padding)) !important;
 	fill-opacity: 0.7 !important;
 
 	&[pageproxystate="valid"] > .identity-box-button {
@@ -557,12 +558,13 @@
 }
 
 .urlbar-page-action,
+#urlbar-revert-button-container,
 .urlbar-revert-button,
 .urlbar-go-button,
 .search-go-button {
 	background: none !important;
-	height: auto !important;
-	width: calc(var(--size-item-large) - 2 * var(--urlbar-container-inset)) !important;
+	height: var(--urlbar-basic-component-size) !important;
+	width: calc(var(--urlbar-basic-component-size) - 2 * (var(--urlbar-input-container-border-width) + var(--urlbar-input-container-padding))) !important;
 	color: var(--nept-button-field-color) !important;
 
 	&:not([disabled]):hover {

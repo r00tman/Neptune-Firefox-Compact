@@ -66,18 +66,6 @@
 	}
 }
 
-#stop-reload-button[animate] .toolbarbutton-animatable-box > .toolbarbutton-animatable-image {
-	/*animation-duration: 0s !important;*/	/* Enable or disable the reload/stop button animation. */
-
-	#reload-button & {
-		background-image: url("../assets/icons/stop-to-reload.svg") !important;
-	}
-
-	#reload-button[displaystop] + #stop-button & {
-		background-image: url("../assets/icons/reload-to-stop.svg") !important;
-	}
-}
-
 #back-button, .unified-nav-back[_moz-menuactive] {
 	list-style-image: url("../assets/icons/back.svg") !important;
 }
@@ -92,10 +80,6 @@
 
 #stop-button {
 	list-style-image: url("../assets/icons/stop.svg") !important;
-}
-
-#firefox-view-button {
-	list-style-image: url("../assets/icons/firefox-view.svg") !important;
 }
 
 #alltabs-button {
@@ -222,6 +206,21 @@
 
 		&:is([overflowedItem="true"], [cui-areatype="panel"]) {
 			list-style-image: url("../assets/icons/ipprotection-state-excluded.svg") !important;
+		}
+	}
+
+	/* Firefox 154: the toolbar button renders its state through layered images in an icon stack. */
+	&:not([overflowedItem="true"], [cui-areatype="panel"]) > .ipprotection-icon-stack > .ipprotection-icon-layer {
+		&[data-state="on"] {
+			list-style-image: url("../assets/icons/ipprotection-on.svg") !important;
+		}
+
+		&[data-state="error"] {
+			list-style-image: url("../assets/icons/ipprotection-error.svg") !important;
+		}
+
+		&[data-state="excluded"] {
+			list-style-image: url("../assets/icons/ipprotection-excluded.svg") !important;
 		}
 	}
 }

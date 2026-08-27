@@ -15,6 +15,15 @@ panel:not(.autoscroller, #feature-callout, #confirmation-hint) {
 	}
 }
 
+/* Firefox 154 makes these follow the web page's colour scheme; keep them on the chrome scheme. */
+#contentAreaContextMenu,
+#clipboardReadPasteMenuPopup,
+#PopupAutoComplete,
+#remoteBrowserTooltip,
+#aHTMLTooltip[contenttooltip] {
+	color-scheme: var(--toolbar-color-scheme, light dark) !important;
+}
+
 panel {
 	--panel-header-back-icon-full-width: calc(var(--size-item-xsmall) + 2 * var(--panel-header-back-icon-padding)) !important;
 	--panel-header-min-height: calc(var(--panel-header-back-icon-full-width) + 2 * var(--panel-separator-padding-vertical)) !important;
@@ -340,7 +349,7 @@ toolbarbutton.subviewbutton:not(.all-tabs-secondary-button, .subviewbutton-back,
 		border: none !important;
 
 		.data {
-			background: var(--input-bgcolor) !important;
+			background: var(--input-text-background-color) !important;
 			padding: var(--panel-separator-padding) !important;
 			border-radius: var(--border-radius-small);
 		}
@@ -436,7 +445,7 @@ toolbarbutton.subviewbutton:not(.all-tabs-secondary-button, .subviewbutton-back,
 	padding-block: var(--panel-subview-body-padding-block) !important;
 
 	#editBMPanel_folderTree {
-		background-color: var(--input-bgcolor) !important;
+		background-color: var(--input-text-background-color) !important;
 		border: none !important;
 	}
 

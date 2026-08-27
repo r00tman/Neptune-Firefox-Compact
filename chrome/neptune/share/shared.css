@@ -76,7 +76,7 @@
 		--input-width: var(--input-icon-size) !important;
 		--input-height: var(--input-icon-size) !important;
 		--input-margin-block-adjust: calc((1lh - var(--input-height)) / 2) !important;
-		--input-text-background-color: var(--input-bgcolor) !important;
+		--input-text-background-color: var(--nept-input-bgcolor) !important;
 
 		&.with-icon {
 			padding-inline-start: calc(var(--input-text-icon-size) + var(--space-large)) !important;
