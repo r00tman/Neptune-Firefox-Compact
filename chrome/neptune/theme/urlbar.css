@@ -54,7 +54,10 @@
 	}
 
 	> .urlbar-input-container {
-		padding: 0 !important;
+		/* Inner gutter so the leading icon (trust shield / engine icon) doesn't sit
+		   right at the end of the 16px corner curve; symmetric so page actions keep
+		   their trailing spacing. 4px here + 4px icon padding ≈ stock Firefox's 8px. */
+		padding: 0 var(--urlbar-icon-padding) !important;
 		border: none !important;
 		border-radius: var(--border-radius-circle) !important;
 
