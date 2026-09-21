@@ -52,8 +52,16 @@ toolbar .toolbarbutton-1 {
 	}
 }
 
-#TabsToolbar-customization-target .chromeclass-toolbar-additional {
+#TabsToolbar-customization-target .chromeclass-toolbar-additional:not(toolbarspring) {
 	margin-block-end: calc(var(--toolbar-start-end-padding) / 2) !important;
+}
+
+/* FF156 inserted a flexible toolbarspring before #alltabs-button in the tab
+   strip, which pushed the all-tabs button to the far edge. Collapse it. */
+#TabsToolbar-customization-target > toolbarspring {
+	min-width: 0 !important;
+	max-width: none !important;
+	flex: 0 0 auto !important;
 }
 
 toolbar .toolbaritem-combined-buttons {

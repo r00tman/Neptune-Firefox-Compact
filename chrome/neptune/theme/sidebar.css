@@ -106,6 +106,7 @@
 
 	#sidebar-tools-and-extensions-splitter {
 		background-color: transparent !important;
+		background-image: none !important;	/* FF156 draws the divider as a background-image */
 		min-width: calc(2 * var(--default-focusring-width)) !important;
 		min-height: calc(2 * var(--default-focusring-width)) !important;
 		border: none !important;

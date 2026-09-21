@@ -315,10 +315,29 @@ treechildren::-moz-tree-image(query, OrganizerQuery_tags_______v) {
 
 #downloads-indicator-start-image {
 	list-style-image: url("../assets/icons/notification-start-animation.svg") !important;
+	/* FF156 bumped the sprite frame counts (start 17→43, finish 27→39) and its
+	   width/keyframe math now assumes those; pin ours so our sheets aren't
+	   stretched. Start is a plain linear sweep, so the frame count is enough. */
+	--anim-frames: 17 !important;   /* 340px / 20px */
 }
 
 #downloads-indicator-finish-image {
 	list-style-image: url("../assets/icons/notification-finish-animation.svg") !important;
+	--anim-frames: 26 !important;   /* width = (frames + 1) * 20px = 540px */
+	--anim-steps: var(--anim-frames) !important;
+}
+
+/* FF156's downloadsButtonFinishedNotification keyframe hardcodes 39-frame
+   two-speed timing. userChrome is user-origin so we can't override that keyframe
+   by name; point the animation at our own linear one instead. */
+#downloads-button[animate][notification="finish"] #downloads-indicator-finish-image {
+	animation-name: neptDownloadsFinish !important;
+	animation-timing-function: steps(var(--anim-frames)) !important;
+}
+
+@keyframes neptDownloadsFinish {
+	from { transform: translateX(0); }
+	to { transform: translateX(calc(var(--anim-frames) * -20px)); }
 }
 
 .downloadIconShow .button-icon {

@@ -190,6 +190,7 @@
 		min-height: calc(2 * var(--default-focusring-width)) !important;
 		margin-inline: auto !important;
 		border: none !important;
+		background-image: none !important;	/* FF156 draws the divider as a background-image */
 		border-radius: var(--border-radius-small) !important;
 		transition: min-width 150ms ease-in-out, var(--ext-theme-background-transition);
 

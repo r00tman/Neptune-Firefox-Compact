@@ -127,6 +127,7 @@
 
 		+ #browser > #tabbrowser-tabbox findbar {
 			position: absolute;
+			grid-area: auto !important;	/* FF156: undo grid-area:findbar so the abs-pos containing block is .browserContainer */
 			background-image: none !important;
 			inset-block-start: calc(var(--opt-theme-tabsToolbar-height) + var(--opt-theme-toolbox-height));
 			width: 100%;
@@ -173,7 +174,7 @@
 		}
 
 		+ #browser > #sidebar-container {
-			z-index: var(--browser-stack-z-index-rdm-toolbar);
+			z-index: 3;	/* FF156 deleted --browser-stack-z-index-rdm-toolbar (was 3) */
 
 			&[sidebar-positionend] {
 				inset-inline-end: 0;
@@ -339,6 +340,7 @@
 
 		+ #browser > #tabbrowser-tabbox findbar {
 			position: absolute;
+			grid-area: auto !important;	/* FF156: undo grid-area:findbar so the abs-pos containing block is .browserContainer */
 			background-image: none !important;
 			inset-block-start: var(--opt-theme-toolbox-height);
 			width: 100%;
@@ -409,7 +411,7 @@
 		}
 
 		+ #browser > #sidebar-container {
-			z-index: var(--browser-stack-z-index-rdm-toolbar);
+			z-index: 3;	/* FF156 deleted --browser-stack-z-index-rdm-toolbar (was 3) */
 
 			:root[sidebar-expand-on-hover] & {
 				background: none !important;

@@ -101,12 +101,27 @@
 					list-style-image: url("../assets/icons/trust-icon-active.svg") !important;
 				}
 
-				&.inactive {
+				/* FF156: the blocker-check shield. Without this it falls back to
+				   stock tracking-protection.svg. */
+				&.scanning {
+					list-style-image: url("../assets/icons/tracking-protection.svg") !important;
+				}
+
+				/* Guard with :not(.insecure): FF156 sets .inactive together with
+				   .insecure on http pages with ETP off, and our .inactive rule
+				   would otherwise hide the red insecure shield. */
+				&.inactive:not(.insecure) {
 					list-style-image: url("../assets/icons/trust-icon-disabled.svg") !important;
 				}
 
 				&.warning {
 					list-style-image: url("../assets/icons/trust-icon-warning.svg") !important;
+				}
+
+				/* FF156 draws the breach state with stock artwork via ::after;
+				   use our warning icon instead. */
+				&.breached::after {
+					background-image: url("../assets/icons/trust-icon-warning.svg") !important;
 				}
 
 				> #trust-label {
@@ -493,6 +508,19 @@
 	}
 }
 
+/* Firefox 156's trust-panel redesign gives the leading site-info buttons a
+   state background (var(--urlbar-box-background-color-hover / -active), which we
+   don't neutralize) and, for chrome/extension/insecure pages, a resting box.
+   Keep them flush with the urlbar in every state; the theme signals hover via
+   fill-opacity instead. `background` also clears any background-image. */
+#trust-icon-container,
+#tracking-protection-icon-container,
+#identity-box > .identity-box-button {
+	&, &:hover, &:hover:active, &[open="true"], &[open] {
+		background: transparent !important;
+	}
+}
+
 #identity-box {
 	margin-inline: 0 !important;
 	margin-block: 0 !important;
@@ -540,18 +568,16 @@
 		transition: opacity 200ms ease-out, margin-inline 200ms ease-out;
 		transition-delay: 100ms;
 
-		&:is(#identity-box:hover &, [open]) {
+		/* Reveal on [open], or while the urlbar is hovered/focused. The old
+		   `#identity-box:hover &` form re-expanded `&` to the whole compound
+		   (…#identity-box > #identity-box > …) and never matched; #identity-box
+		   also has ~0 hit area in 156 (trust panel hides #identity-icon-box), so
+		   drive it from the urlbar instead. */
+		&[open],
+		.urlbar:is(:hover, [focused]) & {
 			margin-inline-start: 0;
 			pointer-events: auto;
 			opacity: 1;
-		}
-
-		@media -moz-pref("browser.urlbar.trustPanel.featureGate") {
-			&:is(#trust-icon-container:hover ~ #identity-box > &, [open]) {
-				margin-inline-start: 0;
-				pointer-events: auto;
-				opacity: 1;
-			}
 		}
 	}
 

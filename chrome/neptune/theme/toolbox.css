@@ -117,6 +117,12 @@
 				width: calc(var(--size-item-small) / 2) !important;
 				display: inherit !important;
 			}
+
+			/* FF156 removed the post-tabs titlebar-spacer from #TabsToolbar, so
+			   restore the trailing gutter after the all-tabs button. */
+			> .toolbar-items {
+				padding-inline-end: calc(var(--size-item-small) / 2);
+			}
 		}
 
 		@media -moz-pref("sidebar.verticalTabs") {
@@ -287,6 +293,19 @@
 				}
 			}
 		}
+	}
+}
+
+/* FF156 made .browserContainer a grid with a definite `findbar` area, so the
+   findbar's `order` no longer moves it above the content. Swap the findbar and
+   browserstack rows back. */
+.browserContainer {
+	> findbar {
+		grid-row: 3 / 4 !important;
+	}
+
+	> .browserStack {
+		grid-row: 4 / 5 !important;
 	}
 }
 
