@@ -142,9 +142,15 @@
 			--button-border-radius: var(--border-radius-large) 0 0 var(--border-radius-large) !important;
 			--button-row-gap: 0;
 			/* FF154 remapped this moz-button's tokens onto --urlbar-box-background-color
-			   (which we force transparent) and set --button-border: none; FF156 dropped
-			   those remaps, so the stock grey button surface and border showed through
-			   behind the engine icon. Pin them ourselves. */
+			   (which we force transparent) and set --button-border: none. FF156 dropped
+			   those remaps AND made it type="muted", which paints from its own
+			   --button-*-muted tokens (light-dark(gray-20, gray-55) by default) — that
+			   was the grey box behind the engine icon. Pin the muted set; keep the
+			   default set too in case the type changes again. */
+			--button-background-color-muted: transparent !important;
+			--button-background-color-muted-hover: transparent !important;
+			--button-background-color-muted-active: transparent !important;
+			--button-background-color-muted-selected: transparent !important;
 			--button-background-color: transparent !important;
 			--button-background-color-hover: transparent !important;
 			--button-background-color-active: transparent !important;
