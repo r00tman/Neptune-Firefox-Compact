@@ -296,10 +296,19 @@
 	}
 }
 
-/* FF156 made .browserContainer a grid with a definite `findbar` area, so the
-   findbar's `order` no longer moves it above the content. Swap the findbar and
-   browserstack rows back. */
+/* FF156 made .browserContainer a grid with a definite `findbar` area below
+   `browserstack`, so the findbar's `order` no longer lifts it above the content.
+   Swap the two rows' TRACK SIZES too (not just placement): row 3 becomes auto
+   for the findbar, row 4 takes the 1fr so the content keeps its full height. */
 .browserContainer {
+	grid-template-rows:
+		auto										/* notificationbox */
+		var(--rdm-toolbar-height, 0)				/* rdm toolbar */
+		auto										/* findbar (moved up) */
+		minmax(var(--content-area-min-size), 1fr)	/* browserstack */
+		auto										/* devtools bottom splitter */
+		auto !important;							/* devtools bottom */
+
 	> findbar {
 		grid-row: 3 / 4 !important;
 	}
