@@ -530,22 +530,26 @@
 	}
 
 	> :is(#identity-permission-box, #notification-popup-box) {
+		/* Hidden state must not use visibility: Firefox 156's PopupNotifications rejects
+		   permission-prompt anchors with checkVisibility({visibilityProperty: true}),
+		   which made the mic/camera doorhanger close immediately. The negative margin
+		   already removes the footprint; opacity passes the check. */
 		margin-inline-start: calc(-1 * var(--size-item-xsmall) - 2 * var(--urlbar-icon-padding));
-		visibility: collapse;
+		pointer-events: none;
 		opacity: 0;
-		transition: opacity 200ms ease-out, margin-inline 200ms ease-out, visibility 200ms linear;
+		transition: opacity 200ms ease-out, margin-inline 200ms ease-out;
 		transition-delay: 100ms;
 
 		&:is(#identity-box:hover &, [open]) {
 			margin-inline-start: 0;
-			visibility: visible;
+			pointer-events: auto;
 			opacity: 1;
 		}
 
 		@media -moz-pref("browser.urlbar.trustPanel.featureGate") {
 			&:is(#trust-icon-container:hover ~ #identity-box > &, [open]) {
 				margin-inline-start: 0;
-				visibility: visible;
+				pointer-events: auto;
 				opacity: 1;
 			}
 		}
