@@ -324,20 +324,25 @@ treechildren::-moz-tree-image(query, OrganizerQuery_tags_______v) {
 #downloads-indicator-finish-image {
 	list-style-image: url("../assets/icons/notification-finish-animation.svg") !important;
 	--anim-frames: 26 !important;   /* width = (frames + 1) * 20px = 540px */
-	--anim-steps: var(--anim-frames) !important;
+	/* FF keeps --anim-steps: calc(frames + 90) → 116 ticks: play 26, hold 90. */
 }
 
-/* FF156's downloadsButtonFinishedNotification keyframe hardcodes 39-frame
-   two-speed timing. userChrome is user-origin so we can't override that keyframe
-   by name; point the animation at our own linear one instead. */
+/* FF156's downloadsButtonFinishedNotification keyframe hardcodes its 39-frame
+   sheet (18/129 and 108/129 stops). userChrome is user-origin so we can't
+   override that keyframe by name; point the animation at our own, which keeps
+   the same play-then-hold shape for our 27-frame sheet: 26 of 116 ticks = 22.41%. */
 #downloads-button[animate][notification="finish"] #downloads-indicator-finish-image {
 	animation-name: neptDownloadsFinish !important;
-	animation-timing-function: steps(var(--anim-frames)) !important;
 }
 
 @keyframes neptDownloadsFinish {
-	from { transform: translateX(0); }
-	to { transform: translateX(calc(var(--anim-frames) * -20px)); }
+	from {
+		animation-timing-function: steps(26);
+		transform: translateX(0);
+	}
+	22.41% {
+		transform: translateX(calc(26 * -20px));
+	}
 }
 
 .downloadIconShow .button-icon {

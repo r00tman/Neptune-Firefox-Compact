@@ -141,6 +141,15 @@
 			--button-padding: var(--urlbar-icon-padding) !important;
 			--button-border-radius: var(--border-radius-large) 0 0 var(--border-radius-large) !important;
 			--button-row-gap: 0;
+			/* FF154 remapped this moz-button's tokens onto --urlbar-box-background-color
+			   (which we force transparent) and set --button-border: none; FF156 dropped
+			   those remaps, so the stock grey button surface and border showed through
+			   behind the engine icon. Pin them ourselves. */
+			--button-background-color: transparent !important;
+			--button-background-color-hover: transparent !important;
+			--button-background-color-active: transparent !important;
+			--button-background-color-selected: transparent !important;
+			--button-border: none !important;
 
 			&[open] {
 				background-color: var(--nept-item-active-background) !important;
@@ -568,13 +577,17 @@
 		transition: opacity 200ms ease-out, margin-inline 200ms ease-out;
 		transition-delay: 100ms;
 
-		/* Reveal on [open], or while the urlbar is hovered/focused. The old
-		   `#identity-box:hover &` form re-expanded `&` to the whole compound
-		   (…#identity-box > #identity-box > …) and never matched; #identity-box
-		   also has ~0 hit area in 156 (trust panel hides #identity-icon-box), so
-		   drive it from the urlbar instead. */
+		/* Reveal on [open], while hovering the leading shield (or the revealed
+		   box itself), or while the urlbar is focused. The old `#identity-box:hover &`
+		   form re-expanded `&` to the whole compound (…#identity-box > #identity-box > …)
+		   and never matched; #identity-box also has ~0 hit area in 156 (trust panel
+		   hides #identity-icon-box), so key off its preceding sibling instead.
+		   Deliberately NOT `.urlbar:hover`: that would shift the centered URL on
+		   every bar hover whenever a permission indicator is present. */
 		&[open],
-		.urlbar:is(:hover, [focused]) & {
+		&:hover,
+		#trust-icon-container:hover ~ &,
+		.urlbar[focused] & {
 			margin-inline-start: 0;
 			pointer-events: auto;
 			opacity: 1;
