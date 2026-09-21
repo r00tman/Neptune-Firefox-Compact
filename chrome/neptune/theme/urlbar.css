@@ -80,7 +80,9 @@
 			}
 
 			> #trust-icon-container {
-				height: auto !important;
+				/* Keep FF's full-height box: this element is the trust panel's popup
+				   anchor, so a shrunken (height: auto) icon made the panel open from
+				   mid-pill and overlap the urlbar. Background is transparent anyway. */
 				border-radius: var(--border-radius-xlarge) 0 0 var(--border-radius-xlarge) !important;
 				background-color: transparent !important;
 				fill-opacity: 0.7 !important;

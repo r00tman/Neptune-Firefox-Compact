@@ -110,6 +110,19 @@ panel {
 		#trustpanel-privacy-link {
 			margin-inline-start: auto !important;
 		}
+
+		/* FF156 insets the header row and graphic card by a fixed --space-large,
+		   while the toggle/clear-cookies rows use --panel-menuitem-margin/padding
+		   (which we override), so they drift apart. Put the header text and card
+		   edge on the rows' text inset using the same tokens. */
+		#trustpanel-header-row {
+			margin-inline: var(--panel-menuitem-margin-inline) !important;
+			padding-inline: var(--panel-menuitem-padding-inline) !important;
+		}
+
+		#trustpanel-graphic-section {
+			margin-inline: calc(var(--panel-menuitem-margin-inline) + var(--panel-menuitem-padding-inline)) !important;
+		}
 	}
 
 	toolbarseparator:not(.tab-group-editor-panel toolbarseparator) {
