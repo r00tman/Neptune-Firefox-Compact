@@ -38,6 +38,14 @@ browser/themes/shared/tabbrowser/ctrlTab.css
 browser/themes/shared/browser-shared.css
 browser/themes/shared/browser-colors.css
 browser/themes/shared/urlbar-searchbar.css
+browser/themes/shared/urlbar.css
+browser/themes/shared/urlbar/view-proton.css
+browser/themes/shared/urlbar/urlbar.tokens.css
+browser/themes/shared/urlbar/urlbarview.tokens.css
+browser/themes/shared/urlbar/variables.css
+browser/themes/shared/identity-block/identity-block.css
+browser/themes/shared/controlcenter/panel.css
+browser/themes/shared/downloads/indicator.css
 browser/themes/shared/identity-block/identity-block.css
 browser/themes/shared/notification-icons.css
 browser/themes/shared/sidebar.css
