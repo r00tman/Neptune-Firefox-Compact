@@ -49,6 +49,13 @@
 				margin-inline-start: 0 !important;
 			}
 
+			/* The theme fades the close button in over the hidden favicon; with the
+			   hover zone now just the lead strip, that 300ms blank flashes every
+			   time the pointer crosses it. Swap instantly here. */
+			.tab-close-button {
+				animation: none !important;
+			}
+
 			.tab-label-container {
 				margin-inline: auto !important;
 				padding-inline-end: 0 !important;
