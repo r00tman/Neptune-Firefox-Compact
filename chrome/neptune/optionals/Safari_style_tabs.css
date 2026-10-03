@@ -26,6 +26,10 @@
 	--nept-safari-tab-width: clamp(300px, 36vw, 520px);
 	/* Trailing zone kept free for the tab's speaker / mute button when present. */
 	--nept-safari-trail: 24px;
+	/* How long the pointer must rest on the favicon before it becomes the close
+	   button. Lower = snappier, but a quick sweep across the pill will trigger
+	   it. Tune live: document.documentElement.style.setProperty("--nept-safari-hover-delay", "90ms") */
+	--nept-safari-hover-delay: 120ms;
 }
 
 @media not -moz-pref("sidebar.verticalTabs") {
@@ -76,13 +80,13 @@
 			&:hover {
 				.tab-icon-stack {
 					opacity: 0;
-					transition-delay: 150ms !important;
+					transition-delay: var(--nept-safari-hover-delay) !important;
 				}
 
 				.tab-close-button {
 					opacity: 1;
 					pointer-events: auto;
-					transition-delay: 150ms, 0s !important;
+					transition-delay: var(--nept-safari-hover-delay), 0s !important;
 				}
 			}
 
