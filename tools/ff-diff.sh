@@ -58,6 +58,7 @@ browser/themes/shared/places/editBookmark.css
 browser/themes/shared/toolbarbutton-icons.css
 browser/themes/shared/toolbarbuttons.css
 browser/themes/osx/browser.css
+browser/app/profile/firefox.js
 browser/base/content/browser.xhtml
 browser/base/content/navigator-toolbox.inc.xhtml
 browser/base/content/browser-box.inc.xhtml
@@ -165,7 +166,7 @@ echo "    Theme-local rows are hidden unless VERBOSE=1."
 printf '    %-52s %5s %6s %6s %7s\n' property ours ff-def ff-use old-def
 # shellcheck disable=SC2086
 grep -rhoE --include='*.css' -- '--[A-Za-z][A-Za-z0-9_-]*' $CHROME_CSS | sort | uniq -c | sort -k2 \
-| while read -r ours v; do
+| tee /dev/null | while read -r ours v; do
   case "$v" in --nept-*|--shadow-inner-*) continue ;; esac   # theme-local names
   ffdef=$(grep -rhoE -- "$v:" "$WORK/omni/chrome" | wc -l | tr -d ' ')
   [ "$ffdef" != 0 ] && continue
@@ -187,9 +188,11 @@ grep -rhoE --include='*.css' -- '--[A-Za-z][A-Za-z0-9_-]*' $CHROME_CSS | sort | 
     flag="  (theme-local; fine)"
   fi
   printf '    %-52s %5s %6s %6s %7s%s\n' "$v" "$ours" "$ffdef" "$ffuse" "$olddef" "$flag"
-done
+done | tee "$WORK/var-report.txt"
 
 cat <<EOF
+
+==> headline: $(grep -c "REMOVED/RENAMED" "$WORK/var-report.txt" 2>/dev/null || echo "?") removed/renamed Firefox tokens we still use (see table above); also read the firefox.js diff for default pref flips (157: nova, sidebar.revamp).
 
 ==> next steps
    - Read the largest diffs above; grep chrome/ for every removed/renamed id, class, attribute or var.
