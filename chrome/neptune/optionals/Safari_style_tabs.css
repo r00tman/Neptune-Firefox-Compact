@@ -65,7 +65,8 @@
 				order: -1;
 				width: 16px !important;
 				height: 16px !important;
-				margin-inline-end: -16px !important;	/* sit exactly under the favicon */
+				margin-inline-end: -16px !important;	/* sit exactly where the favicon is */
+				z-index: 1;	/* ...but above it, so the click reaches the button */
 				opacity: 0;
 				pointer-events: none;
 				animation: none !important;
@@ -75,13 +76,13 @@
 			&:hover {
 				.tab-icon-stack {
 					opacity: 0;
-					transition-delay: 250ms !important;
+					transition-delay: 150ms !important;
 				}
 
 				.tab-close-button {
 					opacity: 1;
 					pointer-events: auto;
-					transition-delay: 250ms, 0s !important;
+					transition-delay: 150ms, 0s !important;
 				}
 			}
 
