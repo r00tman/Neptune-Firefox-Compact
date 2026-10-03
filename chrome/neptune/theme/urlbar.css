@@ -18,8 +18,9 @@
 .urlbar-background {
 	background-color: var(--nept-urlbar-background) !important;
 	border: none !important;
-	/* FF157 draws the focus indicator as an outline here (was a border). */
-	outline: none !important;
+	/* No outline reset here: searchbox.css owns .urlbar-background's outline
+	   (18px transparent at rest -> 3px accent when open, transitioned). A later
+	   `outline: none` turns that fade's start color into currentColor (black). */
 	border-radius: var(--border-radius-circle) !important;
 
 	/* FF157 "joint background": while the results popover is open the background
