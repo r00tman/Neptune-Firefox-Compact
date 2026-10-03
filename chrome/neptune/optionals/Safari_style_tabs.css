@@ -16,7 +16,14 @@
 
    Enable: @import "neptune/optionals/Safari_style_tabs.css"; in userChrome.css
    (after main.css), or hot-load it with tools/reload-userchrome.js.
+
+   Disable without editing CSS: in about:config create the boolean pref
+   neptune.safari-tabs.disabled = true. -moz-pref() media queries re-evaluate
+   live, so the layout switches back immediately; set false (or delete) to
+   re-enable.
 */
+
+@media not -moz-pref("neptune.safari-tabs.disabled") {
 
 :root {
 	/* Leading part of the pill left uncovered so the favicon / hover close button
@@ -182,3 +189,5 @@
 		}
 	}
 }
+
+} /* @media not -moz-pref("neptune.safari-tabs.disabled") */
