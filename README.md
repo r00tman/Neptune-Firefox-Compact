@@ -27,10 +27,24 @@ body {
     - Set `toolkit.legacyUserProfileCustomizations.stylesheets` to `true`.
     - Set `svg.context-properties.content.enabled` to `true`.
     - Set `widget.non-native-theme.use-theme-accent` to `true`.
+    - **Firefox 157+:** set `browser.nova.enabled` to `false`. Firefox 157 turned on its "Nova" redesign by default; this theme targets the classic layout (accent-bordered rows, the "joint" address bar surface and the new tab tokens are all Nova). Firefox may reset this on upgrade, so it is safer to pin it in a `user.js` file next to `prefs.js` in your profile folder:
+      ```js
+      user_pref("browser.nova.enabled", false);
+      ```
 
 - **Required settings**
     - Move all toolbar buttons to the top, and the tab bar does not display any buttons.
     - If extension (Adaptive Tab Bar Color) is enabled, set all colors in the Options (theme builder) to `0%`.
+
+- **Sidebar:** Firefox 157 also switched everyone to the new sidebar and, for existing profiles, to `sidebar.visibility = hide-launcher` (the panel title becomes a switcher dropdown). Both are styled; if you prefer the old sidebar, `user_pref("sidebar.revamp", false);` still works for now.
+
+## Updating
+
+Firefox updates regularly rename the ids, classes and CSS tokens this theme relies on, so after an update that changes the look:
+
+1. `tools/ff-diff.sh <old> <new>` (e.g. `tools/ff-diff.sh 157 158`) downloads the relevant Firefox sources at both release tags, diffs them, unzips the installed build's shipped CSS, and reports every token the theme uses that Firefox no longer defines — plus the `firefox.js` default-pref diff, which is where surprises like Nova show up.
+2. Patch `chrome/`, then copy it into the profile: `cp -R chrome/. "<profile>/chrome/"`. The profile copy is a plain copy, not a link.
+3. To try CSS changes without restarting, set `devtools.chrome.enabled` to `true`, open the Browser Console (`Cmd+Shift+J`) and paste `tools/reload-userchrome.js`. Rules you *deleted* only disappear after a real restart.
 
 ## Safari-style tabs (on by default)
 

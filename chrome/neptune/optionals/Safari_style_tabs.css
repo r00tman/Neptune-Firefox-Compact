@@ -30,6 +30,9 @@
    sites). Use the opaque menu surface the theme already uses for its popups. */
 .urlbarView {
 	background-color: var(--nept-menu-background) !important;
+	/* Resolve light-dark() against the chrome's real scheme (private windows are
+	   forced dark while the OS may be light), so the surface matches the text. */
+	color-scheme: var(--toolbar-color-scheme, light dark) !important;
 }
 
 :root {
