@@ -1,0 +1,99 @@
+/*---------- Safari-style tabs (optional, experimental) ----------
+   The address bar floats over the ACTIVE tab pill instead of sitting beside the
+   tab strip. At rest the pill shows the page title; hovering, focusing (Cmd+L)
+   or opening results fades the address bar in and the title out.
+
+   Mechanism: CSS anchor positioning (Firefox 157 uses it for the urlbar's own
+   results popover). The active pill gets an anchor-name; #urlbar becomes
+   position: fixed and fills that anchor's box. Only position-anchor /
+   position-area are used — the same subset Firefox itself relies on.
+
+   The mode turns itself off (plain single-line layout) when it can't work:
+   vertical tabs, customize mode, fullscreen, popup windows, a pinned or
+   split-view active tab, while dragging a tab, and with 12+ visible tabs (a
+   tab-count trigger rather than [overflow], because widening the active tab can
+   itself cause overflow and the two would oscillate).
+
+   Enable: @import "neptune/optionals/Safari_style_tabs.css"; in userChrome.css
+   (after main.css), or hot-load it with tools/reload-userchrome.js.
+*/
+
+:root {
+	/* Leading part of the pill left uncovered so the favicon / hover close button
+	   stay reachable. */
+	--nept-safari-lead: 36px;
+	/* Width the active tab grows to so it can host the address. */
+	--nept-safari-tab-width: clamp(300px, 36vw, 520px);
+}
+
+@media not -moz-pref("sidebar.verticalTabs") {
+	/* One compound selector (no whitespace between the pseudo-classes). */
+	:root:not([customizing], [popup-window], [inFullscreen], [inDOMFullscreen]):not(:has(#tabbrowser-tabs[movingtab])):not(:has(#tabbrowser-arrowscrollbox > tab:nth-child(12 of :not([hidden])))):has(#tabbrowser-tabs[orient="horizontal"] > #tabbrowser-arrowscrollbox > .tabbrowser-tab[selected]:not([pinned])) {
+
+		/* 1. The active pill is the anchor and grows to hold the address. */
+		#tabbrowser-tabs > #tabbrowser-arrowscrollbox > .tabbrowser-tab[selected]:not([pinned]) {
+			min-width: var(--nept-safari-tab-width) !important;
+
+			> .tab-stack > .tab-background {
+				anchor-name: --nept-active-tab;
+			}
+
+			/* Title fades out while the address bar is showing. */
+			.tab-label-container {
+				transition: opacity 150ms ease-out;
+			}
+		}
+
+		&:has(#urlbar:is(:hover, [focused], [open], [popover-open]))
+		#tabbrowser-tabs > #tabbrowser-arrowscrollbox > .tabbrowser-tab[selected]:not([pinned]) .tab-label-container {
+			opacity: 0;
+		}
+
+		/* 2. Collapse the bar's slot in the nav-bar so the toolbar closes up and
+		      the tab strip gets the room. */
+		#urlbar-container {
+			--urlbar-container-min-width: 0px !important;
+			width: 0 !important;
+			min-width: 0 !important;
+			padding: 0 !important;
+			margin: 0 !important;
+			overflow: visible !important;
+		}
+
+		/* 3. Float the bar over the pill. position-area: center is the anchor's own
+		      box; stretching inside it fills the pill exactly (no anchor-size()). */
+		#urlbar {
+			position: fixed !important;
+			position-anchor: --nept-active-tab;
+			position-area: center;
+			inset: 0 !important;
+			inset-inline-start: var(--nept-safari-lead) !important;
+			justify-self: stretch;
+			align-self: stretch;
+			width: auto !important;
+			height: auto !important;
+			min-width: 0 !important;
+			margin: 0 !important;
+			z-index: 1;
+
+			/* Size the bar's internals to the pill, not the toolbar's 32px. */
+			--urlbar-height: var(--tab-min-height);
+			--urlbar-min-height: var(--tab-min-height);
+			--urlbar-basic-component-size: var(--tab-min-height);
+
+			/* Invisible at rest (still hoverable), visible on hover/focus/open. */
+			opacity: 0 !important;
+			transition: opacity 150ms ease-out;
+
+			&:is(:hover, [focused], [open], [popover-open]) {
+				opacity: 1 !important;
+			}
+
+			/* The pill already is the surface; the bar only tints it. */
+			> .urlbar-background {
+				box-shadow: none !important;
+				border-radius: 0 var(--border-radius-circle) var(--border-radius-circle) 0 !important;
+			}
+		}
+	}
+}

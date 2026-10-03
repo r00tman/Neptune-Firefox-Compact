@@ -13,3 +13,6 @@ It must work together with “Startpage_for_transparent_toolbox.css” in "userC
 
 /* macOS Tahoe floating toolbar */
 @import "neptune/optionals/macos_tahoe_theme_toolbar.css";
+
+/* Experimental: the address bar floats over the active tab (Safari-style). */
+/* @import "neptune/optionals/Safari_style_tabs.css"; */
