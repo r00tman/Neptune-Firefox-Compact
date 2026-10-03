@@ -144,6 +144,31 @@
 		backdrop-filter: blur(1em);
 		border-color: var(--border-color) !important;
 		border-radius: var(--border-radius-medium) !important;
+
+		/* Match our other menus: accent hover with inverted text, instead of the
+		   stock 20% currentColor tint. */
+		> panel-item::part(button):is(:hover, :focus-visible) {
+			background-color: var(--color-accent-primary-hover) !important;
+			color: var(--button-text-color-primary) !important;
+		}
+	}
+
+	/* The switcher button itself ships bold/15px with a dropmarker; tone it down
+	   to the panel's text weight and our small radius. */
+	.switcher-button {
+		font-weight: var(--font-weight) !important;
+		border-radius: var(--border-radius-small) !important;
+	}
+
+	/* FF157 changed the panel header's close button from type="icon primary" to
+	   "icon ghost"; keep the accent-filled look the theme was tuned for. */
+	.sidebar-panel-heading > moz-button {
+		--button-background-color-ghost: var(--button-background-color-primary) !important;
+		--button-background-color-ghost-hover: var(--button-background-color-primary-hover) !important;
+		--button-background-color-ghost-active: var(--button-background-color-primary-active) !important;
+		--button-text-color-ghost: var(--button-text-color-primary) !important;
+		--button-text-color-ghost-hover: var(--button-text-color-primary) !important;
+		--button-text-color-ghost-active: var(--button-text-color-primary) !important;
 	}
 
 	.sidebar-panel {
