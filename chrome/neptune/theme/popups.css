@@ -39,6 +39,11 @@ panel {
 	&:where([type="arrow"]) {
 		--popup-width: var(--menu-panel-width-wide) !important;
 
+		/* FF157: this card now pads with --panel-menuitem-padding, whose block value we zero. */
+		:is(#PanelUI-fxa-menu-signed-out-card, #appMenu-fxa-signed-out-row) {
+			padding-block: var(--panel-subview-body-padding-block) !important;
+		}
+
 		&#link-preview-panel {
 			--panel-border-radius: 0 !important;
 		}
@@ -204,7 +209,9 @@ toolbarbutton.subviewbutton:not(.all-tabs-secondary-button, .subviewbutton-back,
 
 		> menu,
 		> menuitem {
-			--menuitem-padding: calc((var(--button-min-height) - 18px) / 2) var(--panel-menuitem-padding-inline) !important;
+			/* FF157 split --menuitem-padding into block/inline */
+			--menuitem-padding-block: calc((var(--button-min-height) - 18px) / 2) !important;
+			--menuitem-padding-inline: var(--panel-menuitem-padding-inline) !important;
 
 			.toolbar-menupopup & {
 				padding-block: calc((var(--button-min-height) - 16px) / 2) !important;

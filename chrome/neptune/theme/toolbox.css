@@ -211,6 +211,8 @@
 
 			#statuspanel #statuspanel-label {
 				background-color: var(--background-color-canvas) !important;
+				padding-inline: 4px !important;	/* FF157 ties this to --window-border-radius */
+				padding-block-end: 2px !important;
 				border: none !important;
 				border-radius: 0 var(--border-radius-xsmall) var(--border-radius-xsmall) 0;
 				backdrop-filter: blur(6px);

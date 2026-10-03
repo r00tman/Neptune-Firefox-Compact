@@ -209,6 +209,15 @@
 		}
 	}
 
+	/* FF157 added an "included" state (VPN active for this site); use the "on" art. */
+	&.ipprotection-included {
+		list-style-image: url("../assets/icons/ipprotection-on.svg") !important;
+
+		&:is([overflowedItem="true"], [cui-areatype="panel"]) {
+			list-style-image: url("../assets/icons/ipprotection-state-on.svg") !important;
+		}
+	}
+
 	/* Firefox 154: the toolbar button renders its state through layered images in an icon stack. */
 	&:not([overflowedItem="true"], [cui-areatype="panel"]) > .ipprotection-icon-stack > .ipprotection-icon-layer {
 		&[data-state="on"] {
@@ -221,6 +230,10 @@
 
 		&[data-state="excluded"] {
 			list-style-image: url("../assets/icons/ipprotection-excluded.svg") !important;
+		}
+
+		&[data-state="included"] {
+			list-style-image: url("../assets/icons/ipprotection-on.svg") !important;
 		}
 	}
 }

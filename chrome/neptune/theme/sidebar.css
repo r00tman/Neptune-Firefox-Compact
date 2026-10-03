@@ -134,6 +134,18 @@
 		margin-block-end: 0 !important;
 	}
 
+	/* "hide-launcher" mode (FF157 migrates old-sidebar users here) replaces the
+	   panel title with a switcher whose dropdown is a bare panel-list; its
+	   background token is --background-color-box, which we make ~90% transparent,
+	   so the history rows showed through it. Same treatment as the passwords
+	   panel's list above. */
+	.switcher-button ~ panel-list {
+		background-color: menu !important;
+		backdrop-filter: blur(1em);
+		border-color: var(--border-color) !important;
+		border-radius: var(--border-radius-medium) !important;
+	}
+
 	.sidebar-panel {
 		--icon-size: var(--input-icon-size) !important;
 		--panel-separator-color: var(--card-border-color) !important;
@@ -180,7 +192,8 @@
 				border-radius: var(--border-radius-medium) !important;
 
 				> hr:not([hidden]) {
-					background-color: var(--chrome-content-separator-color) !important;
+					/* FF157 draws panel-list separators as a border, not a filled box. */
+					border-block-start-color: var(--chrome-content-separator-color) !important;
 					margin: var(--panel-separator-padding) !important;
 				}
 			}
