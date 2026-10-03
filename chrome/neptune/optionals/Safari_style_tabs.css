@@ -25,12 +25,13 @@
 
 @media not -moz-pref("neptune.safari-tabs.disabled") {
 
-/* With the bar on the tab, the results view hangs over page content, and the
-   theme's 75%-alpha blurred surface turns to mud over dark pages (video, dark
-   sites). Keep the frosted look but make it denser: same blur, higher alpha.
+/* With the bar on the tab, the results view hangs over page content. The
+   theme's glass (blur + 75% alpha) is fine for that; what made it unreadable
+   over dark pages was the colour-scheme mismatch fixed below. The alpha is
+   left as a knob in case a denser frost is ever wanted.
    Tune live: document.documentElement.style.setProperty("--nept-safari-view-alpha", "0.85") */
 :root {
-	--nept-safari-view-alpha: 0.92;
+	--nept-safari-view-alpha: 0.75;
 }
 
 .urlbarView {
