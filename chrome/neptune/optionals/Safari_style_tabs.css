@@ -29,7 +29,7 @@
 	/* How long the pointer must rest on the favicon before it becomes the close
 	   button. Lower = snappier, but a quick sweep across the pill will trigger
 	   it. Tune live: document.documentElement.style.setProperty("--nept-safari-hover-delay", "90ms") */
-	--nept-safari-hover-delay: 120ms;
+	--nept-safari-hover-delay: 30ms;
 }
 
 @media not -moz-pref("sidebar.verticalTabs") {
