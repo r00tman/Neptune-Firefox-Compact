@@ -30,23 +30,47 @@
 	/* One compound selector (no whitespace between the pseudo-classes). */
 	:root:not([customizing], [popup-window], [inFullscreen], [inDOMFullscreen]):not(:has(#tabbrowser-tabs[movingtab])):not(:has(#tabbrowser-arrowscrollbox > tab:nth-child(12 of :not([hidden])))):has(#tabbrowser-tabs[orient="horizontal"] > #tabbrowser-arrowscrollbox > .tabbrowser-tab[selected]:not([pinned])) {
 
-		/* 1. The active pill is the anchor and grows to hold the address. */
+		/* 1. The active pill is the anchor, grows to hold the address, and IS the
+		      field: hover tint and focus ring are drawn on it, not on the bar. */
 		#tabbrowser-tabs > #tabbrowser-arrowscrollbox > .tabbrowser-tab[selected]:not([pinned]) {
 			min-width: var(--nept-safari-tab-width) !important;
 
 			> .tab-stack > .tab-background {
 				anchor-name: --nept-active-tab;
+				transition: background-color 150ms ease-out, outline-color 150ms ease-out;
 			}
 
-			/* Title fades out while the address bar is showing. */
+			/* Favicon (and the hover close button that replaces it) at the leading
+			   edge, inside the uncovered lead zone; title centred in the rest. */
+			.tab-icon-stack,
+			.tab-close-button {
+				margin-inline-start: 0 !important;
+			}
+
 			.tab-label-container {
+				margin-inline: auto !important;
+				padding-inline-end: 0 !important;
 				transition: opacity 150ms ease-out;
 			}
 		}
 
+		/* While the bar is showing: title fades out, pill tints like the field. */
 		&:has(#urlbar:is(:hover, [focused], [open], [popover-open]))
-		#tabbrowser-tabs > #tabbrowser-arrowscrollbox > .tabbrowser-tab[selected]:not([pinned]) .tab-label-container {
-			opacity: 0;
+		#tabbrowser-tabs > #tabbrowser-arrowscrollbox > .tabbrowser-tab[selected]:not([pinned]) {
+			.tab-label-container {
+				opacity: 0;
+			}
+
+			> .tab-stack > .tab-background {
+				background-color: var(--nept-urlbar-hover-background) !important;
+			}
+		}
+
+		&:has(#urlbar:is([focused], [open], [popover-open]))
+		#tabbrowser-tabs > #tabbrowser-arrowscrollbox > .tabbrowser-tab[selected]:not([pinned]) > .tab-stack > .tab-background {
+			background-color: var(--nept-urlbar-focused-background) !important;
+			outline: var(--focus-outline-width) solid var(--toolbar-field-border-color-focus) !important;
+			outline-offset: 1px;
 		}
 
 		/* 2. Collapse the bar's slot in the nav-bar so the toolbar closes up and
@@ -67,7 +91,6 @@
 			position-anchor: --nept-active-tab;
 			position-area: center;
 			inset: 0 !important;
-			inset-inline-start: var(--nept-safari-lead) !important;
 			justify-self: stretch;
 			align-self: stretch;
 			width: auto !important;
@@ -75,6 +98,11 @@
 			min-width: 0 !important;
 			margin: 0 !important;
 			z-index: 1;
+
+			/* The bar covers the whole pill (so the ring/tint geometry is the
+			   pill's), but the leading zone is cut out of hit-testing so the tab
+			   underneath still gets hover there (favicon → close button). */
+			clip-path: inset(0 0 0 var(--nept-safari-lead));
 
 			/* Size the bar's internals to the pill, not the toolbar's 32px. */
 			--urlbar-height: var(--tab-min-height);
@@ -89,10 +117,13 @@
 				opacity: 1 !important;
 			}
 
-			/* The pill already is the surface; the bar only tints it. */
+			/* The pill is the surface; the bar paints nothing of its own. */
 			> .urlbar-background {
-				box-shadow: none !important;
-				border-radius: 0 var(--border-radius-circle) var(--border-radius-circle) 0 !important;
+				display: none !important;
+			}
+
+			> .urlbar-input-container {
+				padding-inline-start: var(--nept-safari-lead) !important;
 			}
 		}
 	}
