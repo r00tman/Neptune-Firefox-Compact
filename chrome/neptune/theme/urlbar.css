@@ -18,7 +18,18 @@
 .urlbar-background {
 	background-color: var(--nept-urlbar-background) !important;
 	border: none !important;
+	/* FF157 draws the focus indicator as an outline here (was a border). */
+	outline: none !important;
 	border-radius: var(--border-radius-circle) !important;
+
+	/* FF157 "joint background": while the results popover is open the background
+	   grows over the bar's margins, squares its bottom corners and clips itself to
+	   meet the view. Keep it a plain pill. */
+	.urlbar[popover-open] > & {
+		inset: 0 !important;
+		clip-path: none !important;
+		border-radius: var(--border-radius-circle) !important;
+	}
 }
 
 .urlbar {
@@ -60,6 +71,14 @@
 		padding: 0 var(--urlbar-icon-padding) !important;
 		border: none !important;
 		border-radius: var(--border-radius-circle) !important;
+
+		/* FF157 pulls this out over the bar's margins while the view is open
+		   (negative margins + matching padding); our padding override above
+		   already wins, so neutralize the margins too. */
+		.urlbar[popover-open] > & {
+			margin: 0 !important;
+			outline: none !important;
+		}
 
 		/*Unfinished*/
 		/*> .urlbar-input-box > .urlbar-input {
@@ -218,6 +237,13 @@
 }
 
 .urlbarView {
+	/* FF157 adds a .urlbarView-background that paints the lower half of the
+	   "joint background" (square top, 1px border, 14px shadow) behind the view;
+	   we paint our own surface, so drop it. */
+	> .urlbarView-background {
+		display: none !important;
+	}
+
 	color-scheme: light dark;
 	width: max(calc(100% + var(--space-xlarge)), calc(var(--size-layout-large) + var(--space-xlarge))) !important;
 	margin-inline: min(calc(var(--space-xlarge) / -2), calc(((var(--size-layout-large) + var(--space-xlarge) - var(--urlbar-width)) / -2))) !important;
