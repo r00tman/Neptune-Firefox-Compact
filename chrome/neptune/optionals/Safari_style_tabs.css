@@ -49,11 +49,20 @@
 				margin-inline-start: 0 !important;
 			}
 
-			/* The theme fades the close button in over the hidden favicon; with the
-			   hover zone now just the lead strip, that 300ms blank flashes every
-			   time the pointer crosses it. Swap instantly here. */
+			/* The theme swaps favicon → close button on tab hover. With the hover
+			   zone now just the lead strip, every pointer pass across the pill
+			   triggered it. Make the swap require a deliberate hover: the display
+			   change is delayed on the way in (discrete transition) and instant on
+			   the way out, so passing through changes nothing. */
+			.tab-icon-stack,
 			.tab-close-button {
+				transition: display 0s allow-discrete, background-color 100ms ease-out !important;
 				animation: none !important;
+			}
+
+			&:hover .tab-icon-stack,
+			&:hover .tab-close-button {
+				transition-delay: 250ms, 0s !important;
 			}
 
 			.tab-label-container {
