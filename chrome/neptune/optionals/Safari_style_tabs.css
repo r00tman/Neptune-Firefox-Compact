@@ -27,9 +27,14 @@
 
 /* With the bar on the tab, the results view hangs over page content, and the
    theme's 75%-alpha blurred surface turns to mud over dark pages (video, dark
-   sites). Use the opaque menu surface the theme already uses for its popups. */
+   sites). Keep the frosted look but make it denser: same blur, higher alpha.
+   Tune live: document.documentElement.style.setProperty("--nept-safari-view-alpha", "0.85") */
+:root {
+	--nept-safari-view-alpha: 0.92;
+}
+
 .urlbarView {
-	background-color: var(--nept-menu-background) !important;
+	background-color: color-mix(in srgb, var(--nept-menu-background) calc(var(--nept-safari-view-alpha) * 100%), transparent) !important;
 	/* Resolve light-dark() against the chrome's real scheme (private windows are
 	   forced dark while the OS may be light), so the surface matches the text. */
 	color-scheme: var(--toolbar-color-scheme, light dark) !important;
