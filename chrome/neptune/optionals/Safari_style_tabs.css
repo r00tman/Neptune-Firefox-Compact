@@ -25,6 +25,13 @@
 
 @media not -moz-pref("neptune.safari-tabs.disabled") {
 
+/* With the bar on the tab, the results view hangs over page content, and the
+   theme's 75%-alpha blurred surface turns to mud over dark pages (video, dark
+   sites). Use the opaque menu surface the theme already uses for its popups. */
+.urlbarView {
+	background-color: var(--nept-menu-background) !important;
+}
+
 :root {
 	/* Leading part of the pill left uncovered so the favicon / hover close button
 	   stay reachable. */
