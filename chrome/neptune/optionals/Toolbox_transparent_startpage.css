@@ -193,6 +193,16 @@
 			--browser-area-z-index-sidebar: 3;
 			inset-inline-start: var(--opt-theme-sidebar-collapsed-width);
 
+			/* sidebar.visibility=hide-launcher (FF157 migration): the launcher is
+			   [hidden], so don't reserve its width. */
+			&:is(#sidebar-container[hidden] ~ *) {
+				inset-inline-start: 0;
+			}
+
+			&:is(#sidebar-container[hidden][sidebar-positionend] ~ *) {
+				inset-inline-start: calc(100% - var(--opt-theme-sidebar-box-width));
+			}
+
 			&:not([sidebarcommand="viewGenaiChatSidebar"]) {
 				max-width: var(--opt-theme-sidebar-box-width) !important;
 			}
