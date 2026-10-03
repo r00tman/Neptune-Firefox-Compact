@@ -49,20 +49,40 @@
 				margin-inline-start: 0 !important;
 			}
 
-			/* The theme swaps favicon → close button on tab hover. With the hover
-			   zone now just the lead strip, every pointer pass across the pill
-			   triggered it. Make the swap require a deliberate hover: the display
-			   change is delayed on the way in (discrete transition) and instant on
-			   the way out, so passing through changes nothing. */
-			.tab-icon-stack,
-			.tab-close-button {
-				transition: display 0s allow-discrete, background-color 100ms ease-out !important;
-				animation: none !important;
+			/* The theme swaps favicon → close button by toggling display on tab
+			   hover. With the hover zone now just the lead strip, every pointer pass
+			   across the pill triggered it. Here both stay rendered, overlapped at
+			   the leading edge, and cross-fade: delayed on the way in (a pass-through
+			   changes nothing), instant on the way out. */
+			.tab-icon-stack {
+				display: revert !important;
+				opacity: 1;
+				transition: opacity 0s !important;
 			}
 
-			&:hover .tab-icon-stack,
-			&:hover .tab-close-button {
-				transition-delay: 250ms, 0s !important;
+			.tab-close-button {
+				display: revert !important;
+				order: -1;
+				width: 16px !important;
+				height: 16px !important;
+				margin-inline-end: -16px !important;	/* sit exactly under the favicon */
+				opacity: 0;
+				pointer-events: none;
+				animation: none !important;
+				transition: opacity 0s, background-color 100ms ease-out !important;
+			}
+
+			&:hover {
+				.tab-icon-stack {
+					opacity: 0;
+					transition-delay: 250ms !important;
+				}
+
+				.tab-close-button {
+					opacity: 1;
+					pointer-events: auto;
+					transition-delay: 250ms, 0s !important;
+				}
 			}
 
 			.tab-label-container {
