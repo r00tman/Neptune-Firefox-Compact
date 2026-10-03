@@ -101,6 +101,11 @@
 		--button-background-color-ghost-active: var(--button-background-color-primary-active) !important;
 		--button-text-color-ghost-hover: var(--button-text-color-primary) !important;
 		--button-text-color-ghost-active: var(--button-text-color-primary) !important;
+		/* panel-item reads menu-* tokens (aliased to ghost at :root, so set directly) */
+		--button-background-color-menu-hover: var(--button-background-color-primary-hover) !important;
+		--button-background-color-menu-active: var(--button-background-color-primary-active) !important;
+		--button-text-color-menu-hover: var(--button-text-color-primary) !important;
+		--button-text-color-menu-active: var(--button-text-color-primary) !important;
 		--button-border-radius: var(--panel-menuitem-border-radius) !important;
 	}
 
@@ -145,17 +150,22 @@
 		border-color: var(--border-color) !important;
 		border-radius: var(--border-radius-medium) !important;
 
-		/* Match our other menus: accent hover with inverted text, instead of the
-		   stock 20% currentColor tint. */
-		> panel-item::part(button):is(:hover, :focus-visible) {
-			background-color: var(--color-accent-primary-hover) !important;
-			color: var(--button-text-color-primary) !important;
-		}
+		padding-block: var(--panel-subview-body-padding-block) !important;
+
+		/* Match our other menus: accent hover with inverted text. panel-item reads
+		   the --button-*-menu-* tokens, which alias the ghost ones at :root — so they
+		   must be set here directly; overriding the ghost tokens does nothing. */
+		--button-background-color-menu-hover: var(--color-accent-primary-hover) !important;
+		--button-background-color-menu-active: var(--color-accent-primary-active) !important;
+		--button-text-color-menu-hover: var(--button-text-color-primary) !important;
+		--button-text-color-menu-active: var(--button-text-color-primary) !important;
 	}
 
-	/* The switcher button itself ships bold/15px with a dropmarker; tone it down
-	   to the panel's text weight and our small radius. */
+	/* The switcher button ships bold with flex: 1 1 auto, so its hover pill
+	   stretched across the whole header. Hug the label, normal weight, our radius. */
 	.switcher-button {
+		flex: 0 1 auto !important;
+		width: fit-content;
 		font-weight: var(--font-weight) !important;
 		border-radius: var(--border-radius-small) !important;
 	}
