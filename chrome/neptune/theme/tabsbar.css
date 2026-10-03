@@ -1068,7 +1068,6 @@
 					order: -1;
 					width: 16px !important;
 					height: 16px !important;
-					padding: var(--tab-close-button-padding) !important;	/* FF157 shrank the default to 4px */
 					margin-inline-start: auto !important;
 					margin-inline-end: var(--tab-icon-end-margin) !important;
 					animation: fadeIn 300ms ease;
