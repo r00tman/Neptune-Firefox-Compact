@@ -8,6 +8,12 @@ textarea:not(#select-translations-panel-text-area) {
 	outline: 18px solid transparent !important;
 }
 
+/* Address bar: fade the ring in at its final width (no 18px -> 3px shrink). Must
+   match the open-state width below. */
+.urlbar-background {
+	outline-width: 3px !important;
+}
+
 #searchbar:focus-within,
 .urlbar[open] > .urlbar-background,
 .findbar-textbox:focus,
