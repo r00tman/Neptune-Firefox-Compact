@@ -24,6 +24,8 @@
 	--nept-safari-lead: 36px;
 	/* Width the active tab grows to so it can host the address. */
 	--nept-safari-tab-width: clamp(300px, 36vw, 520px);
+	/* Trailing zone kept free for the tab's speaker / mute button when present. */
+	--nept-safari-trail: 32px;
 }
 
 @media not -moz-pref("sidebar.verticalTabs") {
@@ -124,6 +126,17 @@
 
 			> .urlbar-input-container {
 				padding-inline-start: var(--nept-safari-lead) !important;
+			}
+		}
+
+		/* The tab's speaker / mute button sits at the pill's trailing end; when it's
+		   present, keep the bar's page actions clear of it and leave that zone
+		   clickable for the tab (same trick as the leading zone). */
+		&:has(#tabbrowser-arrowscrollbox > .tabbrowser-tab[selected]:not([pinned]):is([soundplaying], [muted], [activemedia-blocked])) #urlbar {
+			clip-path: inset(0 var(--nept-safari-trail) 0 var(--nept-safari-lead));
+
+			> .urlbar-input-container {
+				padding-inline-end: var(--nept-safari-trail) !important;
 			}
 		}
 	}
