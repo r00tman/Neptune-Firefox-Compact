@@ -25,7 +25,7 @@
 	/* Width the active tab grows to so it can host the address. */
 	--nept-safari-tab-width: clamp(300px, 36vw, 520px);
 	/* Trailing zone kept free for the tab's speaker / mute button when present. */
-	--nept-safari-trail: 32px;
+	--nept-safari-trail: 24px;
 }
 
 @media not -moz-pref("sidebar.verticalTabs") {
