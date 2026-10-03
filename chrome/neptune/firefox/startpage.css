@@ -74,7 +74,7 @@
 		> :is(.promo.below-search.promo-visible, .info) {
 			--button-border-radius:  var(--border-radius-xlarge) !important;
 			background-color: var(--newtab-background-color-secondary) !important;
-			backdrop-filter: blur(var(--dimension-4));
+			backdrop-filter: blur(4px);
 			border-radius: var(--border-radius-xlarge) !important;
 			box-shadow: none !important;
 		}
@@ -361,7 +361,7 @@
 
 		.personalize-button {
 			background-color: light-dark(#00000066, #ffffff3f) !important;
-			backdrop-filter: blur(var(--dimension-24));
+			backdrop-filter: blur(24px);
 			color: var(--button-text-color-primary) !important;
 			padding: var(--space-xsmall) var(--space-medium) !important;
 			border-radius: var(--border-radius-circle) !important;
@@ -473,7 +473,7 @@
 					--button-background-color-ghost-active: transparent !important;
 					--button-text-color-ghost-hover: var(--color-accent-primary-hover) !important;
 					--button-text-color-ghost-active: var(--color-accent-primary-active) !important;
-					backdrop-filter: blur(var(--dimension-24));
+					backdrop-filter: blur(24px);
 
 					.nova-enabled & {
 						height: 100% !important;
@@ -712,7 +712,7 @@
 				}
 
 				.high-low-row > :is(.high-temperature, .low-temperature) {
-					gap: var(--dimension-2);
+					gap: 2px;
 
 					> .arrow-icon {
 						height: var(--font-size-xsmall) !important;

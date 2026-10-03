@@ -41,7 +41,7 @@ toolbar .toolbarbutton-1 {
 			}
 
 			&:last-of-type {
-				margin-inline: 0 var(--dimension-8) !important;
+				margin-inline: 0 8px !important;
 			}
 
 			#TabsToolbar:not(:has(> .toolbar-items > #TabsToolbar-customization-target > #tabbrowser-tabs[orient="horizontal"] > #tabbrowser-arrowscrollbox :is(tab-group, tab:not([hidden])))):has(> .toolbar-items > #TabsToolbar-customization-target > #tabbrowser-tabs[orient="horizontal"] > #pinned-tabs-container > tab:only-of-type) &,

@@ -251,7 +251,7 @@
 	border-inline: none !important;
 	border-radius: var(--border-radius-xlarge);
 	background-color: var(--nept-secondary-background);
-	backdrop-filter: saturate(1.5) blur(var(--dimension-32));
+	backdrop-filter: saturate(1.5) blur(32px);
 	color: MenuText;
 	box-shadow: var(--nept-small-shadow), var(--nept-menu-shadow) !important;
 

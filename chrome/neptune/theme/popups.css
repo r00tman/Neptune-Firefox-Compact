@@ -137,7 +137,7 @@ panel {
 			padding: var(--panel-padding-block) !important;
 
 			> richlistitem {
-				min-height: var(--dimension-24) !important;
+				min-height: 24px !important;
 
 				&[originaltype="loginsFooter"]:not(:first-child) {
 					border-radius: var(--border-radius-small) !important;

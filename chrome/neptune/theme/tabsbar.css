@@ -842,7 +842,7 @@
 			transition: filter 100ms cubic-bezier(0.17, 0.67, 0.83, 0.67);
 
 			&:hover {
-				height: var(--dimension-24) !important;
+				height: 24px !important;
 				transition: height 200ms ease-out;
 			}
 
@@ -873,20 +873,28 @@
 		> .tab-audio-button {
 			--button-size-icon-small: var(--icon-size) !important;
 			--button-background-color-ghost-hover: transparent !important;
+			--button-background-color-toolbar-hover: transparent !important;
 			--button-background-color-ghost-active: transparent !important;
+			--button-background-color-toolbar-active: transparent !important;
 			--button-text-color-ghost-hover: var(--color-accent-primary-hover) !important;
+			--button-text-color-toolbar-hover: var(--color-accent-primary-hover) !important;
 			--button-text-color-ghost-active: var(--color-accent-primary-active) !important;
+			--button-text-color-toolbar-active: var(--color-accent-primary-active) !important;
 			margin-inline-end: 0 !important;
 			order: 1;
 
 			#tabbrowser-tabs > #tabbrowser-arrowscrollbox > tab-group .tabbrowser-tab:not([usercontextid]) & {
 				--button-text-color-ghost-hover: color-mix(in oklab, var(--tab-group-color) 75%, transparent) !important;
+				--button-text-color-toolbar-hover: color-mix(in oklab, var(--tab-group-color) 75%, transparent) !important;
 				--button-text-color-ghost-active: var(--tab-group-color) !important;
+				--button-text-color-toolbar-active: var(--tab-group-color) !important;
 			}
 
 			#tabbrowser-tabs > #tabbrowser-arrowscrollbox .tabbrowser-tab[usercontextid] & {
 				--button-text-color-ghost-hover: color-mix(in oklab, var(--identity-tab-color) 75%, transparent) !important;
+				--button-text-color-toolbar-hover: color-mix(in oklab, var(--identity-tab-color) 75%, transparent) !important;
 				--button-text-color-ghost-active: var(--identity-icon-color) !important;
+				--button-text-color-toolbar-active: var(--identity-icon-color) !important;
 			}
 
 			#tabbrowser-tabs[orient="horizontal"] .tabbrowser-tab:not([tab-note]) & {
@@ -1060,6 +1068,7 @@
 					order: -1;
 					width: 16px !important;
 					height: 16px !important;
+					padding: var(--tab-close-button-padding) !important;	/* FF157 shrank the default to 4px */
 					margin-inline-start: auto !important;
 					margin-inline-end: var(--tab-icon-end-margin) !important;
 					animation: fadeIn 300ms ease;
@@ -1133,7 +1142,7 @@
 		}
 
 		.tabbrowser-tab[pending] & {
-			color: var(--text-color-disabled);
+			color: var(--text-color-disabled) !important;
 			transition: color 1s ease-out;
 		}
 	}
@@ -1231,7 +1240,7 @@
 
 		.tab-preview-add-note {
 			width: fit-content;
-			min-height: var(--dimension-20) !important;
+			min-height: 20px !important;
 
 			> stack > .toolbarbutton-icon {
 				width: var(--icon-size-xsmall);
