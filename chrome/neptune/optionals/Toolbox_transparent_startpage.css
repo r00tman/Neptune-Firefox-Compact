@@ -41,7 +41,7 @@
 				backdrop-filter: saturate(1.2) blur(6px);
 				box-shadow: var(--opt-theme-toolbar-item-inner-shadow) !important;
 
-				@media (-moz-mac-tahoe-theme) or (-moz-pref("tahoe.theme.toolbar")) {
+				@media ((-moz-mac-tahoe-theme) or (-moz-pref("tahoe.theme.toolbar")) or (-moz-pref("neptune.tahoe-toolbar.enabled"))) and (not (-moz-pref("neptune.tahoe-toolbar.disabled"))) {
 					box-shadow: var(--opt-theme-toolbar-item-inner-shadow),  var(--opt-tahoe-theme-urlbar-shadow) !important;
 
 					&:-moz-window-inactive {
@@ -63,7 +63,7 @@
 			}
 		}
 
-		@media (-moz-mac-tahoe-theme) or (-moz-pref("tahoe.theme.toolbar")) {
+		@media ((-moz-mac-tahoe-theme) or (-moz-pref("tahoe.theme.toolbar")) or (-moz-pref("neptune.tahoe-toolbar.enabled"))) and (not (-moz-pref("neptune.tahoe-toolbar.disabled"))) {
 			toolbar .toolbarbutton-1 {
 				:root:not([customizing]) #nav-bar &:not(:-moz-window-inactive) {
 					background-color: var(--opt-theme-toolbar-item-background);
@@ -285,7 +285,7 @@
 				backdrop-filter: saturate(1.2) blur(6px);
 				box-shadow: var(--opt-theme-toolbar-item-inner-shadow) !important;
 
-				@media (-moz-mac-tahoe-theme) or (-moz-pref("tahoe.theme.toolbar")) {
+				@media ((-moz-mac-tahoe-theme) or (-moz-pref("tahoe.theme.toolbar")) or (-moz-pref("neptune.tahoe-toolbar.enabled"))) and (not (-moz-pref("neptune.tahoe-toolbar.disabled"))) {
 					box-shadow: var(--opt-theme-toolbar-item-inner-shadow), var(--opt-tahoe-theme-urlbar-shadow) !important;
 
 					&:-moz-window-inactive {
@@ -307,7 +307,7 @@
 			}
 		}
 
-		@media (-moz-mac-tahoe-theme) or (-moz-pref("tahoe.theme.toolbar")) {
+		@media ((-moz-mac-tahoe-theme) or (-moz-pref("tahoe.theme.toolbar")) or (-moz-pref("neptune.tahoe-toolbar.enabled"))) and (not (-moz-pref("neptune.tahoe-toolbar.disabled"))) {
 			toolbar .toolbarbutton-1 {
 				:root:not([customizing]) #nav-bar &:not(:-moz-window-inactive) {
 					background-color: var(--opt-theme-toolbar-item-background);

@@ -46,6 +46,13 @@ Firefox updates regularly rename the ids, classes and CSS tokens this theme reli
 2. Patch `chrome/`, then copy it into the profile: `cp -R chrome/. "<profile>/chrome/"`. The profile copy is a plain copy, not a link.
 3. To try CSS changes without restarting, set `devtools.chrome.enabled` to `true`, open the Browser Console (`Cmd+Shift+J`) and paste `tools/reload-userchrome.js`. Rules you *deleted* only disappear after a real restart.
 
+## macOS Tahoe toolbar
+
+On macOS 26 (Tahoe) the toolbar buttons get the floating "glass capsule" look: a taller address bar, and the downloads / extensions / menu buttons joined into one capsule. Control it with `about:config` booleans, which apply immediately without a restart:
+
+- `neptune.tahoe-toolbar.disabled` = `true` turns it off, even on Tahoe.
+- `neptune.tahoe-toolbar.enabled` = `true` turns it on, on any macOS version.
+
 ## Safari-style tabs (on by default)
 
 The address bar floats over the **active tab**: at rest the tab shows the page title; hovering it, focusing it (`Cmd+L`) or opening results shows the address, security shield and page actions in the same pill. Resting the pointer on the favicon turns it into the close button; a quick sweep across the pill doesn't.

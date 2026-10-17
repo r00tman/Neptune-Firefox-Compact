@@ -1,6 +1,10 @@
 /* https://github.com/yiiyahui/Neptune-Firefox
- * When the downloads or extensions buttons are visible, they group together with the main menu button, including any buttons between them, Adjacent extensions buttons are also joined together. */
-@media (-moz-mac-tahoe-theme) or (-moz-pref("tahoe.theme.toolbar")) {
+ * When the downloads or extensions buttons are visible, they group together with the main menu button, including any buttons between them, Adjacent extensions buttons are also joined together.
+ *
+ * On by default on macOS 26 (Tahoe). about:config booleans, both live (no restart):
+ *   neptune.tahoe-toolbar.disabled = true  -> off, even on Tahoe
+ *   neptune.tahoe-toolbar.enabled  = true  -> on, on any OS (tahoe.theme.toolbar also still works) */
+@media ((-moz-mac-tahoe-theme) or (-moz-pref("tahoe.theme.toolbar")) or (-moz-pref("neptune.tahoe-toolbar.enabled"))) and (not (-moz-pref("neptune.tahoe-toolbar.disabled"))) {
 	:root {
 		--nept-browser-toolbox-padding: 8px;
 		--browser-area-z-index-toolbox: 3 !important;
