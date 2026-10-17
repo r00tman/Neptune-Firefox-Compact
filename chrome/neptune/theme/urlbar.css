@@ -261,8 +261,10 @@
 		transform-origin: top center;
 	}
 
-	> .urlbarView-body-outer > .urlbarView-body-inner {
-		width: inherit !important;
+	/* FF158 removed the body-outer/inner wrappers; their width, negative margin and
+	   (1,3,0) top separator moved onto .urlbarView-results itself. */
+	> .urlbarView-results {
+		width: auto !important;
 		margin-inline: 0 !important;
 		border: none !important;
 	}

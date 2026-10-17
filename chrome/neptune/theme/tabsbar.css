@@ -411,6 +411,11 @@
 			flex: 200 200 !important;
 			margin-block: 0 !important;
 
+			/* FF158 gives the split tabs margin-block: -(tab margin + split padding). */
+			> .tabbrowser-tab {
+				margin-block: 0 !important;
+			}
+
 			/* Keep the split view tab's margin consistent with the normal tab. */
 			#tabbrowser-arrowscrollbox > :is(tab:not([hidden]), tab-group) + &,
 			#tabbrowser-arrowscrollbox > tab-group:is(:not([collapsed]), [collapsed][hasactivetab]) > & {
@@ -466,6 +471,12 @@
 	#tabbrowser-tabs tab-split-view-wrapper & {
 		border-inline: none !important;
 		border-block: none !important;
+	}
+
+	/* FF158 moved the split-view divider and inner padding onto .tab-stack. */
+	#tabbrowser-tabs tab-split-view-wrapper > & > .tab-stack {
+		border: none !important;
+		padding-inline: 0 !important;
 	}
 
 	.tab-background {

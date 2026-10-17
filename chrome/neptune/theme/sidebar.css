@@ -177,7 +177,8 @@
 
 	/* FF157 changed the panel header's close button from type="icon primary" to
 	   "icon ghost"; keep the accent-filled look the theme was tuned for. */
-	.sidebar-panel-heading > moz-button {
+	/* #sidebar-panel-header: the legacy Bookmarks panel, which gets the switcher in 158. */
+	:is(.sidebar-panel-heading, #sidebar-panel-header) > moz-button {
 		--button-background-color-ghost: var(--button-background-color-primary) !important;
 		--button-background-color-ghost-hover: var(--button-background-color-primary-hover) !important;
 		--button-background-color-ghost-active: var(--button-background-color-primary-active) !important;

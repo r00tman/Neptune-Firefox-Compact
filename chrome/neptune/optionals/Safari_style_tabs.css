@@ -57,7 +57,7 @@
 
 @media not -moz-pref("sidebar.verticalTabs") {
 	/* One compound selector (no whitespace between the pseudo-classes). */
-	:root:not([customizing], [popup-window], [inFullscreen], [inDOMFullscreen]):not(:has(#tabbrowser-tabs[movingtab])):not(:has(#tabbrowser-arrowscrollbox > tab:nth-child(12 of :not([hidden])))):has(#tabbrowser-tabs[orient="horizontal"] > #tabbrowser-arrowscrollbox > .tabbrowser-tab[selected]:not([pinned])) {
+	:root:not([customizing], [popup-window], [mini-window], [taskbartab], [inFullscreen], [inDOMFullscreen]):not(:has(#tabbrowser-tabs[movingtab])):not(:has(#tabbrowser-arrowscrollbox > tab:nth-child(12 of :not([hidden])))):has(#tabbrowser-tabs[orient="horizontal"] > #tabbrowser-arrowscrollbox > .tabbrowser-tab[selected]:not([pinned])) {
 
 		/* 1. The active pill is the anchor, grows to hold the address, and IS the
 		      field: hover tint and focus ring are drawn on it, not on the bar. */
