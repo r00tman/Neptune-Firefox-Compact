@@ -110,7 +110,7 @@
 		@media not -moz-pref("sidebar.verticalTabs") {
 			grid-area: 1 / 2 / span 1 / span 1;
 			padding-block-start: calc(var(--nept-browser-toolbox-padding) / 2) !important;
-			--toolbarbutton-padding-inner: calc((var(--tab-min-height) - var(--icon-size-small)) / 2 + var(--tab-overflow-clip-margin)) !important;
+			--toolbarbutton-padding-inner: calc((var(--tab-min-height) - var(--icon-size-small)) / 2 + var(--tab-margin-overflow-clip)) !important;
 			order: 1;
 
 			> .titlebar-spacer {

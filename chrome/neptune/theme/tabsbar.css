@@ -5,7 +5,7 @@
 
 	&[orient="horizontal"] {
 		--scrollbutton-display: none;
-		--scrollbutton-padding: calc((var(--tab-min-height) - var(--size-item-small)) / 2) var(--tab-overflow-clip-margin);
+		--scrollbutton-padding: calc((var(--tab-min-height) - var(--size-item-small)) / 2) var(--tab-margin-overflow-clip);
 		--tab-min-width: calc(48px + var(--tab-margin-block)) !important;
 		--tab-max-width: 100% !important;
 
@@ -28,7 +28,7 @@
 			--tab-min-width-pref: var(--tab-min-width) !important;
 
 			&:not([pinned], tab-group[collapsed] > &:not([visuallyselected])) {
-				padding: var(--tab-overflow-clip-margin) !important;
+				padding: var(--tab-margin-overflow-clip) !important;
 
 				&:not(:nth-child(1 of :not([hidden])), tab-split-view-wrapper > &) {
 					margin-inline-start: var(--tab-margin-block) !important;
@@ -40,11 +40,11 @@
 					}
 
 					&:is([muted], [soundplaying], [activemedia-blocked]):not([tab-note]) {
-						--tab-min-width-extra-icons: calc(var(--size-item-xsmall) - var(--tab-overflow-clip-margin)) !important;
+						--tab-min-width-extra-icons: calc(var(--size-item-xsmall) - var(--tab-margin-overflow-clip)) !important;
 					}
 
 					&[tab-note]:not([muted], [soundplaying], [activemedia-blocked]) {
-						--tab-min-width-extra-icons: calc(var(--size-item-xsmall) + var(--tab-inline-padding)) !important;
+						--tab-min-width-extra-icons: calc(var(--size-item-xsmall) + var(--tab-padding-inline)) !important;
 					}
 
 					&[tab-note]:is([muted], [soundplaying], [activemedia-blocked]) {
@@ -73,7 +73,7 @@
 			}
 
 			&:nth-child(1 of :not([pinned], [selected], tab-group > &)) {
-				--tab-loading-fill: transparent !important;
+				--tab-icon-fill-loading: transparent !important;
 			}
 		}
 	}
@@ -94,8 +94,8 @@
 				}
 
 				#tabbrowser-tabs[movingtab][movingtab-addToGroup]:not(:is([movingtab-group], [movingtab-ungroup])) &:not(tab-split-view-wrapper > &):is(:active, [multiselected]) {
-					margin-inline-start: calc(var(--size-item-small) + var(--tab-icon-end-margin)) !important;
-					width: calc(100% - (var(--size-item-small) + var(--tab-icon-end-margin))) !important;
+					margin-inline-start: calc(var(--size-item-small) + var(--tab-icon-margin-inline-end)) !important;
+					width: calc(100% - (var(--size-item-small) + var(--tab-icon-margin-inline-end))) !important;
 					transition: margin-inline 100ms ease-out, width 100ms ease-out !important;
 				}
 
@@ -107,11 +107,11 @@
 				}
 
 				tab-group:is(:not([collapsed]), [collapsed][hasactivetab]) > &:not(#tabbrowser-tabs[movingtab]:is([movingtab-group], [movingtab-ungroup]) tab-group &[dragtarget]) {
-					margin-inline-start: calc(var(--size-item-small) + var(--tab-icon-end-margin)) !important;
+					margin-inline-start: calc(var(--size-item-small) + var(--tab-icon-margin-inline-end)) !important;
 				}
 
 				#tabbrowser-arrowscrollbox > &:not([selected], [multiselected]) {
-					margin-inline-end: calc(var(--size-item-small) + var(--tab-icon-end-margin) + (var(--tab-inline-padding) - var(--tab-inner-inline-margin))) !important;
+					margin-inline-end: calc(var(--size-item-small) + var(--tab-icon-margin-inline-end) + (var(--tab-padding-inline) - var(--tab-margin-inline-inner))) !important;
 				}
 			}
 		}
@@ -167,7 +167,7 @@
 
 		#tabbrowser-tabs[orient="horizontal"] > & {
 			height: var(--tabstrip-min-height) !important;
-			margin-inline: 0 var(--tab-inline-padding) !important;
+			margin-inline: 0 var(--tab-padding-inline) !important;
 			padding-inline: calc((var(--tabstrip-min-height) - var(--icon-size-xsmall)) / 2) !important;
 
 			&[visible] #pinned-drop-indicator-icon {
@@ -210,7 +210,7 @@
 
 	.tab-group-label-container {
 		#tabbrowser-tabs[orient="horizontal"] tab-group > & {
-			padding-inline: var(--tab-overflow-clip-margin) !important;
+			padding-inline: var(--tab-margin-overflow-clip) !important;
 			margin-inline-start: var(--tab-margin-block) !important;
 
 			/*If the first tab is a tab group, keep the same start margin as a normal tab.*/
@@ -228,11 +228,11 @@
 		}
 
 		#tabbrowser-tabs[orient="vertical"][expanded] & {
-			margin-inline: var(--tab-inner-inline-margin) !important;
+			margin-inline: var(--tab-margin-inline-inner) !important;
 
 			/* Reserve space for the "tab group overflow count" only when its shown. If the counter is removed, comment it out. */
 			#tabbrowser-tabs:not([movingtab]) tab-group[collapsed][hasactivetab][hasmultipletabs] > & {
-				margin-inline-end: calc(var(--size-item-small) + var(--tab-inner-inline-margin) + var(--space-medium)) !important;
+				margin-inline-end: calc(var(--size-item-small) + var(--tab-margin-inline-inner) + var(--space-medium)) !important;
 				transition: margin-inline 100ms ease-out;
 			}
 		}
@@ -269,7 +269,7 @@
 				}
 
 				#tabbrowser-tabs[orient="horizontal"] & {
-					padding-inline: var(--tab-inline-padding) !important;
+					padding-inline: var(--tab-padding-inline) !important;
 
 					tab-group[collapsed] > .tab-group-label-container & {
 						background-color: color-mix(in oklab, var(--tab-group-color-invert) 15%, transparent) !important;
@@ -295,14 +295,14 @@
 					-moz-context-properties: fill;
 					min-width: -moz-available !important;
 					margin-inline-end: 0 !important;
-					padding-inline-start: calc(var(--size-item-small) + var(--tab-icon-end-margin) + (var(--tab-inline-padding) - var(--tab-inner-inline-margin))) !important;
-					background: url("../assets/icons/tab-group.svg") no-repeat calc(var(--tab-inline-padding) - var(--tab-inner-inline-margin)) transparent !important;
+					padding-inline-start: calc(var(--size-item-small) + var(--tab-icon-margin-inline-end) + (var(--tab-padding-inline) - var(--tab-margin-inline-inner))) !important;
+					background: url("../assets/icons/tab-group.svg") no-repeat calc(var(--tab-padding-inline) - var(--tab-margin-inline-inner)) transparent !important;
 					color: var(--tab-group-color) !important;
 					fill: var(--tab-group-color);
 					text-align: left !important;
 
 					tab-group[collapsed] > .tab-group-label-container & {
-						background: url("../assets/icons/tab-group-collapsed.svg") no-repeat calc(var(--tab-inline-padding) - var(--tab-inner-inline-margin)) !important;
+						background: url("../assets/icons/tab-group-collapsed.svg") no-repeat calc(var(--tab-padding-inline) - var(--tab-margin-inline-inner)) !important;
 						color: inherit !important;
 
 						&[dragover-groupTarget] {
@@ -320,7 +320,7 @@
 					background-color: color-mix(in oklab, var(--tab-group-color) 70%, transparent) !important;
 					width: var(--tab-group-label-height) !important;
 					max-width: unset !important;
-					margin-inline: var(--tab-inner-inline-margin) !important;
+					margin-inline: var(--tab-margin-inline-inner) !important;
 					box-shadow: var(--shadow-inner-glow) color-mix(in oklab, var(--tab-group-color) 20%, transparent), var(--shadow-inner-depth) color-mix(in oklab, var(--tab-group-color) 20%, transparent);
 					transition: color 250ms ease-out, box-shadow var(--tab-group-label-animation-duration) !important;
 
@@ -349,7 +349,7 @@
 		font-family: monospace;
 
 		#tabbrowser-tabs[orient="horizontal"] & {
-			margin-inline: var(--tab-overflow-clip-margin) 0 !important;
+			margin-inline: var(--tab-margin-overflow-clip) 0 !important;
 			padding-inline: 0 !important;
 
 			tab-group[collapsed][hasactivetab][hasmultipletabs]:has(+ #tabbrowser-arrowscrollbox-periphery) > & {
@@ -372,7 +372,7 @@
 				position: absolute;
 				background-color: color-mix(in oklab, var(--tab-group-color) 8%, transparent);
 				padding: 0 var(--tab-group-label-padding) !important;
-				inset: auto var(--tab-inner-inline-margin) calc(var(--tab-min-height) + var(--space-medium) + var(--tab-min-height) / 2 / 2) auto;
+				inset: auto var(--tab-margin-inline-inner) calc(var(--tab-min-height) + var(--space-medium) + var(--tab-min-height) / 2 / 2) auto;
 				border-radius: var(--border-radius-large);
 			}
 		}
@@ -423,17 +423,17 @@
 		}
 
 		#tabbrowser-tabs[orient="vertical"][expanded] & {
-			margin-inline: var(--tab-inner-inline-margin) !important;
+			margin-inline: var(--tab-margin-inline-inner) !important;
 
 			#tabbrowser-tabs[movingtab][movingtab-addToGroup]:not(:is([movingtab-group], [movingtab-ungroup])) &[dragtarget] {
-				margin-inline-start: calc(var(--size-item-small) + var(--tab-icon-end-margin) + var(--tab-inner-inline-margin)) !important;
-				width: calc(100% - (var(--size-item-small) + var(--tab-icon-end-margin)) - 2 * var(--tab-inner-inline-margin)) !important;
-				max-width: calc(100% - (var(--size-item-small) + var(--tab-icon-end-margin)) - 2 * var(--tab-inner-inline-margin)) !important;
+				margin-inline-start: calc(var(--size-item-small) + var(--tab-icon-margin-inline-end) + var(--tab-margin-inline-inner)) !important;
+				width: calc(100% - (var(--size-item-small) + var(--tab-icon-margin-inline-end)) - 2 * var(--tab-margin-inline-inner)) !important;
+				max-width: calc(100% - (var(--size-item-small) + var(--tab-icon-margin-inline-end)) - 2 * var(--tab-margin-inline-inner)) !important;
 				transition: margin-inline 100ms ease-out, var(--tab-width-transition);
 			}
 
 			tab-group > &:not([dragtarget]) {
-				margin-inline-start: calc(var(--size-item-small) + var(--tab-icon-end-margin) + var(--tab-inner-inline-margin)) !important;
+				margin-inline-start: calc(var(--size-item-small) + var(--tab-icon-margin-inline-end) + var(--tab-margin-inline-inner)) !important;
 			}
 
 			:root[sidebar-expand-on-hover] & {
@@ -453,14 +453,14 @@
 
 .tabbrowser-tab {
 	--tab-label-mask-size: 0 !important;
-	--tab-icon-end-margin: inherit !important;
+	--tab-icon-margin-inline-end: inherit !important;
 
 	&[usercontextid] {
-		--tab-loading-fill: var(--identity-tab-color);
+		--tab-icon-fill-loading: var(--identity-tab-color);
 	}
 
 	tab-group &:not([usercontextid]) {
-		--tab-loading-fill: light-dark(var(--tab-group-color), var(--tab-group-color-pale));
+		--tab-icon-fill-loading: light-dark(var(--tab-group-color), var(--tab-group-color-pale));
 	}
 
 	#tabbrowser-tabs tab-split-view-wrapper & {
@@ -489,7 +489,7 @@
 
 		#tabbrowser-tabs[orient="vertical"]:not([expanded]) tab-split-view-wrapper > .tabbrowser-tab > .tab-stack > & {
 			width: var(--tab-collapsed-background-width) !important;
-			margin-inline: var(--tab-inner-inline-margin) !important;
+			margin-inline: var(--tab-margin-inline-inner) !important;
 		}
 
 		#tabbrowser-tabs[orient="horizontal"] tab-split-view-wrapper > .tabbrowser-tab:first-of-type > .tab-stack > & {
@@ -565,16 +565,16 @@
 				background-color: color-mix(in srgb, var(--identity-tab-color) 10%, var(--lwt-accent-color, transparent)) !important;
 
 				&:not(#pinned-tabs-container > .tabbrowser-tab &) {
-					box-shadow: var(--shadow-inner-glow) oklch(from color-mix(in oklab, var(--identity-tab-color) 10%, var(--lwt-accent-color, transparent)) calc(l + (1 - l) * (1 - l * l * l) * 0.35) calc(c * 1.04) h), var(--shadow-inner-depth) oklch(from color-mix(in oklab, var(--identity-tab-color) 10%, var(--lwt-accent-color, transparent)) calc(l + (1 - l) * (1 - l * l * l) * 0.32) c h), 0 0 0 var(--tab-overflow-clip-margin) var(--nept-tab-shadow-color) !important;
+					box-shadow: var(--shadow-inner-glow) oklch(from color-mix(in oklab, var(--identity-tab-color) 10%, var(--lwt-accent-color, transparent)) calc(l + (1 - l) * (1 - l * l * l) * 0.35) calc(c * 1.04) h), var(--shadow-inner-depth) oklch(from color-mix(in oklab, var(--identity-tab-color) 10%, var(--lwt-accent-color, transparent)) calc(l + (1 - l) * (1 - l * l * l) * 0.32) c h), 0 0 0 var(--tab-margin-overflow-clip) var(--nept-tab-shadow-color) !important;
 				}
 			}
 
 			#tabbrowser-tabs[orient="horizontal"]:not([movingtab-group], [movingtab-ungroup]) > #tabbrowser-arrowscrollbox tab-split-view-wrapper > .tabbrowser-tab[usercontextid]:first-of-type > .tab-stack > & {
-				box-shadow: var(--shadow-inner-left) oklch(from color-mix(in oklab, var(--identity-tab-color) 10%, var(--lwt-accent-color, transparent)) calc(l + (1 - l) * (1 - l * l * l) * 0.35) calc(c * 1.04) h), var(--shadow-inner-bottom) oklch(from color-mix(in oklab, var(--identity-tab-color) 10%, var(--lwt-accent-color, transparent)) calc(l + (1 - l) * (1 - l * l * l) * 0.32) c h), 0 0 0 var(--tab-overflow-clip-margin) var(--nept-tab-shadow-color) !important;
+				box-shadow: var(--shadow-inner-left) oklch(from color-mix(in oklab, var(--identity-tab-color) 10%, var(--lwt-accent-color, transparent)) calc(l + (1 - l) * (1 - l * l * l) * 0.35) calc(c * 1.04) h), var(--shadow-inner-bottom) oklch(from color-mix(in oklab, var(--identity-tab-color) 10%, var(--lwt-accent-color, transparent)) calc(l + (1 - l) * (1 - l * l * l) * 0.32) c h), 0 0 0 var(--tab-margin-overflow-clip) var(--nept-tab-shadow-color) !important;
 			}
 
 			#tabbrowser-tabs[orient="horizontal"]:not([movingtab-group], [movingtab-ungroup]) > #tabbrowser-arrowscrollbox tab-split-view-wrapper > .tabbrowser-tab[usercontextid]:last-of-type > .tab-stack > & {
-				box-shadow: var(--shadow-inner-top) oklch(from color-mix(in oklab, var(--identity-tab-color) 10%, var(--lwt-accent-color, transparent)) calc(l + (1 - l) * (1 - l * l * l) * 0.35) calc(c * 1.04) h), var(--shadow-inner-right) oklch(from color-mix(in oklab, var(--identity-tab-color) 10%, var(--lwt-accent-color, transparent)) calc(l + (1 - l) * (1 - l * l * l) * 0.32) c h), 0 0 0 var(--tab-overflow-clip-margin) var(--nept-tab-shadow-color) !important;
+				box-shadow: var(--shadow-inner-top) oklch(from color-mix(in oklab, var(--identity-tab-color) 10%, var(--lwt-accent-color, transparent)) calc(l + (1 - l) * (1 - l * l * l) * 0.35) calc(c * 1.04) h), var(--shadow-inner-right) oklch(from color-mix(in oklab, var(--identity-tab-color) 10%, var(--lwt-accent-color, transparent)) calc(l + (1 - l) * (1 - l * l * l) * 0.32) c h), 0 0 0 var(--tab-margin-overflow-clip) var(--nept-tab-shadow-color) !important;
 			}
 
 			#tabbrowser-tabs[orient="horizontal"][movingtab][movingtab-group] .tabbrowser-tab > .tab-stack > & {
@@ -592,7 +592,7 @@
 
 			#tabbrowser-tabs[orient="horizontal"] > #tabbrowser-arrowscrollbox .tabbrowser-tab:not([usercontextid], tab-group .tabbrowser-tab):hover > .tab-stack > & {
 				background-color: var(--nept-tab-hover-background) !important;
-				box-shadow: 0 0 0 var(--tab-overflow-clip-margin) var(--nept-tab-hover-shadow-color) !important;
+				box-shadow: 0 0 0 var(--tab-margin-overflow-clip) var(--nept-tab-hover-shadow-color) !important;
 			}
 
 			#tabbrowser-tabs[orient="horizontal"] > #pinned-tabs-container .tabbrowser-tab > .tab-stack > & {
@@ -636,7 +636,7 @@
 				}
 
 				#tabbrowser-arrowscrollbox[orient="horizontal"] tab:hover & {
-					box-shadow: 0 0 0 var(--tab-overflow-clip-margin) color-mix(in oklab, var(--identity-tab-color) 2%, transparent) !important;
+					box-shadow: 0 0 0 var(--tab-margin-overflow-clip) color-mix(in oklab, var(--identity-tab-color) 2%, transparent) !important;
 				}
 			}
 
@@ -693,15 +693,15 @@
 
 			#tabbrowser-tabs[orient="horizontal"]:not([movingtab-group]) > #tabbrowser-arrowscrollbox .tabbrowser-tab[usercontextid] > .tab-stack > & {
 				background-color: color-mix(in srgb, var(--identity-tab-color) 15%, var(--lwt-accent-color, transparent)) !important;
-				box-shadow: var(--shadow-inner-glow) oklch(from color-mix(in oklab, var(--identity-tab-color) 15%, var(--lwt-accent-color, transparent)) calc(l + (1 - l) * (1 - l * l * l) * 0.35) calc(c * 1.04) h), var(--shadow-inner-depth) oklch(from color-mix(in oklab, var(--identity-tab-color) 15%, var(--lwt-accent-color, transparent)) calc(l + (1 - l) * (1 - l * l * l) * 0.32) c h), 0 0 0 var(--tab-overflow-clip-margin) var(--nept-tab-shadow-color) !important;
+				box-shadow: var(--shadow-inner-glow) oklch(from color-mix(in oklab, var(--identity-tab-color) 15%, var(--lwt-accent-color, transparent)) calc(l + (1 - l) * (1 - l * l * l) * 0.35) calc(c * 1.04) h), var(--shadow-inner-depth) oklch(from color-mix(in oklab, var(--identity-tab-color) 15%, var(--lwt-accent-color, transparent)) calc(l + (1 - l) * (1 - l * l * l) * 0.32) c h), 0 0 0 var(--tab-margin-overflow-clip) var(--nept-tab-shadow-color) !important;
 			}
 
 			#tabbrowser-tabs[orient="horizontal"]:not([movingtab-group]) > #tabbrowser-arrowscrollbox > tab-split-view-wrapper > .tabbrowser-tab[usercontextid]:first-of-type > .tab-stack > & {
-				box-shadow: var(--shadow-inner-left) oklch(from color-mix(in oklab, var(--identity-tab-color) 15%, var(--lwt-accent-color, transparent)) calc(l + (1 - l) * (1 - l * l * l) * 0.35) calc(c * 1.04) h), var(--shadow-inner-bottom) oklch(from color-mix(in oklab, var(--identity-tab-color) 15%, var(--lwt-accent-color, transparent)) calc(l + (1 - l) * (1 - l * l * l) * 0.32) c h), 0 0 0 var(--tab-overflow-clip-margin) var(--nept-tab-shadow-color) !important;
+				box-shadow: var(--shadow-inner-left) oklch(from color-mix(in oklab, var(--identity-tab-color) 15%, var(--lwt-accent-color, transparent)) calc(l + (1 - l) * (1 - l * l * l) * 0.35) calc(c * 1.04) h), var(--shadow-inner-bottom) oklch(from color-mix(in oklab, var(--identity-tab-color) 15%, var(--lwt-accent-color, transparent)) calc(l + (1 - l) * (1 - l * l * l) * 0.32) c h), 0 0 0 var(--tab-margin-overflow-clip) var(--nept-tab-shadow-color) !important;
 			}
 
 			#tabbrowser-tabs[orient="horizontal"]:not([movingtab-group]) > #tabbrowser-arrowscrollbox tab-split-view-wrapper > .tabbrowser-tab[usercontextid]:last-of-type > .tab-stack > & {
-				box-shadow: var(--shadow-inner-top) oklch(from color-mix(in oklab, var(--identity-tab-color) 15%, var(--lwt-accent-color, transparent)) calc(l + (1 - l) * (1 - l * l * l) * 0.35) calc(c * 1.04) h), var(--shadow-inner-right) oklch(from color-mix(in oklab, var(--identity-tab-color) 15%, var(--lwt-accent-color, transparent)) calc(l + (1 - l) * (1 - l * l * l) * 0.32) c h), 0 0 0 var(--tab-overflow-clip-margin) var(--nept-tab-shadow-color) !important;
+				box-shadow: var(--shadow-inner-top) oklch(from color-mix(in oklab, var(--identity-tab-color) 15%, var(--lwt-accent-color, transparent)) calc(l + (1 - l) * (1 - l * l * l) * 0.35) calc(c * 1.04) h), var(--shadow-inner-right) oklch(from color-mix(in oklab, var(--identity-tab-color) 15%, var(--lwt-accent-color, transparent)) calc(l + (1 - l) * (1 - l * l * l) * 0.32) c h), 0 0 0 var(--tab-margin-overflow-clip) var(--nept-tab-shadow-color) !important;
 			}
 
 			#tabbrowser-tabs:not([movingtab-group], [movingtab-ungroup]) > :is(#pinned-tabs-container, #tabbrowser-arrowscrollbox[orient="vertical"]) .tabbrowser-tab[usercontextid]:not([dragtarget]) > .tab-stack > & {
@@ -750,7 +750,7 @@
 
 			#tabbrowser-tabs[orient="vertical"][expanded] .tabbrowser-tab:not([dragtarget]) & {
 				&:not(tab-split-view-wrapper > .tabbrowser-tab &) {
-					inset-inline: var(--tab-inner-inline-margin) !important;
+					inset-inline: var(--tab-margin-inline-inner) !important;
 				}
 
 				tab-split-view-wrapper > .tabbrowser-tab:first-of-type & {
@@ -759,7 +759,7 @@
 			}
 
 			#tabbrowser-tabs[orient="vertical"]:not([expanded]) .tabbrowser-tab:not([dragtarget]) & {
-				inset-inline: var(--tab-inner-inline-margin) !important;
+				inset-inline: var(--tab-margin-inline-inner) !important;
 
 				tab-split-view-wrapper > .tabbrowser-tab:first-of-type & {
 					border-radius: var(--tab-border-radius) var(--tab-border-radius) 0 0 !important;
@@ -796,12 +796,12 @@
 		}
 
 		#tabbrowser-tabs[orient="horizontal"] .tabbrowser-tab > .tab-stack > &[pinned] {
-			padding: 0 var(--tab-inline-padding) !important;
+			padding: 0 var(--tab-padding-inline) !important;
 		}
 
 		#tabbrowser-tabs[orient="vertical"]:not([expanded]) tab-split-view-wrapper > .tabbrowser-tab > .tab-stack > & {
 			width: unset !important;
-			padding-inline: var(--tab-inline-padding) !important;
+			padding-inline: var(--tab-padding-inline) !important;
 		}
 
 		> .tab-label-container {
@@ -814,7 +814,7 @@
 
 				/* Compensate the padding of the tab with a normal close-button state to center the label. */
 				&:not(#tabbrowser-tabs[closebuttons="activetab"] &:not([selected], tab-split-view-wrapper > tab &)):not(tab:is([tab-note], [muted], [soundplaying], [activemedia-blocked]) &) {
-					padding-inline-end: calc(var(--size-item-xsmall) + var(--tab-inline-padding));
+					padding-inline-end: calc(var(--size-item-xsmall) + var(--tab-padding-inline));
 				}
 
 				&[textoverflow] > .tab-label {
@@ -836,7 +836,7 @@
 		> .tab-note-icon {
 			list-style-image: url("../assets/icons/tab-notes-12.svg") !important;
 			align-self: flex-start;
-			padding: 0 var(--tab-overflow-clip-margin) var(--tab-overflow-clip-margin) !important;
+			padding: 0 var(--tab-margin-overflow-clip) var(--tab-margin-overflow-clip) !important;
 			margin-inline-end: 0 !important;
 			fill: accentcolor !important;
 			transition: filter 100ms cubic-bezier(0.17, 0.67, 0.83, 0.67);
@@ -898,15 +898,15 @@
 			}
 
 			#tabbrowser-tabs[orient="horizontal"] .tabbrowser-tab:not([tab-note]) & {
-				margin-inline-start: var(--tab-inline-padding);
+				margin-inline-start: var(--tab-padding-inline);
 			}
 
 			#tabbrowser-tabs[orient="vertical"][expanded] .tabbrowser-tab:not([tab-note]) & {
-				margin-inline-start: calc(var(--tab-inline-padding) / 2);
+				margin-inline-start: calc(var(--tab-padding-inline) / 2);
 			}
 
 			#tabbrowser-tabs .tabbrowser-tab[tab-note] & {
-				margin-inline-start: calc(var(--tab-icon-end-margin) - var(--tab-overflow-clip-margin));
+				margin-inline-start: calc(var(--tab-icon-margin-inline-end) - var(--tab-margin-overflow-clip));
 			}
 
 			&:is([tab-note], [muted], [soundplaying], [activemedia-blocked]) {
@@ -937,7 +937,7 @@
 
 					/* Increase left padding when a tab has both 'note' and 'media playing' states to prevent label jittering while keeping it centered. but in edge cases, it still cannot be avoided.*/
 					.tabbrowser-tab[tab-note]:is([muted], [soundplaying], [activemedia-blocked]) &:not(:has(~ .tab-label-container[textoverflow])) {
-						padding-inline-start: calc(var(--icon-size-xsmall) + (var(--tab-icon-end-margin) - var(--tab-overflow-clip-margin)));
+						padding-inline-start: calc(var(--icon-size-xsmall) + (var(--tab-icon-margin-inline-end) - var(--tab-margin-overflow-clip)));
 					}
 				}
 
@@ -988,7 +988,7 @@
 			}
 
 			#tabbrowser-tabs[orient="horizontal"][overflow] > #tabbrowser-arrowscrollbox .tabbrowser-tab:not([selected], [muted], [soundplaying], [activemedia-blocked], tab-split-view-wrapper > .tabbrowser-tab) .tab-content > & > * {
-				margin-inline: calc((var(--tab-min-width-pref) - var(--size-item-small) - var(--tab-margin-block)) / 2 - var(--tab-inline-padding)) !important;
+				margin-inline: calc((var(--tab-min-width-pref) - var(--size-item-small) - var(--tab-margin-block)) / 2 - var(--tab-padding-inline)) !important;
 			}
 
 			#tabbrowser-tabs:not([movingtab]) > #tabbrowser-arrowscrollbox .tabbrowser-tab:hover .tab-content:not(:is(#tabbrowser-tabs[orient="vertical"]:not([expanded]), #tabbrowser-tabs[orient="horizontal"]) .tab-content) > &,
@@ -1069,7 +1069,7 @@
 					width: 16px !important;
 					height: 16px !important;
 					margin-inline-start: auto !important;
-					margin-inline-end: var(--tab-icon-end-margin) !important;
+					margin-inline-end: var(--tab-icon-margin-inline-end) !important;
 					animation: fadeIn 300ms ease;
 				}
 
@@ -1087,7 +1087,7 @@
 			}
 
 			#tabbrowser-tabs[orient="vertical"][expanded] & {
-				margin-inline-end: calc(var(--tab-icon-end-margin) + 4px) !important;
+				margin-inline-end: calc(var(--tab-icon-margin-inline-end) + 4px) !important;
 				display: none;
 
 				#tabbrowser-tabs:not([movingtab]) > #tabbrowser-arrowscrollbox .tabbrowser-tab:hover & {

@@ -81,7 +81,7 @@
 	--link-color-hover: color-mix(in srgb, currentColor 52%, transparent) !important;
 	--link-color-active: color-mix(in srgb, currentColor 58%, transparent) !important;
 	--icon-color: light-dark(#383838, #ececec) !important;
-	--tab-loading-fill: var(--color-accent-primary) !important;
+	--tab-icon-fill-loading: var(--color-accent-primary) !important;
 	--tab-hover-background-color: var(--nept-item-hover-background) !important;
 	--tab-selected-bgcolor: var(--nept-item-active-background) !important;
 	--download-progress-fill-color: var(--color-accent-primary) !important;
