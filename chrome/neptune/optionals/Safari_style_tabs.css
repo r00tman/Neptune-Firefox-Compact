@@ -10,7 +10,7 @@
 
    The mode turns itself off (plain single-line layout) when it can't work:
    vertical tabs, customize mode, fullscreen, popup windows, a pinned or
-   split-view active tab, and with 12+ visible tabs (a
+   split-view active tab, while dragging a tab, and with 12+ visible tabs (a
    tab-count trigger rather than [overflow], because widening the active tab can
    itself cause overflow and the two would oscillate).
 
@@ -57,7 +57,7 @@
 
 @media not -moz-pref("sidebar.verticalTabs") {
 	/* One compound selector (no whitespace between the pseudo-classes). */
-	:root:not([customizing], [popup-window], [mini-window], [taskbartab], [inFullscreen], [inDOMFullscreen]):not(:has(#tabbrowser-arrowscrollbox > tab:nth-child(12 of :not([hidden])))):has(#tabbrowser-tabs[orient="horizontal"] > #tabbrowser-arrowscrollbox > .tabbrowser-tab[selected]:not([pinned])) {
+	:root:not([customizing], [popup-window], [mini-window], [taskbartab], [inFullscreen], [inDOMFullscreen]):not(:has(#tabbrowser-tabs[movingtab])):not(:has(#tabbrowser-arrowscrollbox > tab:nth-child(12 of :not([hidden])))):has(#tabbrowser-tabs[orient="horizontal"] > #tabbrowser-arrowscrollbox > .tabbrowser-tab[selected]:not([pinned])) {
 
 		/* 1. The active pill is the anchor, grows to hold the address, and IS the
 		      field: hover tint and focus ring are drawn on it, not on the bar. */
@@ -164,15 +164,6 @@
 			min-width: 0 !important;
 			margin: 0 !important;
 			z-index: 1;
-
-			/* While a tab is being dragged, keep the layout frozen (Firefox measured the
-			   tabs when the drag started; reflowing the strip mid-drag breaks its
-			   drop maths) and just hide the bar, which can't follow the drag transform. */
-			/* (Firefox mirrors [movingtab] onto #navigator-toolbox. `&` starts with
-			   :root here, so test the ancestor inside :where() rather than prefixing.) */
-			&:where(#navigator-toolbox[movingtab] *) {
-				visibility: hidden !important;
-			}
 
 			/* The bar covers the whole pill (so the ring/tint geometry is the
 			   pill's), but the leading zone is cut out of hit-testing so the tab
