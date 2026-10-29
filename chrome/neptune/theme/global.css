@@ -39,11 +39,11 @@
 	--urlbar-height: var(--size-item-large) !important;
 	--urlbar-min-height: var(--urlbar-height) !important;	/* FF156 renamed --urlbar-min-height → --urlbar-height; keep both */
 	--urlbar-basic-component-size: var(--urlbar-height) !important;
-	--urlbarView-small-font-size: 0.84em !important;
+	--urlbarview-small-font-size: 0.84em !important;
 	--urlbar-icon-padding: calc((var(--size-item-medium) - 2px - 2px - 16px ) / 2) !important;
 	--urlbar-searchmodeswitcher-inline-padding: var(--urlbar-icon-padding) !important;
-	--urlbarView-labeled-row-margin-top: calc(var(--button-min-height) + var(--urlbarview-row-padding-block) - var(--urlbarView-row-gutter)) !important;
-	--urlbarView-labeled-row-label-top: calc(-1 * (var(--urlbarView-labeled-row-margin-top) - var(--urlbarView-row-gutter))) !important;
+	--urlbarview-labeled-row-margin-top: calc(var(--button-min-height) + var(--urlbarview-row-padding-block) - var(--urlbarview-row-gutter)) !important;
+	--urlbarview-labeled-row-label-top: calc(-1 * (var(--urlbarview-labeled-row-margin-top) - var(--urlbarview-row-gutter))) !important;
 	--tab-min-height: var(--size-item-medium) !important;
 	--tabstrip-min-height: calc(var(--tab-min-height) + var(--tab-margin-block)) !important;
 	--tab-border-radius: var(--border-radius-xlarge) !important;
@@ -95,10 +95,11 @@
 	--urlbarview-action-button-background-color: var(--button-background-color) !important;
 	--urlbarview-background-color-hover: var(--nept-urlbarView-hover-background) !important;
 	--urlbarview-background-color-selected: var(--nept-focused-urlbar-highlight-color) !important;
-	--urlbarView-highlight-color: #fff !important;
+	--urlbarview-highlight-color: #fff !important;
 	--urlbarview-text-color-selected: #fff !important;
 	--urlbarview-action-button-background-color-hover: var(--button-background-color-hover) !important;
 	--input-text-background-color: var(--nept-input-bgcolor) !important;
+	--input-background-color: var(--nept-input-bgcolor) !important;	/* FF159 rename */
 	--background-color-box: var(--input-text-background-color) !important;
 	--focus-outline-color: var(--color-accent-primary) !important;
 	--organizer-toolbar-background: var(--nept-content-background) !important;

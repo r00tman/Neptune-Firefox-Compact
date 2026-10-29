@@ -158,7 +158,7 @@
 		> #urlbar-search-mode-indicator {
 			margin-inline: 0 !important;
 			padding-inline: var(--urlbar-icon-padding) !important;
-			font-size: var(--urlbarView-small-font-size);
+			font-size: var(--urlbarview-small-font-size);
 		}
 
 		> .searchmode-switcher {
@@ -194,7 +194,7 @@
 
 		> .searchmode-switcher-chicklet {
 			margin-inline: 0 !important;
-			font-size: var(--urlbarView-small-font-size);
+			font-size: var(--urlbarview-small-font-size);
 
 			> .searchmode-switcher-close {
 				border-radius: var(--border-radius-medium) !important;
@@ -270,7 +270,7 @@
 	}
 
 	> .search-one-offs:not([hidden]) {
-		width: calc(100% - 2 * (var(--urlbarview-row-padding-block) + var(--urlbarView-favicon-margin-start) + var(--border-width))) !important;
+		width: calc(100% - 2 * (var(--urlbarview-row-padding-block) + var(--urlbarview-favicon-margin-start) + var(--border-width))) !important;
 		margin-inline: auto;
 		display: none !important;
 	}
@@ -301,7 +301,7 @@
 				line-height: 1.28 !important;
 
 				&:not(:empty) ~ .urlbarView-action:not(.urlbarView-row[has-url] > .urlbarView-row-inner > .urlbarView-no-wrap > .urlbarView-action) {
-					margin-inline-end: var(--urlbarView-favicon-margin-start);
+					margin-inline-end: var(--urlbarview-favicon-margin-start);
 				}
 			}
 
@@ -311,7 +311,7 @@
 			}
 
 			> .urlbarView-action-btn {
-				padding: var(--urlbarView-row-gutter) calc(var(--urlbarView-icon-margin-start) + 2px) !important;
+				padding: var(--urlbarview-row-gutter) calc(var(--urlbarview-icon-margin-start) + 2px) !important;
 				border: none !important;
 				border-radius: var(--border-radius-small) !important;
 				margin-inline-end: var(--space-small) !important;
@@ -344,12 +344,12 @@
 			}
 
 			&[rich-suggestion][type="search"] {
-				min-height: calc(var(--size-item-medium) - 2 * var(--urlbarView-row-gutter) + var(--toolbarbutton-padding-inner)) !important;
+				min-height: calc(var(--size-item-medium) - 2 * var(--urlbarview-row-gutter) + var(--toolbarbutton-padding-inner)) !important;
 			}
 		}
 
 		&[has-url]:not([type$="tab"]) > .urlbarView-row-inner > .urlbarView-no-wrap {
-			max-width: calc(70% - 2 * (var(--urlbarView-favicon-width) + (6px + 2px))) !important;
+			max-width: calc(70% - 2 * (var(--urlbarview-favicon-width) + (6px + 2px))) !important;
 		}
 
 		&[has-url] > .urlbarView-row-inner > .urlbarView-url {
@@ -357,7 +357,7 @@
 			line-height: 1.333 !important;
 
 			&[overflow] {
-				margin-inline-end: var(--urlbarView-item-inline-padding) !important;
+				margin-inline-end: var(--urlbarview-item-inline-padding) !important;
 			}
 		}
 
@@ -366,7 +366,7 @@
 		}
 
 		&[row-selectable]:not([selected]):hover {
-			color: var(--urlbarView-highlight-color);
+			color: var(--urlbarview-highlight-color);
 
 			.urlbarView-url {
 				color: inherit !important;
@@ -391,7 +391,7 @@
 		}
 
 		.urlbarView-favicon {
-			margin-inline-end: calc(var(--urlbarView-icon-margin-end) - var(--urlbarView-favicon-margin-start) - 1px) !important;
+			margin-inline-end: calc(var(--urlbarview-icon-margin-end) - var(--urlbarview-favicon-margin-start) - 1px) !important;
 
 			.urlbarView-row[type="restrict_keyword_bookmarks"] & {
 				content: url("../assets/icons/bookmark.svg");
@@ -404,8 +404,8 @@
 
 		&[rich-suggestion] > .urlbarView-row-inner {
 			> .urlbarView-favicon {
-				width: calc(var(--size-item-medium) - 2 * var(--urlbarView-row-gutter)) !important;
-				height: calc(var(--size-item-medium) - 2 * var(--urlbarView-row-gutter)) !important;
+				width: calc(var(--size-item-medium) - 2 * var(--urlbarview-row-gutter)) !important;
+				height: calc(var(--size-item-medium) - 2 * var(--urlbarview-row-gutter)) !important;
 			}
 
 			> .urlbarView-row-body > .urlbarView-row-body-top > .urlbarView-row-body-top-no-wrap {
@@ -421,14 +421,14 @@
 				min-width: var(--size-item-small) !important;
 
 				.urlbarView-row:hover & {
-					color: var(--urlbarView-highlight-color) !important;
+					color: var(--urlbarview-highlight-color) !important;
 				}
 			}
 		}
 
 		&[has-action]:is([type="switchtab"], [type="remotetab"], [type="clipboard"]) > .urlbarView-row-inner > .urlbarView-no-wrap > .urlbarView-action {
-			padding-block: var(--urlbarView-row-gutter) !important;
-			margin-inline-end: var(--urlbarView-icon-margin-start);
+			padding-block: var(--urlbarview-row-gutter) !important;
+			margin-inline-end: var(--urlbarview-icon-margin-start);
 			border: none !important;
 			border-radius: var(--border-radius-small) !important;
 
@@ -456,7 +456,7 @@
 			min-width: var(--size-item-small) !important;
 
 			.urlbarView-row:is([row-selectable]:hover, [selected]) &:not(:hover, [open]) {
-				color: var(--urlbarView-secondary-text-color) !important;
+				color: var(--urlbarview-secondary-text-color) !important;
 			}
 
 			&:is(:hover, [open]) {
@@ -466,8 +466,8 @@
 
 		&[label]::before {
 			color: MenuText !important;
-			width: calc(100% - 2 * var(--urlbarView-icon-margin-start));
-			margin-inline: var(--urlbarView-icon-margin-start) !important;
+			width: calc(100% - 2 * var(--urlbarview-icon-margin-start));
+			margin-inline: var(--urlbarview-icon-margin-start) !important;
 			padding-block-start: var(--urlbarview-row-padding-block);
 			border-top: var(--border-width) solid var(--card-border-color);
 		}

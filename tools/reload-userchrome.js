@@ -34,7 +34,13 @@
     order.push(path);
     const text = (await IOUtils.readUTF8(path)).replace(/\/\*[\s\S]*?\*\//g, "");
     for (const m of text.matchAll(/@import\s+(?:url\()?["']([^"']+)["']\)?/g)) {
-      await walk(PathUtils.normalize(PathUtils.join(PathUtils.parent(path), ...m[1].split("/"))));
+      // PathUtils.join rejects ".." components (main.css imports "../share/shared.css").
+      let dir = PathUtils.parent(path);
+      for (const seg of m[1].split("/")) {
+        if (seg === "..") dir = PathUtils.parent(dir);
+        else if (seg && seg !== ".") dir = PathUtils.join(dir, seg);
+      }
+      await walk(dir);
     }
   }
   await walk(PathUtils.join(PROFILE_CHROME, "userChrome.css"));
