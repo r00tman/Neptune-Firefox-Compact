@@ -225,6 +225,20 @@
 			}
 
 			> .split-view-panel {
+				/* FF159 (macOS) keeps the content scrollbar out of rounded corners via
+				   --content-scrollbar-inset-*, which must match the container's radii.
+				   Ours differ from Firefox's medium-all-round, so set the top inset to
+				   our top-end radius (bottom/inline keep Firefox's medium). */
+				@media (-moz-platform: macos) {
+					&[column="0"] > .browserContainer {
+						--content-scrollbar-inset-block: var(--border-radius-xlarge) var(--border-radius-medium) !important;
+					}
+
+					&[column="1"] > .browserContainer {
+						--content-scrollbar-inset-block: 0 var(--border-radius-medium) !important;
+					}
+				}
+
 				&[column="0"] {
 					margin: 0 var(--space-small) 0 0 !important;
 

@@ -23,7 +23,7 @@
 		--button-text-color-primary-hover: var(--button-text-color-primary) !important;
 		--focus-outline-color: accentcolor !important;
 		--border-color: var(--card-border-color) !important;
-		--input-text-border-color: var(--card-border-color) !important;
+		--input-border-color: var(--card-border-color) !important;	/* FF159 rename (was --input-text-border-color) */
 		--visual-picker-item-border-color: var(--card-border-color) !important;
 		--box-border-color: var(--card-border-color) !important;
 		--box-icon-size: var(--icon-size-small) !important;

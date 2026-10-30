@@ -135,64 +135,19 @@
 		}
 	}
 
+	/* FF159 rebuilt the settings panels: .box → fieldset.panel-controls-box, the
+	   subtitle switch → <moz-toggle>, the font-size radios → <moz-radio-group>.
+	   The panel and its arrow both paint --settings-panel-background-color. */
 	.panel {
+		--settings-panel-background-color: #202020a5 !important;
 		bottom: calc(var(--controls-bottom-upper-height) + var(--controls-bottom-distance) + var(--resize-margin)) !important;
 
-		> .box {
-			background-color: #202020a5 !important;
+		> .panel-controls-box {
 			backdrop-filter: saturate(1.5) blur(2em);
-			padding: 0 !important;
 			font-size: 0.875em !important;
 
 			> .grey-line {
 				background: #ffffff33 !important;
-				width: calc(100% - 32px) !important;
-				margin-inline-start: 16px;
-			}
-
-			> .panel-fieldset {
-				margin-block: 0 !important;
-			}
-
-			> .subtitle-grid {
-				padding-bottom: 0 !important;
-
-				> .switch {
-					margin-left: 6px !important;
-					cursor: default !important;
-				}
-			}
-		}
-
-		> .arrow {
-			border-top-color: #202020a5 !important;
-		}
-	}
-
-	.slider {
-		background-color: #cacaca80 !important;
-
-		&::before {
-			background-color: var(--button-text-color-primary) !important;
-		}
-
-		input:checked + & {
-			background-color: var(--color-accent-primary-active) !important;
-		}
-	}
-
-	.font-size-selection-radio {
-		cursor: default !important;
-
-		label {
-			cursor: default !important;
-		}
-
-		> input[type="radio"] {
-			border: 2px solid #cacaca80 !important;
-
-			&:checked {
-				border: none !important;
 			}
 		}
 	}
@@ -227,6 +182,7 @@
 
 	#fullscreen {
 		background-image: url("../assets/icons/fullscreen.svg") !important;
+		background-size: auto !important;	/* FF159 switched it to contain (non-Nova), which blows our icon up */
 
 		body:fullscreen & {
 			background-image: url("../assets/icons/fullscreen-exit.svg") !important;

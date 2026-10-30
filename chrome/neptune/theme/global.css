@@ -98,9 +98,8 @@
 	--urlbarview-highlight-color: #fff !important;
 	--urlbarview-text-color-selected: #fff !important;
 	--urlbarview-action-button-background-color-hover: var(--button-background-color-hover) !important;
-	--input-text-background-color: var(--nept-input-bgcolor) !important;
-	--input-background-color: var(--nept-input-bgcolor) !important;	/* FF159 rename */
-	--background-color-box: var(--input-text-background-color) !important;
+	--input-background-color: var(--nept-input-bgcolor) !important;	/* FF159 rename (was --input-text-background-color) */
+	--background-color-box: var(--nept-input-bgcolor) !important;
 	--focus-outline-color: var(--color-accent-primary) !important;
 	--organizer-toolbar-background: var(--nept-content-background) !important;
 	--organizer-hover-background: var(--nept-item-hover-background) !important;

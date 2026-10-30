@@ -369,7 +369,7 @@ toolbarbutton.subviewbutton:not(.all-tabs-secondary-button, .subviewbutton-back,
 		border: none !important;
 
 		.data {
-			background: var(--input-text-background-color) !important;
+			background: var(--input-background-color) !important;
 			padding: var(--panel-separator-padding) !important;
 			border-radius: var(--border-radius-small);
 		}
@@ -465,7 +465,7 @@ toolbarbutton.subviewbutton:not(.all-tabs-secondary-button, .subviewbutton-back,
 	padding-block: var(--panel-subview-body-padding-block) !important;
 
 	#editBMPanel_folderTree {
-		background-color: var(--input-text-background-color) !important;
+		background-color: var(--input-background-color) !important;
 		border: none !important;
 	}
 

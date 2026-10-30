@@ -218,7 +218,7 @@
 
 			/* password */
 			> .first-row .search-container {
-				background-color: var(--input-text-background-color) !important;
+				background-color: var(--input-background-color) !important;
 				border: none !important;
 
 				 > input[type="search"] {

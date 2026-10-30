@@ -76,11 +76,10 @@
 		--input-width: var(--input-icon-size) !important;
 		--input-height: var(--input-icon-size) !important;
 		--input-margin-block-adjust: calc((1lh - var(--input-height)) / 2) !important;
-		--input-text-background-color: var(--nept-input-bgcolor) !important;
-		--input-background-color: var(--nept-input-bgcolor) !important;	/* FF159 rename */
+		--input-background-color: var(--nept-input-bgcolor) !important;	/* FF159 rename (was --input-text-background-color) */
 
 		&.with-icon {
-			padding-inline-start: calc(var(--input-text-icon-size) + var(--space-large)) !important;
+			padding-inline-start: calc(var(--input-icon-size) + var(--space-large)) !important;
 			background-position: var(--space-small) center !important;
 
 			&:dir(rtl) {
