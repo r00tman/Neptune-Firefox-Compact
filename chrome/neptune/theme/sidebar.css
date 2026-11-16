@@ -177,14 +177,22 @@
 
 	/* FF157 changed the panel header's close button from type="icon primary" to
 	   "icon ghost"; keep the accent-filled look the theme was tuned for. */
-	/* #sidebar-panel-header: the legacy Bookmarks panel, which gets the switcher in 158. */
-	:is(.sidebar-panel-heading, #sidebar-panel-header) > moz-button {
+	.sidebar-panel-heading > moz-button {
 		--button-background-color-ghost: var(--button-background-color-primary) !important;
 		--button-background-color-ghost-hover: var(--button-background-color-primary-hover) !important;
 		--button-background-color-ghost-active: var(--button-background-color-primary-active) !important;
 		--button-text-color-ghost: var(--button-text-color-primary) !important;
 		--button-text-color-ghost-hover: var(--button-text-color-primary) !important;
 		--button-text-color-ghost-active: var(--button-text-color-primary) !important;
+	}
+
+	/* FF160: one shared panel header (switcher + close) in the browser window, above
+	   the panel's <browser>, instead of one inside each panel. Match the content's
+	   inline inset (.sidebar-panel padding + toolbar padding) and the old spacing:
+	   flush top, small gap above the panel's toolbar. */
+	#sidebar-panel-header {
+		padding-inline: calc(var(--space-small) + var(--space-xsmall)) !important;
+		padding-block: 0 var(--space-small) !important;
 	}
 
 	.sidebar-panel {
@@ -197,64 +205,54 @@
 			background-color: transparent !important;
 		}
 
-		/* bookmarksPanel */
-		> #sidebar-panel-header {
-			padding-block-start: 0 !important;
-			padding-inline: var(--space-xsmall) !important;
-		}
-
+		/* bookmarksPanel (legacy) */
 		> #sidebar-search-container {
 			padding: 0 var(--space-xsmall) var(--space-large) !important;
 		}
 
-		/* historyPanel */
-		> sidebar-panel-header {
+		/* FF160 moved the panel header into the browser window (#sidebar-panel-header
+		   below), so each panel's toolbar is now a direct child of .sidebar-panel:
+		   .options-container (History, Bookmarks) or .first-row/.second-row (Passwords).
+		   Keep the inset and gaps they had inside the header. */
+		> :is(.options-container, .first-row, .second-row) {
 			padding-inline: var(--space-xsmall);
-			padding-block-end: var(--space-medium) !important;
+		}
 
-			+ * {
-				margin: 0 !important;
+		> .options-container,
+		> .second-row,
+		> .first-row:not(:has(+ .second-row)) {
+			margin-block-end: var(--space-medium) !important;
+		}
+
+		> .sidebar-panel-scrollable-content {
+			margin: 0 !important;
+		}
+
+		/* password */
+		> .first-row panel-list {
+			background-color: menu !important;
+			backdrop-filter: blur(1em);
+			border-color: var(--border-color) !important;
+			border-radius: var(--border-radius-medium) !important;
+
+			> hr:not([hidden]) {
+				/* FF157 draws panel-list separators as a border, not a filled box. */
+				border-block-start-color: var(--chrome-content-separator-color) !important;
+				margin: var(--panel-separator-padding) !important;
 			}
+		}
 
-			/* password */
-			> .first-row .search-container {
-				background-color: var(--input-background-color) !important;
-				border: none !important;
+		> .second-row > div {
+			display: flex;
+			align-items: center;
+			gap: var(--space-small);
 
-				 > input[type="search"] {
-					padding: 0 var(--space-xsmall) !important;
-				}
-			}
+			> input[type="radio"] {
+				margin-block: 0 !important;
+				margin-inline-end: 0 !important;
 
-			> .first-row panel-list {
-				background-color: menu !important;
-				backdrop-filter: blur(1em);
-				border-color: var(--border-color) !important;
-				border-radius: var(--border-radius-medium) !important;
-
-				> hr:not([hidden]) {
-					/* FF157 draws panel-list separators as a border, not a filled box. */
-					border-block-start-color: var(--chrome-content-separator-color) !important;
-					margin: var(--panel-separator-padding) !important;
-				}
-			}
-
-			> .second-row {
-				margin-block-end: 0 !important;
-
-				> div {
-					display: flex;
-					align-items: center;
-					gap: var(--space-small);
-
-					> input[type="radio"] {
-						margin-block: 0 !important;
-						margin-inline-end: 0 !important;
-
-						&:not(:first-of-type) {
-							margin-inline-start: var(--space-small) !important;
-						}
-					}
+				&:not(:first-of-type) {
+					margin-inline-start: var(--space-small) !important;
 				}
 			}
 		}
